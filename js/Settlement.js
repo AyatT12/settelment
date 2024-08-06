@@ -7,139 +7,106 @@ jQuery(document).ready(function () {
 //⁡⁢⁣⁣//////////////////////////    𝗳𝘂𝗻𝗰𝘁𝗶𝗼𝗻𝘀   ////////////////////////////////////⁡
 
 //=======================================’Moving Between Fieldsets=============================================================
-  let current_fs, next_fs, previous_fs;
-  const nextButtons = document.querySelectorAll(".next");
-  const ExpensesCheckbox = document.getElementById('expenses');
-  const CompensationCheckbox = document.getElementById('compensation-check');
-  const fieldsets = document.querySelectorAll("fieldset");
+let current_fs, next_fs, previous_fs;
+const nextButtons = document.querySelectorAll(".next");
+const ExpensesCheckbox = document.getElementById('expenses');
+const CompensationCheckbox = document.getElementById('compensation-check');
+const fieldsets = document.querySelectorAll("fieldset");
 
+function setFocusToFirstInput(fieldset) {
+    var firstFocusable = fieldset.find("input, select , textarea").first();
+    if (firstFocusable.length) {
+        firstFocusable.focus();
+    }
+}
 
-    // Function to hide error message
-const hideErrorMessage = (field) => {
-  const errorMessage = field.parentNode.querySelector(".invalid-feedback");
-  if (errorMessage) {
-    errorMessage.style.display = "none";
-  }
-};
-
-
-  Array.from(nextButtons).forEach((nextBtn) => {
-    nextBtn.addEventListener("click", (event) => {
-      const fieldset = nextBtn.closest("fieldset");
-      let isValid = true;
-      Array.from(fieldset.elements).forEach((field) => {
-        if (field.checkValidity() === false) {
-          isValid = false;
-          const errorMessage = field.parentNode.querySelector(".invalid-feedback");
-          if (errorMessage) {
-            errorMessage.style.display = "block";
-          }
-        }
-      });
-     
-      
-        // Add input event listeners to all input fields within the fieldsets
-        fieldsets.forEach((fieldset) => {
-          Array.from(fieldset.elements).forEach((field) => {
-            field.addEventListener('input', () => {
-              hideErrorMessage(field);
-            });
-          });
-        });
-      if (!isValid) {
+function moveToNextInput(event) {
+    if (event.key === "Enter") {
         event.preventDefault();
-        event.stopPropagation();
-       
-      } else {
-       
-        const current_fs = nextBtn.closest("fieldset");
-        let next_fs = current_fs.nextElementSibling;
-       
-        
-        if (current_fs.id === 'firstFieldset') {
-        
-          if (!ExpensesCheckbox.checked && CompensationCheckbox.checked) {
-              next_fs = current_fs.nextElementSibling.nextElementSibling;
-              $("#progressbar li").eq($("fieldset").index(current_fs.nextElementSibling)).addClass("active");
+        let formElements = Array.from(
+            event.target.form.querySelectorAll("input, select, button , textarea")
+        );
+        let index = formElements.indexOf(event.target);
 
-          } else if (!ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
-            next_fs = current_fs.nextElementSibling.nextElementSibling.nextElementSibling;
-            $("#progressbar li").eq($("fieldset").index(current_fs.nextElementSibling)).addClass("active");
-            $("#progressbar li").eq($("fieldset").index(current_fs.nextElementSibling.nextElementSibling)).addClass("active");
-
-
-          }
-          else{
-              next_fs = current_fs.nextElementSibling;
-
-          }
+        if (index > -1 && index < formElements.length - 1) {
+            let nextElement = formElements[index + 1];
+            if (nextElement.tagName === "BUTTON" || nextElement.type === "button") {
+                nextElement.click();
+            } else {
+                nextElement.focus();
+            }
         }
+    }
+}
 
-        if (current_fs.id === 'SecondFieldset') {
-         
-          if (ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
-            next_fs = current_fs.nextElementSibling.nextElementSibling;
-            $("#progressbar li").eq($("fieldset").index(current_fs.nextElementSibling)).addClass("active");
+$(document).ready(function () {
+    $("input, select, button , textarea").on("keydown", moveToNextInput);
 
-          }
-        }
-   
-        Array.from(next_fs.elements ).forEach((field) => {
-          field.addEventListener('input', () => {
-            hideErrorMessage(field);
-          });
-        }); 
-        
+    var firstFieldset = $("fieldset").first();
+    setFocusToFirstInput(firstFieldset);
+});
 
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+$(".next").click(function () {
+  const nextBtn = this; // Use `this` to refer to the current button
+  const current_fs = $(nextBtn).closest("fieldset");
+  let next_fs = current_fs.next();
+  
+  if (current_fs.attr('id') === 'firstFieldset') {
+    if (!ExpensesCheckbox.checked && CompensationCheckbox.checked) {
+        next_fs = current_fs.next().next();
+        $("#progressbar li").eq($("fieldset").index(current_fs.next())).addClass("active");
+    } else if (!ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
+      next_fs = current_fs.next().next().next();
+      $("#progressbar li").eq($("fieldset").index(current_fs.next())).addClass("active");
+      $("#progressbar li").eq($("fieldset").index(current_fs.next().next())).addClass("active");
+    } else {
+        next_fs = current_fs.next();
+    }
+  }
+  if (current_fs.attr('id') === 'SecondFieldset') {
+    if (ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
+      next_fs = current_fs.next().next();
+      $("#progressbar li").eq($("fieldset").index(current_fs.next())).addClass("active");
+    }
+  }
+  $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-        next_fs.style.display = "flex";
-        current_fs.style.display = "none";
+  next_fs.show();
+  current_fs.hide();
+
+  setFocusToFirstInput(next_fs);
+});
+
+$(".previous").click(function () {
+    const prevBtn = this; // Use `this` to refer to the current button
+    current_fs = $(prevBtn).closest("fieldset");
+    previous_fs = current_fs.prev();
+    if (current_fs.attr('id') === 'FourthFieldset') {
+      if (ExpensesCheckbox.checked && CompensationCheckbox.checked) {
+        previous_fs = current_fs.prev();
+      } else if (!ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
+        previous_fs = current_fs.prev().prev().prev();
+        $("#progressbar li").eq($("fieldset").index(current_fs.prev())).removeClass("active");
+        $("#progressbar li").eq($("fieldset").index(current_fs.prev().prev())).removeClass("active");
+      } else if (ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
+        previous_fs = current_fs.prev().prev();
+        $("#progressbar li").eq($("fieldset").index(current_fs.prev())).removeClass("active");
       }
-    });
-  });
+    }
 
-  const previousButtons = document.querySelectorAll(".previous");
-
-  Array.from(previousButtons).forEach((prevBtn) => {
-    prevBtn.addEventListener("click", (event) => {
-      const current_fs = prevBtn.closest("fieldset");
-      let previous_fs = current_fs.previousElementSibling;
-      if (current_fs.id === 'FourthFieldset') {
-      
-        if (ExpensesCheckbox.checked && CompensationCheckbox.checked) {
-          previous_fs = current_fs.previousElementSibling;
-        } else if (!ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
-          previous_fs = current_fs.previousElementSibling.previousElementSibling.previousElementSibling;
-          $("#progressbar li").eq($("fieldset").index(current_fs.previousElementSibling)).removeClass("active");
-          $("#progressbar li").eq($("fieldset").index(current_fs.previousElementSibling.previousElementSibling)).removeClass("active");
-        } else if (ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
-          previous_fs = current_fs.previousElementSibling.previousElementSibling;
-          $("#progressbar li").eq($("fieldset").index(current_fs.previousElementSibling)).removeClass("active");
-
-        }
-      
+    if (current_fs.attr('id') === 'ThirdFieldset') {
+      if (!ExpensesCheckbox.checked && CompensationCheckbox.checked) {
+        previous_fs = current_fs.prev().prev();
+        $("#progressbar li").eq($("fieldset").index(current_fs.prev())).removeClass("active");
       }
+    }
+    $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 
-      if (current_fs.id === 'ThirdFieldset') {
-     
-        if (!ExpensesCheckbox.checked && CompensationCheckbox.checked) {
-          previous_fs = current_fs.previousElementSibling.previousElementSibling;
-          $("#progressbar li").eq($("fieldset").index(current_fs.previousElementSibling)).removeClass("active");
+    previous_fs.show();
+    current_fs.hide();
 
-        }
-      }
-      Array.from(previous_fs.elements).forEach((field) => {
-          field.addEventListener('input', () => {
-            hideErrorMessage(field);
-          });
-        });
-$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-      previous_fs.style.display = "flex";
-      current_fs.style.display = "none";
-    });
-  });
+    setFocusToFirstInput(previous_fs);
+});
 
 //====================================================================================================
 //========================================Upload Expenses Imgs Lists============================================================
@@ -498,177 +465,177 @@ $('#examination-images').click(function(){
 
 
 
-// // ///////////////////////////////////////////////////////////////////////////
-// // //////////////////////////////////////////////// رفع صورة التوقيع ////////////////////////////////////////////////////////////////////////
+// // // ///////////////////////////////////////////////////////////////////////////
+// // // //////////////////////////////////////////////// رفع صورة التوقيع ////////////////////////////////////////////////////////////////////////
 
-//variables//
-let saveSignatureBtn = null;
+// //variables//
+// let saveSignatureBtn = null;
 
-document
-  .getElementById("UploadSigntaurePic")
-  .addEventListener("click", function () {
-    saveSignatureBtn = "UploadSigntaurePic";
-  });
+// document
+//   .getElementById("UploadSigntaurePic")
+//   .addEventListener("click", function () {
+//     saveSignatureBtn = "UploadSigntaurePic";
+//   });
 
-document
-  .getElementById("WriteSignature")
-  .addEventListener("click", function () {
-    saveSignatureBtn = "WriteSignature";
-  });
-const uploadContainer = document.querySelector(".upload-container");
-const mainContainer = document.querySelector(".main-container");
-const UploadSigntaurePic = document.getElementById("UploadSigntaurePic");
-const imageUpload = document.getElementById("imageUpload");
-var imgeURL;
-const uploadedImg = null;
-//
+// document
+//   .getElementById("WriteSignature")
+//   .addEventListener("click", function () {
+//     saveSignatureBtn = "WriteSignature";
+//   });
+// const uploadContainer = document.querySelector(".upload-container");
+// const mainContainer = document.querySelector(".main-container");
+// const UploadSigntaurePic = document.getElementById("UploadSigntaurePic");
+// const imageUpload = document.getElementById("imageUpload");
+// var imgeURL;
+// const uploadedImg = null;
+// //
 
-UploadSigntaurePic.addEventListener("click", function () {
-  imageUpload.click();
-});
+// UploadSigntaurePic.addEventListener("click", function () {
+//   imageUpload.click();
+// });
 
-imageUpload.addEventListener("change", function () {
-  const file = imageUpload.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const imageURL = e.target.result;
-      const previewImage = document.createElement("img");
-      previewImage.classList.add("preview-image");
-      previewImage.src = imageURL;
-      previewImage.id = "signatureImage";
-      imgeURL = imageURL;
-      mainContainer.innerHTML =
-        '<i class="fa-regular fa-circle-xmark"  style="cursor: pointer;"></i>';
-      uploadContainer.innerHTML = "";
-      uploadContainer.appendChild(previewImage);
-      uploadContainer.classList.add("previewing");
-    };
-    reader.readAsDataURL(file);
-  }
-});
+// imageUpload.addEventListener("change", function () {
+//   const file = imageUpload.files[0];
+//   if (file) {
+//     const reader = new FileReader();
+//     reader.onload = function (e) {
+//       const imageURL = e.target.result;
+//       const previewImage = document.createElement("img");
+//       previewImage.classList.add("preview-image");
+//       previewImage.src = imageURL;
+//       previewImage.id = "signatureImage";
+//       imgeURL = imageURL;
+//       mainContainer.innerHTML =
+//         '<i class="fa-regular fa-circle-xmark"  style="cursor: pointer;"></i>';
+//       uploadContainer.innerHTML = "";
+//       uploadContainer.appendChild(previewImage);
+//       uploadContainer.classList.add("previewing");
+//     };
+//     reader.readAsDataURL(file);
+//   }
+// });
 
-removeSignatureImg.addEventListener("click", function (event) {
-  event.preventDefault();
-  if (uploadContainer.firstChild) {
-    uploadContainer.innerHTML = "";
-    mainContainer.innerHTML = "";
-    uploadContainer.classList.remove("previewing");
-    uploadContainer.innerHTML =
-      ' <img class="upload-icon" src="img/Rectangle 144.png" alt="Upload Icon"><p>ارفق صورة التوقيع</p>';
-  }
-});
-// // //////////////////////////////////////////////// كتابة التوقيع ////////////////////////////////////////////////////////////////////////
-const WriteSignature = document.getElementById("WriteSignature");
-WriteSignature.addEventListener("click", function () {
-  document.body.classList.add('no-scroll');
-  uploadContainer.innerHTML = "";
-  mainContainer.innerHTML = "";
-  uploadContainer.innerHTML =
-    '<canvas id="canvas" width="200" height="200" class="mb-2"></canvas>';
-  var canvas = document.getElementById("canvas");
-  var ctx = canvas.getContext("2d");
-  ctx.lineWidth = 4;
+// removeSignatureImg.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   if (uploadContainer.firstChild) {
+//     uploadContainer.innerHTML = "";
+//     mainContainer.innerHTML = "";
+//     uploadContainer.classList.remove("previewing");
+//     uploadContainer.innerHTML =
+//       ' <img class="upload-icon" src="img/Rectangle 144.png" alt="Upload Icon"><p>ارفق صورة التوقيع</p>';
+//   }
+// });
+// // // //////////////////////////////////////////////// كتابة التوقيع ////////////////////////////////////////////////////////////////////////
+// const WriteSignature = document.getElementById("WriteSignature");
+// WriteSignature.addEventListener("click", function () {
+//   document.body.classList.add('no-scroll');
+//   uploadContainer.innerHTML = "";
+//   mainContainer.innerHTML = "";
+//   uploadContainer.innerHTML =
+//     '<canvas id="canvas" width="200" height="200" class="mb-2"></canvas>';
+//   var canvas = document.getElementById("canvas");
+//   var ctx = canvas.getContext("2d");
+//   ctx.lineWidth = 4;
 
-  var drawing = false;
-  var prevX = 0;
-  var prevY = 0;
-  var currX = 0;
-  var currY = 0;
+//   var drawing = false;
+//   var prevX = 0;
+//   var prevY = 0;
+//   var currX = 0;
+//   var currY = 0;
 
-  function drawLine(x0, y0, x1, y1) {
-    ctx.beginPath();
-    ctx.moveTo(x0, y0);
-    ctx.lineTo(x1, y1);
-    ctx.stroke();
-    ctx.closePath();
-  }
+//   function drawLine(x0, y0, x1, y1) {
+//     ctx.beginPath();
+//     ctx.moveTo(x0, y0);
+//     ctx.lineTo(x1, y1);
+//     ctx.stroke();
+//     ctx.closePath();
+//   }
 
-  canvas.addEventListener("mousedown", handleMouseDown, false);
-  canvas.addEventListener("mousemove", handleMouseMove, false);
-  canvas.addEventListener("mouseup", handleMouseUp, false);
+//   canvas.addEventListener("mousedown", handleMouseDown, false);
+//   canvas.addEventListener("mousemove", handleMouseMove, false);
+//   canvas.addEventListener("mouseup", handleMouseUp, false);
 
-  canvas.addEventListener("touchstart", handleTouchStart, false);
-  canvas.addEventListener("touchmove", handleTouchMove, false);
-  canvas.addEventListener("touchend", handleTouchEnd, false);
+//   canvas.addEventListener("touchstart", handleTouchStart, false);
+//   canvas.addEventListener("touchmove", handleTouchMove, false);
+//   canvas.addEventListener("touchend", handleTouchEnd, false);
 
-  function handleMouseDown(e) {
-    drawing = true;
-    prevX = e.clientX - canvas.getBoundingClientRect().left;
-    prevY = e.clientY - canvas.getBoundingClientRect().top;
-  }
+//   function handleMouseDown(e) {
+//     drawing = true;
+//     prevX = e.clientX - canvas.getBoundingClientRect().left;
+//     prevY = e.clientY - canvas.getBoundingClientRect().top;
+//   }
 
-  function handleMouseMove(e) {
-    if (!drawing) return;
-    currX = e.clientX - canvas.getBoundingClientRect().left;
-    currY = e.clientY - canvas.getBoundingClientRect().top;
+//   function handleMouseMove(e) {
+//     if (!drawing) return;
+//     currX = e.clientX - canvas.getBoundingClientRect().left;
+//     currY = e.clientY - canvas.getBoundingClientRect().top;
 
-    drawLine(prevX, prevY, currX, currY);
-    prevX = currX;
-    prevY = currY;
-  }
+//     drawLine(prevX, prevY, currX, currY);
+//     prevX = currX;
+//     prevY = currY;
+//   }
 
-  function handleMouseUp() {
-    drawing = false;
-  }
+//   function handleMouseUp() {
+//     drawing = false;
+//   }
 
-  function handleTouchStart(e) {
-    drawing = true;
-    prevX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
-    prevY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
-  }
+//   function handleTouchStart(e) {
+//     drawing = true;
+//     prevX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+//     prevY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
+//   }
 
-  function handleTouchMove(e) {
-    if (!drawing) return;
-    currX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
-    currY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
+//   function handleTouchMove(e) {
+//     if (!drawing) return;
+//     currX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+//     currY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
 
-    drawLine(prevX, prevY, currX, currY);
-    prevX = currX;
-    prevY = currY;
-  }
+//     drawLine(prevX, prevY, currX, currY);
+//     prevX = currX;
+//     prevY = currY;
+//   }
 
-  function handleTouchEnd() {
-    drawing = false;
-  }
-  function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  }
+//   function handleTouchEnd() {
+//     drawing = false;
+//   }
+//   function clearCanvas() {
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//   }
 
-  document.getElementById("clear").addEventListener("click", function () {
-    clearCanvas();
-  });
+//   document.getElementById("clear").addEventListener("click", function () {
+//     clearCanvas();
+//   });
  
-});
- function SaveWrittenSignature() {
-  document.body.classList.remove('no-scroll');
-	var canvas = document.getElementById("canvas");
-    var dataURL = canvas.toDataURL();
-    var link = document.createElement("a");
-    link.href = dataURL;
-    console.log(link.href);
-    $("#signature-modal").modal("hide");
+// });
+//  function SaveWrittenSignature() {
+//   document.body.classList.remove('no-scroll');
+// 	var canvas = document.getElementById("canvas");
+//     var dataURL = canvas.toDataURL();
+//     var link = document.createElement("a");
+//     link.href = dataURL;
+//     console.log(link.href);
+//     $("#signature-modal").modal("hide");
 
-  }
- // Save the uploded signature image
- function SaveUplodedSignature() {
-    const img = document.getElementById("signatureImage");
-    const canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    const context = canvas.getContext("2d");
-    context.drawImage(img, 0, 0, canvas.width, canvas.height);
-    const base64 = canvas.toDataURL("image/jpeg");
-    console.log(base64);
-    $("#signature-modal").modal("hide");
+//   }
+//  // Save the uploded signature image
+//  function SaveUplodedSignature() {
+//     const img = document.getElementById("signatureImage");
+//     const canvas = document.createElement("canvas");
+//     canvas.width = img.width;
+//     canvas.height = img.height;
+//     const context = canvas.getContext("2d");
+//     context.drawImage(img, 0, 0, canvas.width, canvas.height);
+//     const base64 = canvas.toDataURL("image/jpeg");
+//     console.log(base64);
+//     $("#signature-modal").modal("hide");
 
-  }
-  document.getElementById("save").addEventListener("click", function () {
-    if (saveSignatureBtn === "UploadSigntaurePic") {
-      SaveUplodedSignature();
-    } else if (saveSignatureBtn === "WriteSignature") {
-      SaveWrittenSignature();
-    } else {
-      console.log("No button has been clicked yet");
-    }
-  });
+//   }
+//   document.getElementById("save").addEventListener("click", function () {
+//     if (saveSignatureBtn === "UploadSigntaurePic") {
+//       SaveUplodedSignature();
+//     } else if (saveSignatureBtn === "WriteSignature") {
+//       SaveWrittenSignature();
+//     } else {
+//       console.log("No button has been clicked yet");
+//     }
+//   });
