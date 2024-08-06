@@ -111,6 +111,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     right: auto;
     left: 0px;
 }
+.back-icon{
+    transform: rotate(180deg);
+}
 @media (max-width:960px) {
     .pdf_img {
       
