@@ -45,7 +45,15 @@ nav {
     resize: none;
     font-size: .875rem;
 }
-
+.inputs:focus,
+.textarea-inputs:focus,
+.form-select-driver:focus,
+.form-control2:focus,
+.form-control1:focus,
+.form-select-last:focus {
+    box-shadow: none !important;
+    border: 2px solid #facd9c !important;
+}
 .textarea-inputs {
     /* border-top: none; */
     /* min-height: calc(3em + 0.75rem + calc(var(--bs-border-width)* 2)) !important; */
@@ -65,7 +73,9 @@ nav {
     width: 90px;
     text-align: center;
 }
-
+#days-number-input{
+    width: 110px;
+}
 .form-control2 {
     text-align: center;
     height: 32px;
@@ -850,6 +860,11 @@ footer {
 .dropdown-content-extension p {
     margin-bottom: .4rem !important;
 }
+.dropdown-content-extension{
+    width: fit-content;
+    min-width: 200px;
+    right: 0px;
+}
 
 .dropdown-content-row {
     flex-direction: row-reverse;
@@ -1408,12 +1423,12 @@ flex-direction: row-reverse;
 
 }
 
-@media(min-width:1000px) {
+@media(max-width:991px) {
 
     .dropdown-content-extension {
-        width: 120%;
-        left: -90px;
-        right: 90px;
+        /* width: 120%; */
+        /* left: -90px; */
+        right: 0px;
 
     }
 }
@@ -1432,7 +1447,6 @@ flex-direction: row-reverse;
 
     #dropdown-content-Settlement,
     #dropdown-content-Settlement3 {
-        width: 200%;
         left: none;
         right: 10px;
 
@@ -2418,9 +2432,14 @@ padding-right:0px ;
     }
     
 }
-@media (max-width : 425px) {
+@media (max-width :600px) {
     .not-in-mobile{
         display: none;
+    }
+}
+@media (min-width : 1600px) {
+    .licence-dates{
+        gap: 40px;  
     }
 }
 /*  ستايل صفحة بيانات المستأجر التفصيلية  */
@@ -2434,10 +2453,17 @@ height: 47vh;
 .licence-dates{
     font-size: 12px;
     margin: 0;
+    justify-content: end;
+    
 }
 /* التمديد */
 #contract-extension2-form .form-card{
     height: 100%;
+}
+@media (min-width:767px) {
+    #dropdown-content-extension2{
+        min-width: 300px;
+    }
 }
 /* تقرير مالي  */
 
@@ -2449,6 +2475,11 @@ height: 47vh;
     height: 100%;
     margin-bottom: 10px;
     gap: 10px;
+}
+@media (min-width:767px) {
+    #dropdown-content-Settlement , #dropdown-content-Settlement3{
+        min-width: 300px;
+    }
 }
 .compensation-Div-textarea textarea , .expensesDiv-textarea textarea{
     height:50vh ;
