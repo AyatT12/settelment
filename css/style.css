@@ -50,7 +50,8 @@ nav {
 .form-select-driver:focus,
 .form-control2:focus,
 .form-control1:focus,
-.form-select-last:focus {
+.form-select-last:focus ,
+.form-select-settel {
     box-shadow: none !important;
     border: 2px solid #facd9c !important;
 }
