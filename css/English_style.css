@@ -107,6 +107,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 #tableContainer {
     direction: rtl;
 }
+.dropdown-content-extension{
+    right: auto;
+    left: 0px;
+}
 @media (max-width:960px) {
     .pdf_img {
       
@@ -136,15 +140,22 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         width: 100px;
     }
 }
-@media(min-width:1000px) {
+@media(max-width:991px) {
 
-    .dropdown-content-extension{
-        width: 140%;
-        right: -90px;
-        left: 90px;
+    .dropdown-content-extension {
+        /* width: 120%; */
+        left: 0px;
+        right: auto;
 
     }
 }
+#dropdown-content-Settlement, #dropdown-content-Settlement3 {
+    left: 0px;
+    right: auto;
+}
+
+
+
 /* ////////// */
 .date-col {
     padding-left:0px ;
@@ -164,3 +175,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-shadow: 3px -1px 0px 0px rgb(255 242 228), 2px 3px 0px 1px rgb(255 159 64 / 18%);
     border-radius: 8px 0px 0px 8px;
 }
+/* //////// */
