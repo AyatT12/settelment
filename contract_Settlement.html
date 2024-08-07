@@ -14,56 +14,107 @@
     <link href="https://fonts.googleapis.com/css?family=Cairo:500,400,700" rel="stylesheet">
     <link href="css/style.css" rel="styleSheet">
     <!-- <link href="css/English_style.css" rel="styleSheet"> -->
-    <!-- <style>
+     <style>
         .main-loader-container {
             position: fixed;
             top: 0%;
             max-width: 100%;
-            background-color: #ffffff34;
+            background-color: #ffffff00;
             height: 100%;
+            display: none;
         }
         .main-loader-row{
             position: absolute;
             width: 100%;
             top: 40%;
         }
-        .container-loader {
-            margin: auto;
-            width: 70%;
-            height: 40px;
-            background-color: #fff;
-            border: 5px solid #2198ce;
-            border-radius: 50px;
-            color: #2198ce;
-            font-size: 15px;
+        
+        .ActiveTime_title {
             font-weight: 600;
-            overflow: hidden;
-            text-align: center;
-            box-sizing: border-box;
-            transition-delay: 3s;
-            display: flex;
-            align-items: center;
-            position: relative;
         }
 
-        #inner-container {
-            border-radius: 50px;
-            border: 5px solid white;
-            width: 0%;
-            top: 0;
-            height: 30px;
+        .ActiveTime_P {
+            font-size: 18px;
+            color: #666666;
+            line-height: 32px;
+        }
+
+        .base-timer {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .base-timer__svg {
+            transform: scaleX(-1);
+            transform: rotate3d(1, 1, 1, 1deg);
+            background: white;
+           border-radius: 50%;
+
+        }
+
+        .base-timer__circle {
+            fill: none;
+            stroke: none;
+        }
+
+        .base-timer__path-elapsed {
+            stroke-width: 7px;
+            stroke: #D9D9D9;
+        }
+
+        .base-timer__path-remaining {
+            stroke-width: 7px;
+            stroke-linecap: round;
+            transform: rotate(90deg);
+            transform-origin: center;
+            transition: 1s linear all;
+            fill-rule: nonzero;
+        }
+
+        .base-timer__path-remaining.blue {
+            stroke: #4d4d4d;
+        }
+
+        .base-timer__label {
             position: absolute;
-            background-color: rgb(35 129 184 / 36%);
-            transition: width .5s ease;
+            width: 200px;
+            height: 200px;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            display: flex;
+    flex-direction: column;
+    gap: 5px;
 
         }
 
         #container {
-            margin-top: 0px;
-            margin-bottom: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
-    </style> -->
+
+        .Dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #D9D9D9;
+        }
+
+        .Dots-container {
+            display: flex;
+            gap: 5px;
+            margin: 0px 10px;
+        }
+        #app{
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style> 
 </head>
 
 <body id="page-top" style="background-color:rgba(254, 248, 232, 1);">
@@ -74,191 +125,7 @@
         <!-- Main Content -->
        
             <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light topbar mb-2 static-top shadow  justify-content-between" style="">
-
-                <!-- Topbar Navbar -->
-                <ul class="navbar-nav ">
-
-
-                    <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="img-profile rounded-circle" src="img/profile.png" alt="profile image">
-                            <div style="display: flex; flex-direction: column;align-items: center;">
-                                <span class=" text-dark font-weight-bold">عبد
-                                    الله </span>
-                                <span class="   text-dark">المدير التنفيذي
-                                </span>
-                            </div>
-                        </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-left shadow animated--grow-in"
-                            aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-user fa-sm fa-fw  text-dark-400"></i>
-                                حسابي
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw  text-dark-400"></i>
-                                تغيير كلمة السر
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw  text-dark-400"></i>
-                                تسجيل الخروج
-                            </a>
-                        </div>
-                    </li>
-                    <div class="topbar-divider d-none d-sm-block"></div>
-                    <!-- Nav Item - Messages -->
-                    <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class=""><img src="img/Rectangle 65.png" alt="massages alert icon"></i>
-                            <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">7</span>
-                        </a>
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in"
-                            aria-labelledby="messagesDropdown" style="direction: ltr;">
-                            <h6 class="dropdown-header" style="background-color: #FF992E">
-                                مركز الرسائل
-                            </h6>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                        problem I've been having.</div>
-                                    <div class="small text-dark-600">Emily Fowler · 58m</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-                                    <div class="status-indicator"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?</div>
-                                    <div class="small text-dark-600">Jae Chun · 1d</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-                                    <div class="status-indicator bg-warning"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">Last month's report looks great, I am very happy with
-                                        the progress so far, keep up the good work!</div>
-                                    <div class="small text-dark-600">Morgan Alvarez · 2d</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                        alt="...">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                        told me that people say this to all dogs, even if they aren't good...</div>
-                                    <div class="small text-dark-600">Chicken the Dog · 2w</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item text-center small text-dark-600" href="#">Read More Messages</a>
-                        </div>
-                    </li>
-
-                    <!-- Nav Item - Alerts -->
-                    <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle"  id="alertsDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i><img id="notificationImage" src="img/notofication.png" alt="notification alert icon"></i>
-                            <!-- Counter - Alerts -->
-                            <span id="counter" class="badge badge-danger badge-counter">3+</span>
-                        </a>
-                        <!-- Dropdown - Alerts -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in"
-                            style="direction: ltr;" aria-labelledby="alertsDropdown">
-                            <div class="row alert" >
-                                <div class="col-7"style="text-align:end;">
-                                     الإشعارات 
-                                </div>
-                                <div class="col-2">
-                                    منتهي  
-                                </div>
-                                <div class="col-3">
-                                  علي وشك 
-                                </div>
-                             </div>
-                            <a class="dropdown-item dropdown-item-custom " >
-                                <div class="col-md-7 p-0"style="text-align:end;">
-                                   مستندات الفرع
-                                </div>
-                                <div class="col-md-2 ended-Docs-Num">
-                                   0
-                                </div>
-                                <div class="col-md-3 Not-ended-Docs-Num">
-                                   1
-                                </div>
-                            </a>
-                            <a class="dropdown-item dropdown-item-custom " >
-                                <div class="col-md-7 p-0"style="text-align:end;">
-                                     وثائق السيارة
-                                 </div>
-                                 <div class="col-md-2 ended-Docs-Num">
-                                    0
-                                 </div>
-                                 <div class="col-md-3 Not-ended-Docs-Num">
-                                    1
-                                 </div>
-                            </a>
-                            <a class="dropdown-item dropdown-item-custom " >
-                                <div class="col-md-7 p-0"style="text-align:end;">
-                                     صيانة السيارة
-                                 </div>
-                                 <div class="col-md-2 ended-Docs-Num">
-                                    0
-                                 </div>
-                                 <div class="col-md-3 Not-ended-Docs-Num">
-                                    1
-                                 </div>
-                            </a>
-                            <a class="dropdown-item dropdown-item-custom " >
-                                <div class="col-md-7 p-0"style="text-align:end;">
-                                    اسعار السيارات
-                                 </div>
-                                 <div class="col-md-2 ended-Docs-Num">
-                                    0
-                                 </div>
-                                 <div class="col-md-3 Not-ended-Docs-Num">
-                                    1
-                                 </div>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-
-                <!-- logo -->
-                <div class=" d-flex align-items-center on-mobile " style="color:black;">
-                    <div class="pt-sm-0 pt-md-4  pt-lg-4 pt-xl-4 px-3">
-                        <h1 class="hide-on-mobile" style="font-size: 1.2rem;">شركة كدي لتأجير السيارات
-                        </h1>
-                        <p class="extra-small-mobile">شهداء احد
-                            <span style="color: red;font-size: small;">موقوف</span>
-                        </p>
-
-                    </div>
-
-                    <img class="extra-small-mobile " src="img/logo.png" alt="logo image">
-                </div>
-
-            </nav>
+            <nav class="navbar navbar-expand navbar-light topbar mb-2 static-top shadow  justify-content-between" > </nav>
 
             <!-- MultiStep Form -->
             <div class="container-fluid" id="grad1">
@@ -275,7 +142,7 @@
                                     
 
                                     </a>
-                                    <a href="settelmentList.html" style="width: fit-content;">
+                                    <a href="index.html" style="width: fit-content;">
                                         <div>
                                             <img src="img/Arrow_Left.svg" alt="back_icon" class="back-icon">
                                         </div>
@@ -1683,7 +1550,7 @@
                                                                 </div>
                                                             </div>
                                                         </button>
-                                                        <button type="button" class="btn check-btn payment-button">
+                                                        <button type="button" class="btn check-btn payment-button" onclick="loader()">
                                                             <div class="row align-items-center">
                                                                 <div class="col-auto">
                                                                     <div class="systems-check"> <i
@@ -1809,24 +1676,44 @@
                 </div>
 
             </footer>
-            <!-- <div class="container main-loader-container">
+            <div class="container main-loader-container" >
                 <div class="row flex-column align-items-center justify-content-center g-3 main-loader-row " >
-                    <div class="col-sm-6 col-md-4 col-lg-3 text-center">
-                        <img src="kodi logo.png" class="logo " style="width: 200px;">
-            
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3 text-center px-xl-5">
-                        <div class="container-loader" id="box">
-                            <div class="d-flex align-items-center justify-content-center w-100">
-                                <p id="container">0%</p>
-                            </div>
-                            <div id="inner-container">
-                            </div>
+                    <div id="app">
+                        <div class="base-timer">
+                            <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <g class="base-timer__circle">
+                                    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                                    <path
+                                        id="base-timer-path-remaining"
+                                        stroke-dasharray="0 283"
+                                        class="base-timer__path-remaining blue"
+                                        d="
+                                        M 50, 50
+                                        m -45, 0
+                                        a 45,45 0 1,0 90,0
+                                        a 45,45 0 1,0 -90,0
+                                        "
+                                    ></path>
+                                </g>
+                            </svg>
+                              
+                               <div  id="base-timer-label" class="base-timer__label"> 
+                              <div>
+                                إنتظر من فضلك
+                              </div>
+             
+                                <div class="Dots-container">
+                                   <div class="Dot" id="dot1"></div>
+                                   <div class="Dot" id="dot2"></div>
+                                   <div class="Dot" id="dot3"></div>
+                               </div>
+                               </div>
+                                
                         </div>
                     </div>
             
                 </div>
-            </div> -->
+            </div>
     </div>
 
    
@@ -1844,7 +1731,79 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
    <script src="js/Settlement.js"></script>
    <script src="js/TechnicalCheckUp.js"></script>
+   <script>
+    function loader(){
+    $('.main-loader-container').css("display","block");
+     const FULL_DASH_ARRAY = 283; 
+    const WARNING_THRESHOLD = 100;
+    const ALERT_THRESHOLD = 283;
 
+    const COLOR_CODES = {
+        info: {
+            color: "blue"
+        },
+        warning: {
+            color: "blue",
+            threshold: WARNING_THRESHOLD
+        },
+        alert: {
+            color: "red",
+            threshold: ALERT_THRESHOLD
+        }
+    };
+
+    const TIME_LIMIT = 50;
+    let timePassed = 0;
+    let timeLeft = TIME_LIMIT;
+    let timerInterval = null;
+
+    startTimer();
+
+    function onTimesUp() {
+        clearInterval(timerInterval);
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            timePassed = timePassed += 1;
+            timeLeft = TIME_LIMIT - timePassed;
+            setCircleDasharray();
+
+            if (timeLeft === 0) {
+                onTimesUp();
+            }
+        }, 1000);
+    }
+
+    function calculateTimeFraction() {
+        return (TIME_LIMIT - timeLeft) / TIME_LIMIT;
+    }
+
+    function setCircleDasharray() {
+        const circleDasharray = `${(
+            calculateTimeFraction() * FULL_DASH_ARRAY
+        ).toFixed(0)} 283`;
+        document
+            .getElementById("base-timer-path-remaining")
+            .setAttribute("stroke-dasharray", circleDasharray);
+    }
+
+    const dots = document.querySelectorAll('.Dot');
+    let currentDot = 0;
+
+    function changeDotBackground() {
+        dots.forEach(dot => {
+            dot.style.backgroundColor = '#D9D9D9';
+        });
+
+        dots[currentDot].style.backgroundColor = '#4d4d4d';
+
+        currentDot = (currentDot + 1) % dots.length;
+    }
+
+    setInterval(changeDotBackground, 500);
+    }
+</script>
    
 
 </body>
