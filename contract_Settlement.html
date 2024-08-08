@@ -13,108 +13,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=Cairo:500,400,700" rel="stylesheet">
     <link href="css/style.css" rel="styleSheet">
+    <link href="css/loader.css" rel="styleSheet">
     <!-- <link href="css/English_style.css" rel="styleSheet"> -->
-     <style>
-        .main-loader-container {
-            position: fixed;
-            top: 0%;
-            max-width: 100%;
-            background-color: #ffffff00;
-            height: 100%;
-            display: none;
-        }
-        .main-loader-row{
-            position: absolute;
-            width: 100%;
-            top: 40%;
-        }
-        
-        .ActiveTime_title {
-            font-weight: 600;
-        }
-
-        .ActiveTime_P {
-            font-size: 18px;
-            color: #666666;
-            line-height: 32px;
-        }
-
-        .base-timer {
-            position: relative;
-            width: 200px;
-            height: 200px;
-        }
-
-        .base-timer__svg {
-            transform: scaleX(-1);
-            transform: rotate3d(1, 1, 1, 1deg);
-            background: white;
-           border-radius: 50%;
-
-        }
-
-        .base-timer__circle {
-            fill: none;
-            stroke: none;
-        }
-
-        .base-timer__path-elapsed {
-            stroke-width: 7px;
-            stroke: #D9D9D9;
-        }
-
-        .base-timer__path-remaining {
-            stroke-width: 7px;
-            stroke-linecap: round;
-            transform: rotate(90deg);
-            transform-origin: center;
-            transition: 1s linear all;
-            fill-rule: nonzero;
-        }
-
-        .base-timer__path-remaining.blue {
-            stroke: #4d4d4d;
-        }
-
-        .base-timer__label {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            display: flex;
-    flex-direction: column;
-    gap: 5px;
-
-        }
-
-        #container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .Dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #D9D9D9;
-        }
-
-        .Dots-container {
-            display: flex;
-            gap: 5px;
-            margin: 0px 10px;
-        }
-        #app{
-            display:flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style> 
+  
 </head>
 
 <body id="page-top" style="background-color:rgba(254, 248, 232, 1);">
@@ -192,13 +93,13 @@
                                                                     <P>رقم العقد</P>
                                                                 </div>
                                                                 <div class="col-auto personal-data">
-                                                                    <P>23-1-60-5001-1020136</P>
+                                                                    <P>24-1401-4001105-000078</P>
                                                                 </div>
                                                               <!-- edited -->
                                                                 <div class="col-md-auto  seacrh-icon-col">
                                                                     <div class="col-sm-12  d-flex justify-content-end">
 
-                                                                        <img src="img/seacrh-icon.png"
+                                                                        <img src="img/Rectangle 129.svg"
                                                                             alt="seacrh-icon Image"
                                                                             id="hover-image-Settlement">
                                                                     </div>
@@ -297,7 +198,7 @@
                                                                 <div class="col-md-5 col-lg-5 col-xl-4  seacrh-icon-col">
                                                                     <div class="col-sm-12  d-flex justify-content-end">
 
-                                                                        <img src="img/seacrh-icon.png"
+                                                                        <img src="img/Rectangle 129.svg"
                                                                             alt="seacrh-icon Image"
                                                                             id="contract-value-Settlement2">
                                                                     </div>
@@ -393,7 +294,7 @@
                                                             <div class=" col-lg-5  data-col-Settl flex-wrap">
                                                                 <div class="col-auto">
                                                                   <label for="contract_real_endTime">
-                                                                    نهاية التسوية 
+                                                                    نهاية العقد 
                                                                   </label>
                                                                 </div>
                                                                 <div class="col-md-6">
@@ -433,17 +334,18 @@
                                                                     آلية التسوية 
                                                                   </label>
                                                                 </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-12 col-lg-6">
                                                                         <select class="form-select form-select-settel" id="Settlement-mechanism" name="Settlement mechanism" >
                                                                             <option selected disabled>
                                                                             </option>
-                                                                            <option value="بدون"> بدون</option>
-                                                                            <option value="يوم"> يوم</option>
-                                                                            <option value="نصف يوم"> نصف يوم</option>
-                                                                            <option value="ربع يوم"> ربع يوم</option>
+                                                                            <option value="سياسة الشركة"> سياسة الشركة</option>
+                                                                            <option value="اعفاء"> اعفاء</option>
+                                                                            <option value="ضافة ايجار يوم"> ضافة ايجار يوم </option>
+                                                                            <option value="اضافة ايجار نص يوم"> اضافة ايجار نص يوم </option>
+                                                                            <option value="اضافة ايجار ربع يوم"> اضافة ايجار ربع يوم </option>
+
 
                                                                         </select >
-                                                                        
                                                                         <div class="row requird-field-row-last">
                                                                             <div class="invalid-feedback" style="display: none;">
                                                                                 هذا الحقل مطلوب
@@ -1165,12 +1067,12 @@
                                                                 <P>رقم العقد  </P>
                                                             </div>
                                                             <div class="col-auto personal-data ">
-                                                                <P>23-1-60-5001-1020136</P>
+                                                                <P>24-1401-4001105-000078</P>
                                                             </div>
                                                             <div class="col-md-5 col-lg-5 col-xl-4 seacrh-icon-col1">
                                                                 <div>
 
-                                                                <img src="img/seacrh-icon.png" alt="seacrh-icon Image" id="contract-value-Settlement3"></div>
+                                                                <img src="img/Rectangle 129.svg" alt="seacrh-icon Image" id="contract-value-Settlement3"></div>
                                                                 <div class="dropdown-content dropdown-content-extension" id="dropdown-content-Settlement3">
                                                                     <div class="row dropdown-content-row">
                                                                         <div class="col-12 col-md-auto  ">
@@ -1242,7 +1144,7 @@
                                                                             <p> :  نسبة القيمة المضافة</p>
                                                                         </div>
                                                                         <div class="col personal-data">
-                                                                            <p> ۲۲٥.۷٥ </p>
+                                                                            <p> 225.75 </p>
                                                                         </div>
 
                                                                     </div>
@@ -1251,7 +1153,7 @@
                                                                             <p> : قيمة الساعة الاضافية</p>
                                                                         </div>
                                                                         <div class="col personal-data">
-                                                                            <p> ۱٥۰٥.۰۰ </p>
+                                                                            <p> 1505.00 </p>
                                                                         </div>
 
                                                                     </div>
@@ -1260,7 +1162,7 @@
                                                                             <p> : قيمة الكيلو  الاضافي  </p>
                                                                         </div>
                                                                         <div class="col personal-data">
-                                                                            <p> ۱٥۰٥.۰۰ </p>
+                                                                            <p> 1505.00 </p>
                                                                         </div>
 
                                                                     </div>
@@ -1272,7 +1174,7 @@
                                                                 <P> تاريخ التسوية</P>
                                                             </div>
                                                             <div class="col-auto personal-data ">
-                                                                <P>2020/11/29</P>
+                                                                <P>2024/07/19</P>
                                                             </div>
                                                         </div>
                                                    </div>
@@ -1287,7 +1189,7 @@
                                                         <div class="col-md-5 col-lg-5 col-xl-4  seacrh-icon-col"">
                                                             <div class="col-sm-12  d-flex justify-content-end">
 
-                                                            <img src="img/seacrh-icon.png" alt="seacrh-icon Image" id="contract-value-Settlement4">
+                                                            <img src="img/Rectangle 129.svg" alt="seacrh-icon Image" id="contract-value-Settlement4">
                                                            </div>
                                                             <div class="dropdown-content  dropdown-content-extension" id="dropdown-content-Settlement4">
                                                                 <div class="row dropdown-content-row">
@@ -1383,60 +1285,60 @@
                                                     <div class="col-md-auto col-lg-4">
                                                         <div class="data-col-Settl">
                                                             <div class="col-auto "><p> قيمة العقد بعد الخصم </p></div>
-                                                            <div class="col-auto personal-data p-0"><p>۱٥۰٥.۰۰</p></div>
+                                                            <div class="col-auto personal-data p-0"><p>1505.00</p></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="data-col-Settl">
                                                             <div class="col-auto "><p>قيمة الضريبة  </p></div>
-                                                            <div class="col-auto personal-data p-0"><p>۲۲٥.۷٥</p></div>
+                                                            <div class="col-auto personal-data p-0"><p>225.75</p></div>
                                                         </div>
                                                     </div>
                                                    </div>
                                                    <div class="row data-col-Settl g-3">
-                                                    <div class="col-md-4">
+                                                    <div class="col-lg-4">
                                                         <div class="data-col-Settl">
                                                             <div class="col-auto "><p>إجمالي العقد   </p></div>
-                                                            <div class="col-auto personal-data p-0"><p>۱٥۰٥.۰۰</p></div>
+                                                            <div class="col-auto personal-data p-0"><p>1505.00</p></div>
                                                         </div>
                                                         
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-lg-4">
                                                         <div class="data-col-Settl">
                                                             <div class="col-auto "><p> إجمالي المصروفات</p></div>
-                                                            <div class="col-auto personal-data p-0"><p>۱٥۰٥.۰۰</p></div>
+                                                            <div class="col-auto personal-data p-0"><p>1505.00</p></div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-lg-4">
                                                         <div class="data-col-Settl">
                                                             <div class="col-auto "><p>إجمالي التعويضات   </p></div>
-                                                            <div class="col-auto personal-data p-0"><p>۱٥۰٥.۰۰</p></div>
+                                                            <div class="col-auto personal-data p-0"><p>1505.00</p></div>
                                                         </div>
                                                     </div>
                                                    </div>
                                                    <div class="row data-col-Settl g-3">
-                                                    <div class="col-md-4">
+                                                    <div class="col-lg-4">
                                                         <div class="data-col-Settl">
                                                             <div class="col-auto "><p>رصيد سابق    </p></div>
-                                                            <div class="col-auto personal-data p-0"><p>۰۰.۹٦ </p></div>
+                                                            <div class="col-auto personal-data p-0"><p>00.96 </p></div>
                                                         </div>
                                                         
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-lg-4">
                                                         <div class="data-col-Settl">
                                                             <div class="col-auto "><p> المبلغ المطلوب </p></div>
-                                                            <div class="col-auto personal-data p-0"><p>۱۷۲۹.۷۹</p></div>
+                                                            <div class="col-auto personal-data p-0"><p>1750.90</p></div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-lg-4">
                                                         <div class="data-col-Settl">
                                                             <div class="col-auto "><p> الباقي على المستأجر</p></div>
-                                                            <div class="col-auto personal-data p-0"><p>۱۷۳۰.۷٥</p></div>
+                                                            <div class="col-auto personal-data p-0"><p>1750.70</p></div>
                                                         </div>
                                                     </div>
                                                    </div>
                                                    <div class="row data-col-Settl g-3">
-                                                    <div class=" col-lg-4 data-col-Settl">
+                                                    <div class=" col-lg-4 data-col-Settl flex-md-nowrap">
                                                         <div class="col-auto">
                                                             <label id="amount-paid" for="amount-paid-input">
                                                                 المبلغ المدفوع</label>
@@ -1454,13 +1356,13 @@
                                                       
                                                     </div>
                                                    
-                                                    <div class=" col-lg-4 d-flex flex-nowrap data-col-Settl">
-                                                                <div class="col-auto d-flex ps-0" >
+                                                    <div class=" col-lg-4 d-flex flex-md-nowrap data-col-Settl">
+                                                                <div class="col-auto d-flex " >
                                                                     <label id="payment-method" for="payment-method-select">طريقة الدفع</label>
 
                                                                 </div>
 
-                                                                <div class="col-auto ">
+                                                                <div class="col-12 col-md-8 ">
                                                                     <div class="offset">
                                                                         <select class="form-select form-select-last" id="payment-method-select" name="payment-method" >
                                                                             <option selected disabled>
@@ -1481,18 +1383,18 @@
                                                         
                                                                 </div>
                                                     </div>
-                                                    <div class=" col-lg-4 data-col-Settl flex-wrap">
-                                                        <div class="col-auto d-flex ps-0 ">
+                                                    <div class=" col-lg-4 data-col-Settl flex-md-nowrap">
+                                                        <div class="col-auto d-flex  ">
                                                             <label id="selling-point" for="selling-point-dropdown"> نقطة البيع </label>
 
                                                             </div>
 
-                                                            <div class="col-7 col-lg-8 ">
+                                                            <div class="col-12 col-md-8 ">
                                                                 <div class="offset">
                                                                     <select class="form-select form-select-last"
                                                                         id="selling-point-dropdown" name="selling-point" >
                                                                         <option selected disabled>           </option>
-                                                                        <option value="">         </option>
+                                                                        <option value="">ايرادات المستأجرين بمصرف الراجحي </option>
                                                                         <option value="">            </option>
                                                                         <option value="">             </option>
                                                                     </select>
@@ -1731,81 +1633,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
    <script src="js/Settlement.js"></script>
    <script src="js/TechnicalCheckUp.js"></script>
-   <script>
-    function loader(){
-    $('.main-loader-container').css("display","block");
-     const FULL_DASH_ARRAY = 283; 
-    const WARNING_THRESHOLD = 100;
-    const ALERT_THRESHOLD = 283;
-
-    const COLOR_CODES = {
-        info: {
-            color: "blue"
-        },
-        warning: {
-            color: "blue",
-            threshold: WARNING_THRESHOLD
-        },
-        alert: {
-            color: "red",
-            threshold: ALERT_THRESHOLD
-        }
-    };
-
-    const TIME_LIMIT = 50;
-    let timePassed = 0;
-    let timeLeft = TIME_LIMIT;
-    let timerInterval = null;
-
-    startTimer();
-
-    function onTimesUp() {
-        clearInterval(timerInterval);
-    }
-
-    function startTimer() {
-        timerInterval = setInterval(() => {
-            timePassed = timePassed += 1;
-            timeLeft = TIME_LIMIT - timePassed;
-            setCircleDasharray();
-
-            if (timeLeft === 0) {
-                onTimesUp();
-            }
-        }, 1000);
-    }
-
-    function calculateTimeFraction() {
-        return (TIME_LIMIT - timeLeft) / TIME_LIMIT;
-    }
-
-    function setCircleDasharray() {
-        const circleDasharray = `${(
-            calculateTimeFraction() * FULL_DASH_ARRAY
-        ).toFixed(0)} 283`;
-        document
-            .getElementById("base-timer-path-remaining")
-            .setAttribute("stroke-dasharray", circleDasharray);
-    }
-
-    const dots = document.querySelectorAll('.Dot');
-    let currentDot = 0;
-
-    function changeDotBackground() {
-        dots.forEach(dot => {
-            dot.style.backgroundColor = '#D9D9D9';
-        });
-
-        dots[currentDot].style.backgroundColor = '#4d4d4d';
-
-        currentDot = (currentDot + 1) % dots.length;
-    }
-
-    setInterval(changeDotBackground, 500);
-    }
-</script>
-   
-
+   <script src="js/Loader.js"></script>
 </body>
 
 </html>
