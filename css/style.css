@@ -63,14 +63,12 @@ nav {
 .inputs {
 
 
-    height: 32px;
     /* border-top: none; */
     width: 100%;
     padding: 0.375rem 0.75rem;
 }
 
 .form-control1 {
-    height: 32px;
     width: 90px;
     text-align: center;
 }
@@ -79,7 +77,6 @@ nav {
 }
 .form-control2 {
     text-align: center;
-    height: 32px;
     width: 120px;
 
 }
@@ -88,30 +85,17 @@ nav {
     /* border-top: none; */
     text-align: right;
     width: 100%;
-    padding-bottom: 0;
+   
 }
 
 .form-select-settel {
     /* border-top: none; */
-    padding-bottom: 0;
+   
     text-align: end;
 }
 
 .form-select-selling {
-    text-align: center;
-    display: block;
-    width: 100%;
-    font-weight: 400;
-    color: black;
-    background-color: white;
-    background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 16px 12px;
-
-
-
-    height: 28px;
+    text-align: right;
 }
 
 .form-control:focus {
@@ -1292,7 +1276,7 @@ flex-direction: row-reverse;
     border-radius: 8px;
     border: 1px solid #faa64d;
     border-top: none;
-    padding-bottom: 0;
+   
 }
 
 /***************************************************cards-media**************************************************/
@@ -2393,6 +2377,8 @@ align-items: center;
 justify-content: center;
 }
 .date-col {
+    font-size: 12px;
+
 padding-right:0px ;
 }
 
@@ -2487,4 +2473,8 @@ height: 47vh;
 .compensation-Div-textarea textarea , .expensesDiv-textarea textarea{
     height:50vh ;
     min-height: 300px;
+}
+/* العهدة */
+#custody-table-div{
+    height: 40vh;
 }
