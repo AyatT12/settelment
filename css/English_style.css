@@ -140,7 +140,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
   @media (max-width:350px) {
     .form-select-last {
-        width: 100px;
+        width: 100%;
     }
 }
 @media(max-width:991px) {
@@ -160,6 +160,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
 /* ////////// */
+.form-select-last {
+    text-align: end;
+}
 .date-col {
     padding-left:0px ;
     padding-right: 5px;
