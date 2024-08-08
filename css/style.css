@@ -51,7 +51,7 @@ nav {
 .form-control2:focus,
 .form-control1:focus,
 .form-select-last:focus ,
-.form-select-settel {
+.form-select-settel:focus  {
     box-shadow: none !important;
     border: 2px solid #facd9c !important;
 }
@@ -80,12 +80,13 @@ nav {
 .form-control2 {
     text-align: center;
     height: 32px;
-    width: 92px;
+    width: 120px;
 
 }
 
 .form-select-last {
     /* border-top: none; */
+    text-align: right;
     width: 100%;
     padding-bottom: 0;
 }
@@ -1087,6 +1088,7 @@ footer {
 .data-col-Settl {
     display: flex;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
 }
 
 .Settlement-input-checkbox {
@@ -1466,7 +1468,7 @@ flex-direction: row-reverse;
 
 @media (max-width:350px) {
     .form-select-last {
-        width: 100px;
+        width: 100%;
     }
 }
 
@@ -1997,7 +1999,7 @@ flex-direction: row-reverse;
 .check-btn {
     color: #fff;
     background-color: #FF9626;
-    border-color: #FF9626;
+    border-color: #FF9626 !important;
     padding: 0px 12px;
     display: inline-block;
     font-weight: 400;
@@ -2014,8 +2016,8 @@ flex-direction: row-reverse;
 
 .check-btn:hover {
     background-color: white;
-    color: #FF9626;
-    border-color: #FF9626;
+    color: #FF9626 !important;
+    border-color: #FF9626 !important;
 }
 
 .check {
@@ -2451,7 +2453,7 @@ padding-right:0px ;
 #Table-details{
 height: 47vh;
 }
-.licence-dates{
+.licence-dates , .licence-dates-settel{
     font-size: 12px;
     margin: 0;
     justify-content: end;
