@@ -1,0 +1,99 @@
+.main-loader-container {
+    position: fixed;
+    top: 0%;
+    max-width: 100%;
+    background-color: #ffffff00;
+    height: 100%;
+    display: none;
+}
+.main-loader-row{
+    position: absolute;
+    width: 100%;
+    top: 40%;
+}
+
+.ActiveTime_title {
+    font-weight: 600;
+}
+
+.ActiveTime_P {
+    font-size: 18px;
+    color: #666666;
+    line-height: 32px;
+}
+
+.base-timer {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.base-timer__svg {
+    transform: scaleX(-1);
+    transform: rotate3d(1, 1, 1, 1deg);
+    background: white;
+   border-radius: 50%;
+
+}
+
+.base-timer__circle {
+    fill: none;
+    stroke: none;
+}
+
+.base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: #D9D9D9;
+}
+
+.base-timer__path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+}
+
+.base-timer__path-remaining.blue {
+    stroke: #4d4d4d;
+}
+
+.base-timer__label {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    display: flex;
+flex-direction: column;
+gap: 5px;
+
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #D9D9D9;
+}
+
+.Dots-container {
+    display: flex;
+    gap: 5px;
+    margin: 0px 10px;
+}
+#app{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
