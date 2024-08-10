@@ -2109,7 +2109,7 @@ input[type=checkbox] {
     color: #000000;
 }
 /* تعديل اتجاه مدخل التاريخ حسب اللغة  */
-/* input[type="date"] {
+input[type="date"] {
     padding: 5px 10px;
     position: relative;
     text-align: end;
@@ -2120,7 +2120,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     left: 10px;
     position: absolute;
 
-} */
+}
 /* تعديل صور ال pdf */
 
 .pdf_img {
