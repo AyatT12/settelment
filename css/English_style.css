@@ -9,12 +9,12 @@ body {
     right: 50%;
 }
 .tables-style{
-    text-align: end;
+    text-align: center;
     direction: rtl;
    
 }
 .tables-style thead{
-    text-align: end;
+    text-align: center;
     direction: rtl;
    
 }
