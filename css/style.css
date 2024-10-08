@@ -27,6 +27,11 @@ nav {
 .on-mobile {
     text-align: end;
 }
+.img-profile {
+    margin-right: 12px;
+    height: 53px;
+    width: 53px;
+}
 
 /*######################################################## */
 .notes_box {

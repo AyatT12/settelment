@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cairo:500,400,700" rel="stylesheet">
     <link href="css/style.css" rel="styleSheet">
     <link href="css/loader.css" rel="styleSheet">
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/dripicons/2.0.0/webfont.min.css' />
+
     <!-- <link href="css/English_style.css" rel="styleSheet"> -->
   
 </head>
@@ -26,8 +28,158 @@
         <!-- Main Content -->
        
             <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light topbar mb-2 static-top shadow  justify-content-between" > </nav>
-
+            <header class="header">
+                <div class="navbar-area">
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light topbar mb-2 static-top shadow  justify-content-between"
+                        style="height:90px">
+                        <!-- Topbar -->
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ">
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="img-profile rounded-circle" src="img/pic (3).svg">
+                                    <div class="userName" style="display: flex; flex-direction: column;">
+                                        <span class=" text-dark font-weight-bold">
+                                            &#x639;&#x64A;&#x633;&#x649; &#x647;&#x627;&#x646;&#x64A;
+                                            &#x645;&#x628;&#x631;&#x648;&#x643; &#x639;&#x632;&#x627;&#x645;
+                                        </span>
+                                        <span class="text-dark">
+                                            &#x645;&#x634;&#x631;&#x641; &#x639;&#x644;&#x649;
+                                            &#x627;&#x644;&#x641;&#x631;&#x648;&#x639;
+                                        </span>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-left shadow animated--grow-in text-right"
+                                    style="font-size: 16px;font-weight: 600;color: black;" aria-labelledby="userDropdown">
+                                    <!-- item-->
+                                    <div class="dropdown-header noti-title dropdown-item">
+                                        <h6 class="text-overflow m-0">مرحباً</h6>
+                                    </div>
+        
+                                    <!-- item-->
+                                    <a class="dropdown-item notify-item" href="/BS/Employees/MyAccount">
+                                        <i class="mdi mdi-account-circle me-1"></i>
+                                        <span>حسابى</span>
+                                    </a>
+                                    <a class="dropdown-item notify-item" data-bs-toggle="modal" data-bs-target="#PasswordModal"
+                                        style="cursor:pointer">
+                                        <i class="mdi mdi-onepassword me-1"></i>
+                                        <span>تغيير كلمة السر</span>
+                                    </a>
+                                    <a class="dropdown-item notify-item" href="/Identity/Account/Systems">
+                                        <i class="mdi mdi-access-point-network me-1"></i>
+                                        <span>الانظمة</span>
+                                    </a>
+        
+                                    <!-- item-->
+                                    <a class="dropdown-item notify-item" href="/Identity/Account/Logout">
+                                        <i class="mdi mdi-logout me-1"></i>
+                                        <span>تسجيل الخروج</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- Nav Item - Alerts -->
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="dripicons-bell noti-icon"
+                                        style="font-size: 22px;vertical-align: middle;line-height: 70px;color: #7a7272;"></i>
+                                    <!-- Counter - Alerts -->
+                                    <span class="noti-icon-badge"></span>
+                                </a>
+                                <!-- Dropdown - Alerts -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-left shadow animated--grow-in"
+                                    aria-labelledby="alertsDropdown">
+                                    <div class="row alert">
+                                        <div class="col-6" style="text-align:end;">
+                                            الاشعارات
+                                        </div>
+        
+                                        <div class="col-3">
+                                            علي وشك
+                                        </div>
+                                        <div class="col-3">
+                                            <span class="d-block">
+                                                منتهي
+                                            </span>
+                                            <span>
+                                                (لم يسجل)
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <a class="dropdown-item dropdown-item-custom ">
+                                        <div class="col-md-6 p-0" style="text-align:end;">
+                                            مستندات الفرع
+                                        </div>
+                                        <div class="col-md-3 Not-ended-Docs-Num text-center">
+                                            1
+                                        </div>
+                                        <div class="col-md-3 ended-Docs-Num">
+                                            0
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item dropdown-item-custom ">
+                                        <div class="col-md-6 p-0" style="text-align:end;">
+                                            وثائق السيارة
+                                        </div>
+                                        <div class="col-md-3 Not-ended-Docs-Num text-center">
+                                            0
+                                        </div>
+                                        <div class="col-md-3 ended-Docs-Num">
+                                            4
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item dropdown-item-custom ">
+                                        <div class="col-md-6 p-0" style="text-align:end;">
+                                            صيانة السيارة
+                                        </div>
+                                        <div class="col-md-3 Not-ended-Docs-Num text-center">
+                                            0
+                                        </div>
+                                        <div class="col-md-3 ended-Docs-Num">
+                                            5
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item dropdown-item-custom ">
+                                        <div class="col-md-6 p-0" style="text-align:end;">
+                                            اسعار السيارات
+                                        </div>
+        
+                                        <div class="col-md-3 Not-ended-Docs-Num text-center">
+                                            0
+                                        </div>
+                                        <div class="col-md-3 ended-Docs-Num">
+                                            2
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <!-- Nav Item - Language -->
+                            <li class="nav-item dropdown no-arrow mx-2 me-2">
+                                <a class="nav-link dropdown-toggle" role="button"
+                                    href="#">
+                                    <span class="align-middle"
+                                        style="color: #8d8282;font-size: 14px;font-weight: 600;">En</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- logo -->
+                        <div class=" d-flex align-items-center on-mobile" style="color:black;">
+                            <div class="pt-sm-0 pt-md-4  pt-lg-4 pt-xl-4 px-3">
+                                <h1 class="hide-on-mobile" style="font-size: 1.2rem;font-weight: bold;">
+                                    شركة كدي لتأجير السيارات </h1>
+                                <p class="extra-small-mobile">
+                                    &#x627;&#x644;&#x631;&#x626;&#x64A;&#x633;&#x64A; </p>
+                            </div>
+                            <img class="extra-small-mobile " src="img/CompanyLogo_20240325231449.png"
+                                style="height: 60px;width: 140px;">
+                        </div>
+                    </nav>
+                </div>
+            </header>
             <!-- MultiStep Form -->
             <div class="container-fluid" id="grad1">
                 <section class="section-mainCard">
@@ -36,7 +188,7 @@
                             <div class="card main-card ">
                                  <!-- edited -->
                                  <div class="row p-2 align-items-center">
-                                    <a href="#" style="width: fit-content;">
+                                    <a href="https://ayatt12.github.io/BranchesUI/"  style="width: fit-content;">
                                         <div>
                                             <img src="img/Close.svg" alt="close_icon" class="close-icon">
                                         </div>
