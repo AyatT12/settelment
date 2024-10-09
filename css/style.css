@@ -1310,7 +1310,7 @@ flex-direction: row-reverse;
 
 }
 
-@media (max-width: 646px) {
+@media (max-width: 768px) {
 
     .hide-on-mobile {
         display: none;
