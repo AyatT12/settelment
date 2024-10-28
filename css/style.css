@@ -1294,7 +1294,7 @@ flex-direction: row-reverse;
 
 }
 
-@media (max-width: 500px) {
+@media (max-width: 375px) {
 
     .extra-small-mobile {
         display: none;
@@ -1310,7 +1310,7 @@ flex-direction: row-reverse;
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 646px) {
 
     .hide-on-mobile {
         display: none;
@@ -2498,3 +2498,149 @@ height: 47vh;
 #custody-table-div{
     height: 40vh;
 }
+
+/* new style  */
+.sinature-Btn-Card {
+    cursor: pointer;
+    box-shadow: 1px 0.5px 8px 0px #FF962633;
+    border-radius: 8px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.otc label {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+}
+.btn.disabled,
+.btn:disabled,
+fieldset:disabled .btn {
+    color: white;
+    pointer-events: none;
+    background-color: #4A4A4A;
+    border-color: #4A4A4A !important;
+    opacity: var(--bs-btn-disabled-opacity);
+}
+.requird-field-row{
+    justify-content: flex-end;
+    height: 30px;
+}
+.otc {
+    position: relative;
+    margin: 0 auto;
+}
+
+.otc fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-content {
+    border: 3px solid #FF9626;
+    border-radius: 10px;
+}
+
+.otc legend {
+    margin: 0 auto 1em;
+    color: #000;
+    font-size: .875rem;
+}
+.UnifiedContract-header{
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    border: none;
+}
+.UnifiedContract-close{
+  background:transparent url(../img/CloseModal.svg) center/1.7em auto no-repeat;
+  opacity: 1;
+
+}
+.custom-img-button{
+    min-width: 95px;
+    height: 100%;
+    border-radius: 8px;
+    padding: 15px;
+    gap: 10px;
+    box-shadow: 0px 1px 4px 0px rgb(255,150,38,25%);
+    border: none;
+    background-color:transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.custom-img-button:hover{
+    box-shadow: 0px 3px 4px 0px rgb(255,150,38,40%);
+    background-color:rgb(255, 150, 38 , 30%);
+
+}
+.loader {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 1s linear infinite
+  }
+  .loader::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #FF9626;
+    animation: prixClipFix 2s linear infinite ;
+  }
+.small-loader{
+    width: 29px;
+    height: 29px;
+}
+  @keyframes rotate {
+    100%   {transform: rotate(360deg)}
+  }
+
+  @keyframes prixClipFix {
+      0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+      25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+      50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+      75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+      100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+  }
+  .UnifiedContract-btn{
+    gap: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  .loader-active{
+    background-color: white;
+    border-color: #FF9626;
+  }
+/* edited style  */
+.OTP {
+    width: 0.8599999999999999em;
+    margin: 0.1em;
+    font-size: 2.0em;
+    text-align: center;
+    appearance: textfield;
+    -webkit-appearance: textfield;
+    border: 0;
+    color: #FF9626;
+    background-color: #F7F7F7;
+    border-radius: 6px;
+    border-bottom: 2px solid #39629C;
+}
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  */
