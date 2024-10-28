@@ -1647,7 +1647,7 @@
 
                                                         <button type="button"
                                                             class="btn check-btn payment-button signature-button"
-                                                            data-bs-toggle="modal" href="#">
+                                                            data-bs-toggle="modal" href="#signature-modal">
                                                             <div class="row align-items-center">
                                                                 <div class="col-auto">
                                                                     <div class="systems-check"> <i
@@ -1660,31 +1660,21 @@
                                                             </div>
                                                         </button>
 
-                                                        <button type="button" class="btn check-btn payment-button">
-                                                            <div class="row align-items-center">
-                                                                <div class="col-auto">
-                                                                    <div class="systems-check"> <i
-                                                                            class="fa-solid fa-check text-white"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    العقد الموحد
+                                                        <button type="button" class="btn check-btn payment-button"
+                                                        data-bs-toggle="modal" data-bs-target="#UnifiedContract">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto">
+                                                                <div class="systems-check"> <i
+                                                                        class="fa-solid fa-check text-white"></i>
                                                                 </div>
                                                             </div>
-                                                        </button>
-                                                        <button type="button" class="btn check-btn payment-button" onclick="loader()">
-                                                            <div class="row align-items-center">
-                                                                <div class="col-auto">
-                                                                    <div class="systems-check"> <i
-                                                                            class="fa-solid fa-check text-white"></i>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col">
-                                                                    شموس
-                                                                </div>
+                                                            <div class="col">
+                                                                العقد الموحد
                                                             </div>
-                                                        </button>
+                                                        </div>
+                                                    </button>
 
+                                                      
                                                     </div>
                                                     <div class="button-card">
                                                         <input type="button" name="previous"
@@ -1798,6 +1788,100 @@
                 </div>
 
             </footer>
+
+             <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% مودال العقد الموحد%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+             <div class="modal fade" id="UnifiedContract" tabindex="-1" aria-labelledby="UnifiedContractLabel"
+             aria-hidden="true">
+             <div class="modal-dialog  modal-dialog-centered">
+                 <div class="modal-content">
+                     <div class="modal-header UnifiedContract-header">
+                         <h1 class="modal-title fs-5 m-auto" id="UnifiedContractLabel">العقد الموحد </h1>
+                         <button type="button" class="btn-close m-0 UnifiedContract-close" data-bs-dismiss="modal"
+                             aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                         <div class="row justify-content-center gap-1">
+                             <div class="col-auto">
+                                 <button class="custom-img-button " data-bs-dismiss="modal" aria-label="Close"><img
+                                         src="img/Frame 2608797 (1).svg"> غير موافق</button>
+
+                             </div>
+                             <div class="col-auto">
+                                 <button class="custom-img-button"><img src="img/Frame 2608797.svg"> موافق</button>
+                             </div>
+                             <div class="col-md-12 requird-field-row">
+                                 <p class="requird-field text-center">الرمز المدخل غير صحيح </p>
+                             </div>
+                             <div class="col-md-12 text-center" style="color: #525252;">
+                                 <p>عند الموافقة سيتم إرسال رمز التحقق إلى جوال المستأجر</p>
+                             </div>
+                         </div>
+                         <form class="otc mt-3" name="one-time-code" id="UnifiedContract-otc">
+                             <div
+                                 class="row flex-row-reverse justify-content-center align-items-center text-center">
+                                 <p>من فضلك ادخل رمز التحقق المرسل</p>
+                                 <div class="col-md-auto">
+                                     <legend>
+                                         رمز التحقق
+                                     </legend>
+                                 </div>
+                                 <div class="col-md-auto">
+                                     <div>
+                                         <input type="number" class="UnifiedContract-OTP OTP" pattern="[0-9]*"
+                                             value="" inputtype="numeric" autocomplete="one-time-code"
+                                             id="UnifiedContract-otc-1" name="UnifiedContract-otc-1">
+                                         <!-- Autocomplete not to put on other input -->
+                                         <input type="number" class="UnifiedContract-OTP OTP" pattern="[0-9]*"
+                                             min="0" max="9" maxlength="1" value="" inputtype="numeric"
+                                             id="UnifiedContract-otc-2" name="UnifiedContract-otc-2" required>
+                                         <input type="number" class="UnifiedContract-OTP OTP" pattern="[0-9]*"
+                                             min="0" max="9" maxlength="1" value="" inputtype="numeric"
+                                             id="UnifiedContract-otc-3" name="UnifiedContract-otc-3" required>
+                                         <input type="number" class="UnifiedContract-OTP OTP" pattern="[0-9]*"
+                                             min="0" max="9" maxlength="1" value="" inputtype="numeric"
+                                             id="UnifiedContract-otc-4" name="UnifiedContract-otc-4" required>
+                                         <input type="number" class="UnifiedContract-OTP OTP" pattern="[0-9]*"
+                                             min="0" max="9" maxlength="1" value="" inputtype="numeric"
+                                             id="UnifiedContract-otc-5" name="UnifiedContract-otc-5" required>
+                                         <input type="number" class="UnifiedContract-OTP OTP" pattern="[0-9]*"
+                                             min="0" max="9" maxlength="1" value="" inputtype="numeric"
+                                             id="UnifiedContract-otc-6" name="UnifiedContract-otc-6" required>
+                                     </div>
+
+                                 </div>
+                                 <div class="row requird-field-row">
+                                     <p class="requird-field text-center">الرمز المدخل غير صحيح </p>
+                                 </div>
+                                 <p class="modal-title w-100 my-2" style="font-size: .7rem;">
+                                     رمز التحقق تنتهي صلاحيته بعد<span id="UnifiedContractTimer">05:00</span>
+                                 </p>
+                             </div>
+                            
+                             <div class="row  justify-content-center g-2">
+                                 <div class="col-auto">
+                                     <button type="button" class="btn  check-btn  UnifiedContract-btn px-5 py-1 text-center" disabled="true" id="Shemoos">
+                                         <div class="systems-check d-none" id="Shemoos-check"> <i class="fa-solid fa-check text-white"></i> </div> شموس
+                                     </button>
+                                 </div>
+
+                                 <div class="col-auto">
+                                     <button type="button" class="btn check-btn UnifiedContract-btn  px-5 py-1" disabled="true" id="Contract-Conclusion"> <div class="systems-check d-none" id="Contract-Conclusion-check">
+                                          <i class="fa-solid fa-check text-white"></i> </div>
+                                         إبرام العقد
+                                     </button>
+                                 </div>
+
+
+                             </div>
+
+                         </form>
+                     </div>
+
+                 </div>
+             </div>
+         </div>
+         <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
             <div class="modal fade" id="PasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered  ">
@@ -1865,6 +1949,52 @@
                 </div>
             </div>
         </div>
+         <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+         <div class="modal fade" id="signature-modal" tabindex="-1"
+         aria-labelledby="PicignaturPopupModalLabel" aria-hidden="true"
+         data-bs-backdrop="static">
+         <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+             <div class="modal-content signature-modal-content p-3">
+                 <div class="modal-body Signature-modal-body">
+                     <div class="SignatureCard">
+                         <div class="main-container" id="removeSignatureImg"></div>
+                         <div class="upload-container">
+
+
+                         </div>
+                     </div>
+                     <br>
+                     <div class="row">
+                         <div class="col-3">
+                             <div class="sinature-Btn-Card p-2">
+                                 <img src="img/signature/Pic.svg" class="w-100"
+                                     id="UploadSigntaurePic">
+                                 <input type="file" id="imageUpload" accept="image/*"
+                                     style="display: none;">
+                             </div>
+                         </div>
+                         <div class="col-3">
+                             <div class="sinature-Btn-Card p-2">
+                                 <img src="img/signature/file-signature_9795523 1.svg"
+                                     class="w-100" id="WriteSignature">
+                             </div>
+                         </div>
+                         <div class="col-3">
+                             <div class="sinature-Btn-Card p-2">
+                                 <img src="img/signature/Frame.svg" class="w-100" id="clear">
+                             </div>
+                         </div>
+                         <div class="col-3">
+                             <div class="sinature-Btn-Card p-2">
+                                 <img src="img/signature/save.svg" class="w-100" id="save">
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
             <div class="container main-loader-container" >
                 <div class="row flex-column align-items-center justify-content-center g-3 main-loader-row " >
                     <div id="app">
@@ -1923,6 +2053,197 @@
    <script src="js/Settlement.js"></script>
    <script src="js/TechnicalCheckUp.js"></script>
    <script src="js/Loader.js"></script>
+   <script>
+    ///////////////////////////////////////////////the-Modal-6-digit-vaildation/////////////////////
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector("#otc").addEventListener("submit", function (event) {
+    event.preventDefault();
+    var inputFieldValue = document.getElementById("otc-1");
+    var numericValue = parseInt(inputFieldValue.value);
+
+    if (isNaN(numericValue)) {
+      console.log("Input value:", numericValue);
+      return;
+    }
+    $.ajax({
+      type: "POST",
+      url: "https://jsonplaceholder.typicode.com/posts", 
+      data: $(this).serialize(),
+      success: function (response) {
+        console.log("Form data submitted successfully:", response);
+      },
+      error: function (error) {
+        console.error("Error submitting form data:", error);
+      },
+    });
+    document.getElementById("otc-1").value = "";
+    document.getElementById("otc-2").value = "";
+    document.getElementById("otc-3").value = "";
+    document.getElementById("otc-4").value = "";
+    document.getElementById("otc-5").value = "";
+    document.getElementById("otc-6").value = "";
+  });
+});
+
+let in1 = document.getElementById("otc-1"),
+  ins = document.querySelectorAll('input[type="number"]'),
+  splitNumber = function (e) {
+    let data = e.data || e.target.value; 
+    if (!data) return; 
+    if (data.length === 1) return; 
+
+    popuNext(e.target, data);
+  },
+  popuNext = function (el, data) {
+    el.value = data[0]; 
+    data = data.substring(1); 
+    if (el.nextElementSibling && data.length) {
+      popuNext(el.nextElementSibling, data);
+    }
+  };
+
+ins.forEach(function (input) {
+ 
+  input.addEventListener("keyup", function (e) {
+    if (
+      e.keyCode === 16 ||
+      e.keyCode == 9 ||
+      e.keyCode == 224 ||
+      e.keyCode == 18 ||
+      e.keyCode == 17
+    ) {
+      return;
+    }
+
+    if (
+      (e.keyCode === 8 || e.keyCode === 37) &&
+      this.previousElementSibling &&
+      this.previousElementSibling.tagName === "INPUT"
+    ) {
+      this.previousElementSibling.select();
+    } else if (e.keyCode !== 8 && this.nextElementSibling) {
+      this.nextElementSibling.select();
+    }
+
+    if (e.target.value.length > 1) {
+      splitNumber(e);
+    }
+  });
+
+  input.addEventListener("focus", function (e) {
+    if (this === in1) return;
+
+    if (in1.value == "") {
+      in1.focus();
+    }
+    if (this.previousElementSibling.value == "") {
+      this.previousElementSibling.focus();
+    }
+  });
+  const B = document.querySelector(".check-btn.check");
+});
+in1.addEventListener("input", splitNumber);
+   </script>
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const otcInputs = document.querySelectorAll('.UnifiedContract-OTP');
+        const ShemoosBtn = document.getElementById('Shemoos');
+        const ContractConclusionButton = document.getElementById('Contract-Conclusion');
+        const ContractConclusionCheck = document.getElementById('Contract-Conclusion-check');
+        const ShemoosCheck = document.getElementById('Shemoos-check');
+        const agreeButton = document.querySelector('.custom-img-button img[src*="Frame 2608797.svg"]').parentNode;
+        const disagreeButton = document.querySelector('.custom-img-button img[src*="Frame 2608797 (1).svg"]').parentNode;
+    
+        function TimerFunction() {
+            const display = document.querySelector('#UnifiedContractTimer');
+            let timer = 300, minutes, seconds;
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+    
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+                display.textContent = minutes + ":" + seconds;
+    
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    $('#UnifiedContract').modal('hide');
+                }
+            }, 1000);
+        }
+    
+        otcInputs.forEach(input => {
+            input.disabled = true;
+        });
+    
+        agreeButton.addEventListener('click', function () {
+            this.innerHTML = `<span class="loader"></span> موافق`;
+            setTimeout(() => {
+                this.innerHTML = `<img src="img/Frame 2608797.svg" alt="موافق"> موافق`;
+                otcInputs.forEach(input => {
+                    input.disabled = false; 
+                });
+                otcInputs[0].focus(); 
+                TimerFunction(); 
+                agreeButton.disabled=true;
+                disagreeButton.disabled = true;
+            }, 2000);
+        });
+    
+      
+        const checkOtpInputs = () => {
+            const allFilled = Array.from(otcInputs).every(input => input.value.length > 0);
+            if (allFilled) {
+                ContractConclusionButton.disabled = false; 
+                ContractConclusionCheck.classList.remove('d-none'); 
+            } else {
+                ContractConclusionButton.disabled = true; 
+                ContractConclusionCheck.classList.add('d-none'); 
+            }
+        };
+    
+        otcInputs.forEach(input => {
+            input.addEventListener('input', checkOtpInputs);
+        });
+        let ContractConclusion = true
+        ContractConclusionButton.addEventListener('click', function () {
+            this.classList.add('loader-active');
+            this.innerHTML = `<span class="loader small-loader"></span>`; 
+            setTimeout(() => {
+                if(ContractConclusion){
+                 this.innerHTML = `<div class="systems-check" style="background-color: green;"><i class="fa-solid fa-check text-white"></i></div> إبرام العقد`; 
+                ShemoosBtn.disabled = false; 
+                ShemoosCheck.classList.remove('d-none'); 
+                this.classList.remove('loader-active');
+                }
+                else {
+                    this.innerHTML = `<div class="systems-check"><i class="fa-solid fa-check text-white"></i></div> إبرام العقد`; 
+                    this.classList.remove('loader-active');
+
+                }
+           
+
+            }, 2000); 
+        });
+        let Shemoos = true
+
+        ShemoosBtn.addEventListener('click', function () {
+            this.classList.add('loader-active');
+            this.innerHTML = `<span class="loader small-loader"></span>`; 
+            setTimeout(() => {
+               if(Shemoos){
+                this.innerHTML = `<div class="systems-check" style="background-color: green;"><i class="fa-solid fa-check text-white"></i></div> شموس`; 
+                this.classList.remove('loader-active');
+               }else{
+                this.innerHTML = `<div class="systems-check"><i class="fa-solid fa-check text-white"></i></div> شموس`; 
+                this.classList.remove('loader-active');
+               }
+
+            }, 2000); 
+        });
+    });
+</script>
 </body>
 
 </html>

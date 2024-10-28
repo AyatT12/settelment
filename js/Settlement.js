@@ -466,176 +466,234 @@ $('#examination-images').click(function(){
 
 
 // // // ///////////////////////////////////////////////////////////////////////////
-// // // //////////////////////////////////////////////// رفع صورة التوقيع ////////////////////////////////////////////////////////////////////////
 
-// //variables//
-// let saveSignatureBtn = null;
+// // //////////////////////////////////////////////// رفع صورة التوقيع ////////////////////////////////////////////////////////////////////////
 
-// document
-//   .getElementById("UploadSigntaurePic")
-//   .addEventListener("click", function () {
-//     saveSignatureBtn = "UploadSigntaurePic";
-//   });
+//variables//
+let saveSignatureBtn = null;
 
-// document
-//   .getElementById("WriteSignature")
-//   .addEventListener("click", function () {
-//     saveSignatureBtn = "WriteSignature";
-//   });
-// const uploadContainer = document.querySelector(".upload-container");
-// const mainContainer = document.querySelector(".main-container");
-// const UploadSigntaurePic = document.getElementById("UploadSigntaurePic");
-// const imageUpload = document.getElementById("imageUpload");
-// var imgeURL;
-// const uploadedImg = null;
-// //
+document
+  .getElementById("UploadSigntaurePic")
+  .addEventListener("click", function () {
+    saveSignatureBtn = "UploadSigntaurePic";
+  });
 
-// UploadSigntaurePic.addEventListener("click", function () {
-//   imageUpload.click();
-// });
+document
+  .getElementById("WriteSignature")
+  .addEventListener("click", function () {
+    saveSignatureBtn = "WriteSignature";
+  });
+const uploadContainer = document.querySelector(".upload-container");
+const mainContainer = document.querySelector(".main-container");
+const UploadSigntaurePic = document.getElementById("UploadSigntaurePic");
+const imageUpload = document.getElementById("imageUpload");
+var imgeURL;
+const uploadedImg = null;
+//
 
-// imageUpload.addEventListener("change", function () {
-//   const file = imageUpload.files[0];
-//   if (file) {
-//     const reader = new FileReader();
-//     reader.onload = function (e) {
-//       const imageURL = e.target.result;
-//       const previewImage = document.createElement("img");
-//       previewImage.classList.add("preview-image");
-//       previewImage.src = imageURL;
-//       previewImage.id = "signatureImage";
-//       imgeURL = imageURL;
-//       mainContainer.innerHTML =
-//         '<i class="fa-regular fa-circle-xmark"  style="cursor: pointer;"></i>';
-//       uploadContainer.innerHTML = "";
-//       uploadContainer.appendChild(previewImage);
-//       uploadContainer.classList.add("previewing");
-//     };
-//     reader.readAsDataURL(file);
-//   }
-// });
+UploadSigntaurePic.addEventListener("click", function () {
+  imageUpload.click();
+});
 
-// removeSignatureImg.addEventListener("click", function (event) {
-//   event.preventDefault();
-//   if (uploadContainer.firstChild) {
-//     uploadContainer.innerHTML = "";
-//     mainContainer.innerHTML = "";
-//     uploadContainer.classList.remove("previewing");
-//     uploadContainer.innerHTML =
-//       ' <img class="upload-icon" src="img/Rectangle 144.png" alt="Upload Icon"><p>ارفق صورة التوقيع</p>';
-//   }
-// });
-// // // //////////////////////////////////////////////// كتابة التوقيع ////////////////////////////////////////////////////////////////////////
-// const WriteSignature = document.getElementById("WriteSignature");
-// WriteSignature.addEventListener("click", function () {
-//   document.body.classList.add('no-scroll');
-//   uploadContainer.innerHTML = "";
-//   mainContainer.innerHTML = "";
-//   uploadContainer.innerHTML =
-//     '<canvas id="canvas" width="200" height="200" class="mb-2"></canvas>';
-//   var canvas = document.getElementById("canvas");
-//   var ctx = canvas.getContext("2d");
-//   ctx.lineWidth = 4;
+imageUpload.addEventListener("change", function () {
+  const file = imageUpload.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const imageURL = e.target.result;
+      const previewImage = document.createElement("img");
+      previewImage.classList.add("preview-image");
+      previewImage.src = imageURL;
+      previewImage.id = "signatureImage";
+      imgeURL = imageURL;
+      mainContainer.innerHTML =
+        '<i class="fa-regular fa-circle-xmark"  style="cursor: pointer;"></i>';
+      uploadContainer.innerHTML = "";
+      uploadContainer.appendChild(previewImage);
+      uploadContainer.classList.add("previewing");
+    };
+    reader.readAsDataURL(file);
+  }
+});
 
-//   var drawing = false;
-//   var prevX = 0;
-//   var prevY = 0;
-//   var currX = 0;
-//   var currY = 0;
+removeSignatureImg.addEventListener("click", function (event) {
+  event.preventDefault();
+  if (uploadContainer.firstChild) {
+    uploadContainer.innerHTML = "";
+    mainContainer.innerHTML = "";
+    uploadContainer.classList.remove("previewing");
+    uploadContainer.innerHTML =
+      ' <img class="upload-icon" src="img/Rectangle 144.png" alt="Upload Icon"><p>ارفق صورة التوقيع</p>';
+  }
+});
+// // //////////////////////////////////////////////// كتابة التوقيع ////////////////////////////////////////////////////////////////////////
+const WriteSignature = document.getElementById("WriteSignature");
+WriteSignature.addEventListener("click", function () {
+  document.body.classList.add('no-scroll');
+  uploadContainer.innerHTML = "";
+  mainContainer.innerHTML = "";
+  uploadContainer.innerHTML =
+    '<canvas id="canvas" width="200" height="200" class="mb-2"></canvas>';
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  ctx.lineWidth = 4;
 
-//   function drawLine(x0, y0, x1, y1) {
-//     ctx.beginPath();
-//     ctx.moveTo(x0, y0);
-//     ctx.lineTo(x1, y1);
-//     ctx.stroke();
-//     ctx.closePath();
-//   }
+  var drawing = false;
+  var prevX = 0;
+  var prevY = 0;
+  var currX = 0;
+  var currY = 0;
 
-//   canvas.addEventListener("mousedown", handleMouseDown, false);
-//   canvas.addEventListener("mousemove", handleMouseMove, false);
-//   canvas.addEventListener("mouseup", handleMouseUp, false);
+  function drawLine(x0, y0, x1, y1) {
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x1, y1);
+    ctx.stroke();
+    ctx.closePath();
+  }
 
-//   canvas.addEventListener("touchstart", handleTouchStart, false);
-//   canvas.addEventListener("touchmove", handleTouchMove, false);
-//   canvas.addEventListener("touchend", handleTouchEnd, false);
+  canvas.addEventListener("mousedown", handleMouseDown, false);
+  canvas.addEventListener("mousemove", handleMouseMove, false);
+  canvas.addEventListener("mouseup", handleMouseUp, false);
 
-//   function handleMouseDown(e) {
-//     drawing = true;
-//     prevX = e.clientX - canvas.getBoundingClientRect().left;
-//     prevY = e.clientY - canvas.getBoundingClientRect().top;
-//   }
+  canvas.addEventListener("touchstart", handleTouchStart, false);
+  canvas.addEventListener("touchmove", handleTouchMove, false);
+  canvas.addEventListener("touchend", handleTouchEnd, false);
 
-//   function handleMouseMove(e) {
-//     if (!drawing) return;
-//     currX = e.clientX - canvas.getBoundingClientRect().left;
-//     currY = e.clientY - canvas.getBoundingClientRect().top;
+  function handleMouseDown(e) {
+    drawing = true;
+    prevX = e.clientX - canvas.getBoundingClientRect().left;
+    prevY = e.clientY - canvas.getBoundingClientRect().top;
+  }
 
-//     drawLine(prevX, prevY, currX, currY);
-//     prevX = currX;
-//     prevY = currY;
-//   }
+  function handleMouseMove(e) {
+    if (!drawing) return;
+    currX = e.clientX - canvas.getBoundingClientRect().left;
+    currY = e.clientY - canvas.getBoundingClientRect().top;
 
-//   function handleMouseUp() {
-//     drawing = false;
-//   }
+    drawLine(prevX, prevY, currX, currY);
+    prevX = currX;
+    prevY = currY;
+  }
 
-//   function handleTouchStart(e) {
-//     drawing = true;
-//     prevX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
-//     prevY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
-//   }
+  function handleMouseUp() {
+    drawing = false;
+  }
 
-//   function handleTouchMove(e) {
-//     if (!drawing) return;
-//     currX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
-//     currY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
+  function handleTouchStart(e) {
+    drawing = true;
+    prevX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+    prevY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
+  }
 
-//     drawLine(prevX, prevY, currX, currY);
-//     prevX = currX;
-//     prevY = currY;
-//   }
+  function handleTouchMove(e) {
+    if (!drawing) return;
+    currX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+    currY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
 
-//   function handleTouchEnd() {
-//     drawing = false;
-//   }
-//   function clearCanvas() {
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//   }
+    drawLine(prevX, prevY, currX, currY);
+    prevX = currX;
+    prevY = currY;
+  }
 
-//   document.getElementById("clear").addEventListener("click", function () {
-//     clearCanvas();
-//   });
+  function handleTouchEnd() {
+    drawing = false;
+  }
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  document.getElementById("clear").addEventListener("click", function () {
+    clearCanvas();
+  });
  
-// });
-//  function SaveWrittenSignature() {
-//   document.body.classList.remove('no-scroll');
-// 	var canvas = document.getElementById("canvas");
-//     var dataURL = canvas.toDataURL();
-//     var link = document.createElement("a");
-//     link.href = dataURL;
-//     console.log(link.href);
-//     $("#signature-modal").modal("hide");
+});
+ function SaveWrittenSignature() {
+  document.body.classList.remove('no-scroll');
+	var canvas = document.getElementById("canvas");
+    var dataURL = canvas.toDataURL();
+    var link = document.createElement("a");
+    link.href = dataURL;
+    console.log(link.href);
+    $("#signature-modal").modal("hide");
 
-//   }
-//  // Save the uploded signature image
-//  function SaveUplodedSignature() {
-//     const img = document.getElementById("signatureImage");
-//     const canvas = document.createElement("canvas");
-//     canvas.width = img.width;
-//     canvas.height = img.height;
-//     const context = canvas.getContext("2d");
-//     context.drawImage(img, 0, 0, canvas.width, canvas.height);
-//     const base64 = canvas.toDataURL("image/jpeg");
-//     console.log(base64);
-//     $("#signature-modal").modal("hide");
+  }
+ // Save the uploded signature image
+ function SaveUplodedSignature() {
+    const img = document.getElementById("signatureImage");
+    const canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const context = canvas.getContext("2d");
+    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const base64 = canvas.toDataURL("image/png");
+    console.log(base64);
+    $("#signature-modal").modal("hide");
 
-//   }
-//   document.getElementById("save").addEventListener("click", function () {
-//     if (saveSignatureBtn === "UploadSigntaurePic") {
-//       SaveUplodedSignature();
-//     } else if (saveSignatureBtn === "WriteSignature") {
-//       SaveWrittenSignature();
-//     } else {
-//       console.log("No button has been clicked yet");
-//     }
-//   });
+  }
+  document.getElementById("save").addEventListener("click", function () {
+    if (saveSignatureBtn === "UploadSigntaurePic") {
+      SaveUplodedSignature();
+    } else if (saveSignatureBtn === "WriteSignature") {
+      SaveWrittenSignature();
+    } else {
+      console.log("No button has been clicked yet");
+    }
+  });
+
+
+// // //////////////////////////////////////////////// رفع صورة الهوية ////////////////////////////////////////////////////////////////////////
+
+//variables//
+let saveIDBtn = null;
+
+document
+  .getElementById("UploadIDPic")
+  .addEventListener("click", function () {
+    saveIDBtn = "UploadIDPic";
+    console.log(saveIDBtn)
+  });
+ 
+const IDuploadContainer = document.querySelector(".ID-upload-container");
+const IDmainContainer = document.querySelector(".ID-main-container");
+const UploadIDPic = document.getElementById("UploadIDPic");
+const IDimageUpload = document.getElementById("IDimageUpload");
+var imgeURL;
+const IDuploadedImg = null;
+//
+
+UploadIDPic.addEventListener("click", function () {
+  IDimageUpload.click();
+});
+
+IDimageUpload.addEventListener("change", function () {
+  const file = IDimageUpload.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const IDimageURL = e.target.result;
+      const IDpreviewImage = document.createElement("img");
+      IDpreviewImage.classList.add("preview-image");
+      IDpreviewImage.src = IDimageURL;
+      IDpreviewImage.id = "IDImage";
+      imgeURL = IDimageURL;
+      IDmainContainer.innerHTML =
+        '<i class="fa-regular fa-circle-xmark"  style="cursor: pointer;"></i>';
+      IDuploadContainer.innerHTML = "";
+      IDuploadContainer.appendChild(IDpreviewImage);
+      IDuploadContainer.classList.add("previewing");
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+removeIDImg.addEventListener("click", function (event) {
+  event.preventDefault();
+  if (IDuploadContainer.firstChild) {
+    IDuploadContainer.innerHTML = "";
+    IDmainContainer.innerHTML = "";
+    IDuploadContainer.classList.remove("previewing");
+    IDuploadContainer.innerHTML =
+      ' <img class="upload-icon" src="img/Rectangle 144.png" alt="Upload Icon"><p>ارفق صورة الهوية </p>';
+  }
+});
