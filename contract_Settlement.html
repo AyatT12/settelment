@@ -25,6 +25,7 @@
   .card-title {
     color: #FF9626;
     text-shadow: 1px 4px 4px rgb(187 187 187 / 68%);
+    font-size: 1rem;
     letter-spacing: 0.32px;
 }
 .password-modal-header .close {
@@ -616,7 +617,7 @@
                                                         <div class="row p-2" style="flex-direction:row-reverse">
                                                             <div class="col-auto">
                                                                 <label id="notes"
-                                                                    for="FormControl-last-Textarea">ملاحظات</label>
+                                                                    >ملاحظات</label>
                                                             </div>
                                                             <div class="col-lg-7">
                                                                 <textarea class="form-control textarea-inputs" rows="1"
@@ -642,72 +643,166 @@
                                                 </fieldset>
                                                 <fieldset id="SecondFieldset">
                                                     <div class="form-card form-card1">
-                                                         <div class="row flex-row-reverse">
-                                                            <div class="row">
-                                                                <div class="expensesDiv align-items-baseline ">
-                                                                    <div class="col-auto">
-                                                                        <label id="expensesValue"for="expensesValue-input">قيمة المصروفات</label>
-                                                                    </div>
-                                                                    <div class="col-auto">
-                                                                        <input type="tel" class="form-control form-control1" style="width: 130px;" id="expensesValue-input" name="expensesValue-input" aria-describedby="inputGroupPrepend" autocomplete="off" >
-                                                                            <div class="row requird-field-row-last">
-                                                                               <div class="invalid-feedback" style="display: none;">
-                                                                                   هذا الحقل مطلوب
-                                                                               </div>
-                                                                           </div> 
-                                                                    </div>
-                                                                </div>
-                                                               
-                                                            </div>
-                                                         </div>
-                                                         <div class="row flex-row-reverse expensesRow g-5">
+                                                        
+                                                         <div class="row expensesRow flex-lg-row flex-column-reverse ">
+                                                          
                                                             <div class="col-lg-5">
+                                                                <div class="TablesReferenceDiv">
+                                                                    <table class="table Expenses-compensation-Table attatchments-table " id="Expenses-Attatchments-Table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                            <th colspan="2" class="text-center"> المرفقات </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <div class="upload__box  upload__box2 d-flex ">
+                                                                                        <div class="upload_img-wrap_inner">  
+                                                                                            <div class="upload__btn-box" id="Expenses-upload-box">
+                                                                                                <label class="upload__btn">
+                                                                                                    <div class="upload-container-checking Expenses-compensation-Upload" >
+                                                                                                        <img class="upload-icon"
+                                                                                                            src="img/Add.svg"
+                                                                                                            alt="Upload Icon" id="addImage">
+                                                                                                        <input type="file" multiple
+                                                                                                            accept="image/*"
+                                                                                                            id="Expenses-images"
+                                                                                                            class="upload__inputfile "
+                                                                                                            >
+                                                                                                    </div>
+                                                                                                </label>
+                                                                                            </div>
+                                                                                        </div>
+                    
+                                                                                    </div>
+                                                                                   
+                                                                                </td>
+                                                                                
+                                                                                <td>
+                                                                                </td>
+                                                                              
+                                                                               
+                                                                               
+                                                                            </tr>
+                                                                            <tr>
 
-                                                            <div class="row expensesDiv expensesDiv-textarea ">
-                                                                <div class="col-auto">
-                                                                    <label id="Expense-statement" for="Expense-statement-input">بيان المصروفات</label>
+                                                                                <td>
+                                                                                </td>
+                                                                                <td>
+                                                                                   
+                                                                                </td>
+                                                                               
+                                                                            </tr>
+                                                                           
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
-                                                                <div class="col-lg-9" style="height: 100%;" >
-                                                                    <textarea class="form-control textarea-inputs h-100" cols="25" name="Expense-statement" id="Expense-statement-input" aria-describedby="inputGroupPrepend" maxlength="100" ></textarea>
-                                                                        <div class="row requird-field-row-last">
-                                                                           <div class="invalid-feedback" style="display: none;">
-                                                                               هذا الحقل مطلوب
-                                                                           </div>
-                                                                       </div> 
-                                                                </div>
-                                                            </div>
                                                             </div>
                                                             <div class="col-lg-6">
-                                                                <div class="upload__box d-flex">
-                                                                    <div class="upload_img-wrap_inner" style="display: flex;
-                                                                  flex-wrap: wrap;
-                                                                  gap: 10px ">
-                                                                        <div class="upload__img-box " id="FirstUpload-img">
-                                                                        </div>
-                                                                        <div class="upload__btn-box" id="upload__btn-box">
-                                                                            <label class="upload__btn">
-                                                                                <div class="upload-container-checking " id="Expenses-upload-box">
-                                                                                    <img class="upload-icon"
-                                                                                        src="img/Group (1).png"
-                                                                                        alt="Upload Icon" id="addImage">
-                                                                                    <input type="file" multiple
-                                                                                        accept="image/*"
-                                                                                        id="Expenses-images"
-                                                                                        class="upload__inputfile "
-                                                                                        >
-                                                                                </div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
+                                                                <div class="TablesReferenceDiv">
+                                                                    <table class="table Expenses-compensation-Table " id="Expenses-Data-Table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th> البيان </th>
+                                                                                <th> القيمة</th>
+                                                                                <th> الخدمة </th>
 
-                                                                </div>
-                                                                <div class="row">
-                                                                    <p style="color: red;" id="ExpensesError">  </p>
-                                                                </div>
-                                                            </div>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea class="check-table-notes"
+                                                                                        id="Oil-change"
+                                                                                        maxlength="100"
+                                                                                        name="Oil-change"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                   100.00
+                                                                                </td>
+                                                                                <td>
+                                                                                    تغيير الزيت
+                                                                                </td>
 
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea class="check-table-notes"
+                                                                                        id="Tires-Details"
+                                                                                        maxlength="100"
+                                                                                        name="Tires-Details"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                   75.00
+                                                                                </td>
+                                                                                <td>
+                                                                                    الإطارات 
+                                                                                </td>
+
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea class="check-table-notes"
+                                                                                        id="transportation"
+                                                                                        maxlength="100"
+                                                                                        name="transportation"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                  8.50
+                                                                                </td>
+                                                                                <td>
+                                                                                    النقل 
+                                                                                </td>
+
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea class="check-table-notes"
+                                                                                        id="textarea1"
+                                                                                        maxlength="100"
+                                                                                        name="textarea1"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input class="Table-inputs Table-inputs-Expenses">
+
+                                                                                </td>
+                                                                                <td>
+                                                                                   <input class="Table-inputs Table-inputs-Expenses">
+                                                                                </td>
+
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea class="check-table-notes"
+                                                                                        id="textarea2"
+                                                                                        maxlength="100"
+                                                                                        name="textarea2"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input class="Table-inputs Table-inputs-Expenses">
+
+                                                                                </td>
+                                                                                <td>
+                                                                                   <input class="Table-inputs Table-inputs-Expenses">
+                                                                                </td>
+
+
+                                                                            </tr>
+                                                                            
+                                                                            <tr>
+                                                                                <td colspan="2" id="TotalExpenses">183.50</td>
+                                                                                <td scope="row">المجموع</td>
+                                                                              </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div> 
                                                          </div>
-                                                       
+                                                         <div class="row" style="text-align: start;">
+                                                            <p style="color:#FF2828;margin: 0;" id="ExpensesError"> ! بحد أدنى مرفق واحد  </p>
+                                                        </div>
                                                     </div>
                                                     <div class="row button-row">
                                                         <div class="button-card">
@@ -731,86 +826,172 @@
                                                 </fieldset>
                                                 <fieldset id="ThirdFieldset">
                                                     <div class="form-card form-card1">
-                                                        <div class="row flex-row-reverse">
-                                                            <div class="row">
-                                                                <div class="expensesDiv align-items-baseline ">
-                                                                    <div class="col-auto">
-                                                                        <p> التأمين </p>
-                                                                      </div>
-                                                                       <div class="col-auto personal-data">
-                                                                        <p>ضد الغير </p>
-                                                                       </div>
-                                                                </div>
-                                                               
-                                                            </div>
-                                                         </div>
-                                                    
-                                                            <div class="row">
-                                                                <div class="compensation-Div align-items-baseline ">
-                                                                    <div class="col-auto">
-                                                                        <label for="compensation-input">قيمة التعويضات </label>
-                                                                    </div>
-                                                                    <div class="col-auto">
-                                                                        <input type="tel" class="form-control form-control1" style="width: 130px;" id="compensation-input" name="compensation-input" aria-describedby="inputGroupPrepend" autocomplete="off" >
-                                                                            <div class="row requird-field-row-last">
-                                                                               <div class="invalid-feedback" style="display: none;">
-                                                                                   هذا الحقل مطلوب
-                                                                               </div>
-                                                                           </div> 
-                                                                    </div>
-                                                                </div>
-                                                               
-                                                            </div>
-                                                         
-                                                         <div class="row flex-row-reverse compensation-Row  g-5">
+                                                        
+                                                         <div class="row expensesRow flex-lg-row flex-column-reverse ">
+                                                          
                                                             <div class="col-lg-5">
+                                                                <div class="TablesReferenceDiv">
+                                                                    <table class="table Expenses-compensation-Table attatchments-table " id="compensation-Attatchments-Table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                            <th colspan="2" class="text-center"> المرفقات </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <div class="upload__box  upload__box2 d-flex ">
+                                                                                        <div class="upload_img-wrap_inner">
+                                                                                            
+                                                                                            <div class="upload__btn-box" id="compensation-upload-box">
+                                                                                                <label class="upload__btn">
+                                                                                                    <div class="upload-container-checking Expenses-compensation-Upload" >
+                                                                                                        <img class="upload-icon"
+                                                                                                            src="img/Add.svg"
+                                                                                                            alt="Upload Icon" id="addImage">
+                                                                                                        <input type="file" multiple
+                                                                                                            accept="image/*"
+                                                                                                            id="compensation-images"
+                                                                                                            class="upload__inputfile "
+                                                                                                            >
+                                                                                                    </div>
+                                                                                                </label>
+                                                                                            </div>
+                                                                                        </div>
+                    
+                                                                                    </div>
+                                                                                   
+                                                                                </td>
+                                                                                
+                                                                                <td>
+                                                                                </td>
+                                                                              
+                                                                               
+                                                                               
+                                                                            </tr>
+                                                                            <tr>
 
-                                                            <div class="row compensation-Div compensation-Div-textarea ">
-                                                                <div class="col-auto">
-                                                                    <label  for="compensation-statement-input">بيان التعويضات </label>
+                                                                                <td>
+                                                                                </td>
+                                                                                <td>
+                                                                                   
+                                                                                </td>
+                                                                               
+                                                                            </tr>
+                                                                           
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
-                                                                <div class="col-lg-9" style="height: 100%;">
-                                                                    <textarea class="form-control textarea-inputs h-100" cols="25" name="compensation-statement" id="compensation-statement-input" aria-describedby="inputGroupPrepend"  maxlength="100"></textarea>
-                                                                        <div class="row requird-field-row-last">
-                                                                           <div class="invalid-feedback" style="display: none;">
-                                                                               هذا الحقل مطلوب
-                                                                           </div>
-                                                                       </div> 
-                                                                </div>
-                                                            </div>
                                                             </div>
                                                             <div class="col-lg-6">
-                                                                <div class="upload__box d-flex">
-                                                                    <div class="upload_img-wrap_inner" style="display: flex;
-                                                                  flex-wrap: wrap;
-                                                                  gap: 10px ">
-                                                                        <div class="upload__img-box " id="FirstUpload-img2">
-                                                                        </div>
-                                                                        <div class="upload__btn-box">
-                                                                            <label class="upload__btn">
-                                                                                <div class="upload-container-checking" id="compensation-upload-box">
-                                                                                    <img class="upload-icon"
-                                                                                        src="img/Group (1).png"
-                                                                                        alt="Upload Icon" id="AddImageCompensation">
-                                                                                    <input type="file" multiple
-                                                                                        accept="image/*"
-                                                                                        id="compensation-images"
-                                                                                        class="upload__inputfile "
-                                                                                       
-                                                                                        >
-                                                                                </div>
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
+                                                                <div class="TablesReferenceDiv">
+                                                                    <table class="table Expenses-compensation-Table " id="compensation-Data-Table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th> البيان </th>
+                                                                                <th> القيمة</th>
+                                                                                <th> الخدمة </th>
 
-                                                                </div>
-                                                                <div class="row">
-                                                                    <p style="color: red;"id='compensationError'> </p>
-                                                                </div>
-                                                            </div>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea class="check-table-notes"
+                                                                                        id="Oil-change-compensation"
+                                                                                        maxlength="100"
+                                                                                        name="Oil-change-compensation"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                   100.00
+                                                                                </td>
+                                                                                <td>
+                                                                                    تغيير الزيت
+                                                                                </td>
 
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea class="check-table-notes"
+                                                                                        id="Tires-Details-compensation"
+                                                                                        maxlength="100"
+                                                                                        name="Tires-Details-compensation"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                   75.00
+                                                                                </td>
+                                                                                <td>
+                                                                                    الإطارات 
+                                                                                </td>
+
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea class="check-table-notes"
+                                                                                        id="transportation-compensation"
+                                                                                        maxlength="100"
+                                                                                        name="transportation-compensation"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                  8.50
+                                                                                </td>
+                                                                                <td>
+                                                                                    النقل 
+                                                                                </td>
+
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea class="check-table-notes"
+                                                                                        id="textarea1-compensation"
+                                                                                        maxlength="100"
+                                                                                        name="textarea1-compensation"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input class="Table-inputs Table-inputs-compensation">
+
+                                                                                </td>
+                                                                                <td>
+                                                                                   <input class="Table-inputs Table-inputs-compensation">
+                                                                                </td>
+
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <textarea class="check-table-notes"
+                                                                                        id="textarea2-compensation"
+                                                                                        maxlength="100"
+                                                                                        name="textarea2-compensation"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input class="Table-inputs Table-inputs-compensation">
+
+                                                                                </td>
+                                                                                <td>
+                                                                                   <input class="Table-inputs Table-inputs-compensation">
+                                                                                </td>
+
+
+                                                                            </tr>
+                                                                            
+                                                                            <tr>
+                                                                                <td colspan="2" id="TotalCompensation">183.50</td>
+                                                                                <td scope="row">المجموع</td>
+                                                                              </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div> 
                                                          </div>
-                                                       
+                                                         <div class="row justify-content-between">
+                                                            <div class="col-md-auto">
+                                                                <p style="color:#FF2828;margin: 0;" id="ExpensesError"> ! بحد أدنى مرفق واحد  </p>
+                                                            </div>
+                                                            <div class="col-md-auto">
+                                                                <p style="color:#D92626;margin: 0;" id="ExpensesError"> التأمين ضد الغير </p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="row button-row">
                                                         <div class="button-card">
@@ -865,7 +1046,6 @@
                                                                     </div>
                                                                     <div class="col-lg-auto  d-flex flex-column align-items-end">
                                                                         <input type="tel" class="form-control form-control1"
-                                                                            style="width: 100px;"
                                                                             id="CurrentReadingg-input"
                                                                             name="CurrentReadingg-input"aria-describedby="inputGroupPrepend" autocomplete="off" >
                                                                             <div class="row requird-field-row-last mb-2" style="height: 40px;">
@@ -889,8 +1069,8 @@
                                                                     </div>
                                                                    </div>
                                                                 </div>
-                                                                <div class="row mb-2">
-                                                                    <div class="col-md-5">
+                                                                <div class="row mb-3 justify-content-end">
+                                                                    <div class="col-md-auto">
                                                                         <button type="button"
                                                                         class="btn check-btn d-flex align-items-center gap-2"
                                                                         data-bs-toggle="modal" href="#TechnicalCheckUp">
@@ -935,10 +1115,8 @@
 
                                                             <div class="col-xl-6 virtual-check-table">
                                                                 <div id="referenceDiv">
-    
                                                                     <div id="tableContainer" class="table-scroll">
-                                                                        <table
-                                                                            class="table table-bordered  table-hover Checkup-table ">
+                                                                        <table class="table table-bordered  table-hover Checkup-table ">
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th scope="col"
@@ -1628,11 +1806,11 @@
                                                 </div>
                                                 <div class="row p-2"style="flex-direction:row-reverse">
                                                     <div class="col-auto">
-                                                        <label id="notes" for="FormControl-last-Textarea">ملاحظات</label>
+                                                        <label id="notes" >ملاحظات</label>
                                                     </div>
                                                     <div class="col-lg-7">
                                                         <textarea class="form-control textarea-inputs"
-                                                             rows="1"
+                                                             rows="1" 
                                                             maxlength="100" name="notes"></textarea>
                                                     </div>
 
@@ -1815,7 +1993,7 @@
                                  <p>عند الموافقة سيتم إرسال رمز التحقق إلى جوال المستأجر</p>
                              </div>
                          </div>
-                         <form class="otc mt-3" name="one-time-code" id="UnifiedContract-otc">
+                         <form class="otc mt-3" name="one-time-code" id="UnifiedContract-otc-form">
                              <div
                                  class="row flex-row-reverse justify-content-center align-items-center text-center">
                                  <p>من فضلك ادخل رمز التحقق المرسل</p>
@@ -2040,7 +2218,7 @@
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/heic2any/dist/heic2any.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -2055,9 +2233,9 @@
    <script>
     ///////////////////////////////////////////////the-Modal-6-digit-vaildation/////////////////////
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelector("#otc").addEventListener("submit", function (event) {
+  document.querySelector("#UnifiedContract-otc-form").addEventListener("submit", function (event) {
     event.preventDefault();
-    var inputFieldValue = document.getElementById("otc-1");
+    var inputFieldValue = document.getElementById("UnifiedContract-otc-1");
     var numericValue = parseInt(inputFieldValue.value);
 
     if (isNaN(numericValue)) {
@@ -2075,16 +2253,16 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error submitting form data:", error);
       },
     });
-    document.getElementById("otc-1").value = "";
-    document.getElementById("otc-2").value = "";
-    document.getElementById("otc-3").value = "";
-    document.getElementById("otc-4").value = "";
-    document.getElementById("otc-5").value = "";
-    document.getElementById("otc-6").value = "";
+    document.getElementById("UnifiedContract-otc-1").value = "";
+    document.getElementById("UnifiedContract-otc-2").value = "";
+    document.getElementById("UnifiedContract-otc-3").value = "";
+    document.getElementById("UnifiedContract-otc-4").value = "";
+    document.getElementById("UnifiedContract-otc-5").value = "";
+    document.getElementById("UnifiedContract-otc-6").value = "";
   });
 });
 
-let in1 = document.getElementById("otc-1"),
+let in1 = document.getElementById("UnifiedContract-otc-1"),
   ins = document.querySelectorAll('input[type="number"]'),
   splitNumber = function (e) {
     let data = e.data || e.target.value; 
