@@ -109,185 +109,168 @@ $(".previous").click(function () {
 });
 
 //====================================================================================================
-//========================================Upload Expenses Imgs Lists============================================================
-//====================================================================================================
-var ExpensesArray = [];
-
-function ExpensesImgUpload() {
-  var imgWrap = '';
-  
-  $('#Expenses-images').each(function () {
-    $(this).on('change', function (e) {
-      imgWrap = $(this).closest('.upload__box').find('.upload_img-wrap_inner');
-      var maxLength = 4;
-      var uploadBtnBox = document.getElementById('Expenses-upload-box');
-      var errorMessageDiv = document.getElementById('ExpensesError');
-      var files = e.target.files;
-      var filesArr = Array.prototype.slice.call(files);
-   
-
-      if (ExpensesArray.length + filesArr.length > maxLength) {
-        uploadBtnBox.style.display = 'none';
-        errorMessageDiv.textContent = 'بحد أدنى صورة واحدة (۱) وحدأقصى اثني عشرة صورة (۱۲) ';
-        errorMessageDiv.style.display = 'block';
-      } else {
-        uploadBtnBox.style.display = 'flex';
-        errorMessageDiv.style.display = 'none';
-      }
-
-      for (var i = 0; i < Math.min(filesArr.length, maxLength - ExpensesArray.length); i++) {
-        (function(f) {
-          if (!f.type.match('image.*')) {
-            return;
-          }
-
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            var html =
-              "<div class='upload__img-box'><div style='background-image: url(" +
-              e.target.result +
-              ")' data-number='" +
-              $('.upload__img-close1').length +
-              "' data-file='" +
-              f.name +
-              "' class='img-bg'><div class='upload__img-close1'><img src='delete.png'></div></div></div>";
-            imgWrap.append(html);
-            ExpensesArray.push({
-              f: f,
-              url: e.target.result
-            });
-            console.log(ExpensesArray);
-          };
-          reader.readAsDataURL(f);
-        })(filesArr[i]);
-      }
-    });
-  });
-
-  $('body').on('click', '.upload__img-close1', function (e) {
-    e.stopPropagation(); 
-    var file = $(this).parent().data('file');
-
-    for (var i = 0; i < ExpensesArray.length; i++) {
-      if (ExpensesArray[i].f.name === file) {
-        ExpensesArray.splice(i, 1);
-        break;
-      }
-    }
-
-    $(this).parent().parent().remove();
-    console.log(ExpensesArray);
-
-    var maxLength = 4;
-    var uploadBtnBox = document.getElementById('Expenses-upload-box');
-      var errorMessageDiv = document.getElementById('ExpensesError');
-    
-    if (ExpensesArray.length >= maxLength) {
-      uploadBtnBox.style.display = 'none';
-      errorMessageDiv.textContent = 'بحد أدنى صورة واحدة (۱) وحدأقصى اثني عشرة صورة (۱۲) ';
-      errorMessageDiv.style.display = 'block';
-    } else {
-      uploadBtnBox.style.display = 'flex';
-      errorMessageDiv.style.display = 'none';
-    }
-  });
-
-  $('body').on('click', '.img-bg', function (e) {
-    var imageUrl = $(this).css('background-image');
-    $('#preview-image').attr('src', imageUrl);
-    $('#image-preview').modal('show');
-  });
-}
-//====================================================================================================
-//========================================Upload compensation Imgs Lists============================================================
+//========================================Upload Expenses/compensation Imgs Lists============================================================
 //====================================================================================================
 var compensationArray = [];
+var expensesArray = [];
+var compensationTdIndex = 0; 
+var expensesTdIndex = 0; 
 
 function compensationImgUpload() {
-  var imgWrap = '';
- 
-  $('#compensation-images').each(function () {
-    $(this).on('change', function (e) {
-      imgWrap = $(this).closest('.upload__box').find('.upload_img-wrap_inner');
-      var uploadBtnBox = document.getElementById('compensation-upload-box');
-      var errorMessageDiv = document.getElementById('compensationError');
-      var maxLength = 4;
-      var files = e.target.files;
-      var filesArr = Array.prototype.slice.call(files);
-     
+  var maxLength = 4;
+  var uploadBtnBox = document.getElementById('compensation-upload-box');
 
-      if (compensationArray.length + filesArr.length > maxLength) {
-        uploadBtnBox.style.display = 'none';
-        errorMessageDiv.textContent = 'بحد أدنى صورة واحدة (۱) وحدأقصى اثني عشرة صورة (۱۲) ';
-        errorMessageDiv.style.display = 'block';
-      } else {
-        uploadBtnBox.style.display = 'flex';
-        errorMessageDiv.style.display = 'none';
-      }
-
-      for (var i = 0; i < Math.min(filesArr.length, maxLength - compensationArray.length); i++) {
-        (function(f) {
-          if (!f.type.match('image.*')) {
-            return;
-          }
-
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            var html =
-              "<div class='upload__img-box'><div style='background-image: url(" +
-              e.target.result +
-              ")' data-number='" +
-              $('.upload__img-close2').length +
-              "' data-file='" +
-              f.name +
-              "' class='img-bg'><div class='upload__img-close2'><img src='delete.png'></div></div></div>";
-            imgWrap.append(html);
-            compensationArray.push({
-              f: f,
-              url: e.target.result
-            });
-            console.log(compensationArray);
-          };
-          reader.readAsDataURL(f);
-        })(filesArr[i]);
-      }
-    });
+  $('#compensation-images').on('change', function (e) {
+    handleImageUpload(e, '#compensation-Attatchments-Table', compensationArray, maxLength, uploadBtnBox, 'compensation');
   });
+}
 
-  $('body').on('click', '.upload__img-close2', function (e) {
-    e.stopPropagation(); 
+function ExpensesImgUpload() {
+  var maxLength = 4;
+  var uploadBtnBox = document.getElementById('Expenses-upload-box');
+
+  $('#Expenses-images').on('change', function (e) {
+    handleImageUpload(e, '#Expenses-Attatchments-Table', expensesArray, maxLength, uploadBtnBox, 'expenses');
+  });
+}
+
+function handleImageUpload(event, tableSelector, array, maxLength, uploadBtnBox, type) {
+  var uploadBox = $(event.target).closest('.upload__box');
+  var files = event.target.files;
+  var filesArr = Array.prototype.slice.call(files);
+
+  for (var i = 0; i < Math.min(filesArr.length, maxLength - array.length); i++) {
+    (function (f) {
+      if (f.type === 'image/heic' || f.type === 'image/heif' || f.name.endsWith('.heic') || f.name.endsWith('.heif')) {
+        heic2any({ blob: f, toType: "image/jpeg" })
+          .then(function (convertedBlob) {
+            processFile(convertedBlob, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
+          })
+          .catch(function (err) {
+            console.error("Error converting HEIC/HEIF image:", err);
+          });
+      } else {
+        processFile(f, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
+      }
+    })(filesArr[i]);
+  }
+
+  $('body').on('click', '.upload__img-close1', function (e) {
+    e.stopPropagation();
     var file = $(this).parent().data('file');
 
-    for (var i = 0; i < compensationArray.length; i++) {
-      if (compensationArray[i].f.name === file) {
-        compensationArray.splice(i, 1);
+    for (var i = 0; i < array.length; i++) {
+      if (array[i].f.name === file) {
+        array.splice(i, 1);
         break;
       }
     }
 
-    $(this).parent().parent().remove();
-    console.log(compensationArray);
+    $(this).closest('.upload__img-box').remove();
 
-    var maxLength = 4;
-    var uploadBtnBox = document.getElementById('compensation-upload-box');
-    var errorMessageDiv = document.getElementById('compensationError');
-    if (compensationArray.length >= maxLength) {
-      uploadBtnBox.style.display = 'none';
-
-      errorMessageDiv.textContent = 'بحد أدنى صورة واحدة (۱) وحدأقصى اثني عشرة صورة (۱۲) ';
-      errorMessageDiv.style.display = 'block';
-    } else {
+    if (array.length < maxLength) {
       uploadBtnBox.style.display = 'flex';
-      errorMessageDiv.style.display = 'none';
+      updateCurrentTdIndex(tableSelector, type, uploadBtnBox);
+    }
+
+    if (array.length === 0) {
+      if (type === 'compensation') compensationTdIndex = 0;
+      else expensesTdIndex = 0;
+
+      uploadBtnBox.style.display = 'flex';
+      $(`${tableSelector} td`).eq(type === 'compensation' ? compensationTdIndex : expensesTdIndex).append(uploadBtnBox);
     }
   });
+}
 
-  $('body').on('click', '.img-bg', function (e) {
-    var imageUrl = $(this).css('background-image');
-    $('#preview-image').attr('src', imageUrl);
-    $('#image-preview').modal('show');
+function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnBox, type) {
+  var reader = new FileReader();
+  reader.onload = function (e) {
+    var html = `
+      <div class='upload__img-box Attatchments-img-box'>
+        <div style='background-image: url(${e.target.result})' data-file='${fileName}' class='img-bg'>
+          <div class='upload__img-close1'><i class='fa-regular fa-trash-can'></i></div>
+        </div>
+      </div>
+    `;
+
+    var currentTdIndex = type === 'compensation' ? compensationTdIndex : expensesTdIndex;
+    var targetTd = $(`${tableSelector} td`).eq(currentTdIndex);
+    targetTd.append(html);
+
+    array.push({ f: file, url: e.target.result });
+
+    updateCurrentTdIndex(tableSelector, type, uploadBtnBox);
+
+    if (array.length >= maxLength) {
+      uploadBtnBox.style.display = 'none';
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function updateCurrentTdIndex(tableSelector, type, uploadBtnBox) {
+  var currentTdIndex = type === 'compensation' ? compensationTdIndex : expensesTdIndex;
+
+  $(`${tableSelector} td`).each(function (index) {
+    if ($(this).find('.upload__img-box').length === 0) {
+      if (type === 'compensation') compensationTdIndex = index;
+      else expensesTdIndex = index;
+
+      uploadBtnBox.style.display = 'flex';
+      $(this).append(uploadBtnBox);
+      return false; // Break the loop
+    }
   });
 }
+
+
+//========================================calculate Expenses/compensation  ============================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const ExpensesTable = document.getElementById("Expenses-Data-Table");
+  const TotalExpenses = document.getElementById("TotalExpenses");
+
+  const CompensationTable = document.getElementById("compensation-Data-Table");
+  const TotalCompensation = document.getElementById("TotalCompensation");
+  
+  const calculateTotal = (table  , totalRow) => {
+      let sum = 0;
+
+      table.querySelectorAll("tbody tr:not(:last-child)").forEach(row => {
+          const valueCell = row.cells[1]; 
+          const inputCell = valueCell.querySelector("input");
+
+          let value = inputCell ? parseFloat(inputCell.value || 0) : parseFloat(valueCell.textContent || 0);
+
+          if (!isNaN(value)) {
+              sum += value;
+          }
+      });
+
+      totalRow.textContent = sum.toFixed(2);
+  };
+
+  const addInputListeners = (table, totalRow) => {
+    const Expensesinputs = table.querySelectorAll("input.Table-inputs.Table-inputs-Expenses");
+    const Compensationinputs = table.querySelectorAll("input.Table-inputs.Table-inputs-compensation");
+
+    Expensesinputs.forEach(input => {
+      input.addEventListener("input", () => calculateTotal(table, totalRow));
+    });
+
+    Compensationinputs.forEach(input => {
+      input.addEventListener("input", () => calculateTotal(table, totalRow));
+    });
+  };
+
+  addInputListeners(ExpensesTable, TotalExpenses);
+  calculateTotal(ExpensesTable, TotalExpenses); 
+  addInputListeners(CompensationTable, TotalCompensation);
+  calculateTotal(CompensationTable, TotalCompensation);
+});
+
+
 //====================================================================================================
 //========================================Upload examination Imgs Lists============================================================
 //====================================================================================================
@@ -451,13 +434,7 @@ image4.addEventListener('click', function () {
     }
 });
 //====================================================================================================
-$('#Expenses-images').click(function(){
-  $('.upload__img-box').eq(0).hide();
-  var x =  $('.upload__img-box')
-})
-$('#compensation-images').click(function(){
-  $('#FirstUpload-img2').hide()
-})
+
 $('#examination-images').click(function(){
    $('#FirstUpload-img3').hide()
 })
@@ -642,58 +619,3 @@ WriteSignature.addEventListener("click", function () {
   });
 
 
-// // //////////////////////////////////////////////// رفع صورة الهوية ////////////////////////////////////////////////////////////////////////
-
-//variables//
-let saveIDBtn = null;
-
-document
-  .getElementById("UploadIDPic")
-  .addEventListener("click", function () {
-    saveIDBtn = "UploadIDPic";
-    console.log(saveIDBtn)
-  });
- 
-const IDuploadContainer = document.querySelector(".ID-upload-container");
-const IDmainContainer = document.querySelector(".ID-main-container");
-const UploadIDPic = document.getElementById("UploadIDPic");
-const IDimageUpload = document.getElementById("IDimageUpload");
-var imgeURL;
-const IDuploadedImg = null;
-//
-
-UploadIDPic.addEventListener("click", function () {
-  IDimageUpload.click();
-});
-
-IDimageUpload.addEventListener("change", function () {
-  const file = IDimageUpload.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const IDimageURL = e.target.result;
-      const IDpreviewImage = document.createElement("img");
-      IDpreviewImage.classList.add("preview-image");
-      IDpreviewImage.src = IDimageURL;
-      IDpreviewImage.id = "IDImage";
-      imgeURL = IDimageURL;
-      IDmainContainer.innerHTML =
-        '<i class="fa-regular fa-circle-xmark"  style="cursor: pointer;"></i>';
-      IDuploadContainer.innerHTML = "";
-      IDuploadContainer.appendChild(IDpreviewImage);
-      IDuploadContainer.classList.add("previewing");
-    };
-    reader.readAsDataURL(file);
-  }
-});
-
-removeIDImg.addEventListener("click", function (event) {
-  event.preventDefault();
-  if (IDuploadContainer.firstChild) {
-    IDuploadContainer.innerHTML = "";
-    IDmainContainer.innerHTML = "";
-    IDuploadContainer.classList.remove("previewing");
-    IDuploadContainer.innerHTML =
-      ' <img class="upload-icon" src="img/Rectangle 144.png" alt="Upload Icon"><p>ارفق صورة الهوية </p>';
-  }
-});
