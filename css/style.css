@@ -2674,6 +2674,7 @@ fieldset:disabled .btn {
     overflow: hidden; 
     border: 1px solid #f1b16c; 
     height: 100%;
+    white-space:nowrap;
 }
 .Expenses-compensation-Table td {
     border: 1px solid #f1b16c;
@@ -2719,4 +2720,5 @@ fieldset:disabled .btn {
 .Table-inputs{
     border: none;
     text-align: end;
+    width: 100%;
 }
