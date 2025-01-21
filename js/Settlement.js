@@ -233,34 +233,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const CompensationTable = document.getElementById("compensation-Data-Table");
   const TotalCompensation = document.getElementById("TotalCompensation");
-  
-  const calculateTotal = (table  , totalRow) => {
+
+  const calculateTotal = (table, totalRow) => {
       let sum = 0;
 
       table.querySelectorAll("tbody tr:not(:last-child)").forEach(row => {
           const valueCell = row.cells[1]; 
           const inputCell = valueCell.querySelector("input");
 
-          let value = inputCell ? parseFloat(inputCell.value || 0) : parseFloat(valueCell.textContent || 0);
+          let rawValue = inputCell ? inputCell.value : valueCell.textContent;
+          let value = parseFloat(rawValue.replace(/,/g, '') || 0);
 
           if (!isNaN(value)) {
               sum += value;
           }
       });
 
-      totalRow.textContent = sum.toFixed(2);
+      totalRow.textContent = sum.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   };
 
   const addInputListeners = (table, totalRow) => {
-    const Expensesinputs = table.querySelectorAll("input.Table-inputs.Table-inputs-Expenses");
-    const Compensationinputs = table.querySelectorAll("input.Table-inputs.Table-inputs-compensation");
+    const inputs = table.querySelectorAll("input.Table-inputs");
 
-    Expensesinputs.forEach(input => {
-      input.addEventListener("input", () => calculateTotal(table, totalRow));
-    });
-
-    Compensationinputs.forEach(input => {
-      input.addEventListener("input", () => calculateTotal(table, totalRow));
+    inputs.forEach(input => {
+      input.addEventListener("input", () => {
+        input.value = input.value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        calculateTotal(table, totalRow);
+      });
     });
   };
 
@@ -269,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
   addInputListeners(CompensationTable, TotalCompensation);
   calculateTotal(CompensationTable, TotalCompensation);
 });
+
 
 
 //====================================================================================================
