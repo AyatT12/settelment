@@ -846,6 +846,7 @@ footer {
     background-color: white;
     padding: 10px;
     font-size: 0.75rem;
+    box-shadow: 0px 2px 4px 0px #39629C3D;
 }
 
 .dropdown-content-extension p {
@@ -2721,4 +2722,13 @@ fieldset:disabled .btn {
     border: none;
     text-align: end;
     width: 100%;
+}
+.total p{
+    margin-bottom: .9rem;
+}
+
+/* *******************************************************************************تعديل  ستايل الدروب داون  ****************************************************************************************************** */
+.form-select{
+    background-position:left .75rem center;
+    padding: .375rem .75rem .375rem 2.25rem !important;
 }
