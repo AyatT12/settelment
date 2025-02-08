@@ -451,6 +451,7 @@ const dropdown5 = document.getElementById('dropdown-content-Settlement5');
 
 image5.addEventListener('click', function () {
 	if (dropdown5.style.display === 'block') {
+        dropdown5.style.display = 'none';
         dropdown2.style.display = 'none';
         dropdown.style.display = 'none';
 
@@ -469,8 +470,6 @@ $('#examination-images').click(function(){
 
 
 
-
-// // // ///////////////////////////////////////////////////////////////////////////
 
 // // //////////////////////////////////////////////// رفع صورة التوقيع ////////////////////////////////////////////////////////////////////////
 
