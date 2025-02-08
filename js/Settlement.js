@@ -10,9 +10,12 @@ jQuery(document).ready(function () {
 let current_fs, next_fs, previous_fs;
 const nextButtons = document.querySelectorAll(".next");
 const ExpensesCheckbox = document.getElementById('expenses');
-const CompensationCheckbox = document.getElementById('compensation-check');
+const selectCompensation = document.getElementById("Settlement-type");
 const fieldsets = document.querySelectorAll("fieldset");
-
+let   selectedValue = null
+selectCompensation.addEventListener('change', function() {
+  selectedValue = this.value;
+});
 function setFocusToFirstInput(fieldset) {
     var firstFocusable = fieldset.find("input, select , textarea").first();
     if (firstFocusable.length) {
@@ -21,6 +24,7 @@ function setFocusToFirstInput(fieldset) {
 }
 
 function moveToNextInput(event) {
+
     if (event.key === "Enter") {
         event.preventDefault();
         let formElements = Array.from(
@@ -47,15 +51,17 @@ $(document).ready(function () {
 });
 
 $(".next").click(function () {
-  const nextBtn = this; // Use `this` to refer to the current button
+  console.log(selectedValue)
+
+  const nextBtn = this; 
   const current_fs = $(nextBtn).closest("fieldset");
   let next_fs = current_fs.next();
   
   if (current_fs.attr('id') === 'firstFieldset') {
-    if (!ExpensesCheckbox.checked && CompensationCheckbox.checked) {
+    if (!ExpensesCheckbox.checked && (selectedValue === "0" || selectedValue === "2")) {
         next_fs = current_fs.next().next();
         $("#progressbar li").eq($("fieldset").index(current_fs.next())).addClass("active");
-    } else if (!ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
+    } else if (!ExpensesCheckbox.checked &&  !(selectedValue === "0" || selectedValue === "2")) {
       next_fs = current_fs.next().next().next();
       $("#progressbar li").eq($("fieldset").index(current_fs.next())).addClass("active");
       $("#progressbar li").eq($("fieldset").index(current_fs.next().next())).addClass("active");
@@ -64,7 +70,7 @@ $(".next").click(function () {
     }
   }
   if (current_fs.attr('id') === 'SecondFieldset') {
-    if (ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
+    if (ExpensesCheckbox.checked &&  !(selectedValue === "0" || selectedValue === "2")) {
       next_fs = current_fs.next().next();
       $("#progressbar li").eq($("fieldset").index(current_fs.next())).addClass("active");
     }
@@ -78,24 +84,24 @@ $(".next").click(function () {
 });
 
 $(".previous").click(function () {
-    const prevBtn = this; // Use `this` to refer to the current button
+    const prevBtn = this; 
     current_fs = $(prevBtn).closest("fieldset");
     previous_fs = current_fs.prev();
     if (current_fs.attr('id') === 'FourthFieldset') {
-      if (ExpensesCheckbox.checked && CompensationCheckbox.checked) {
+      if (ExpensesCheckbox.checked && (selectedValue === "0" || selectedValue === "2")) {
         previous_fs = current_fs.prev();
-      } else if (!ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
+      } else if (!ExpensesCheckbox.checked && !(selectedValue === "0" || selectedValue === "2")) {
         previous_fs = current_fs.prev().prev().prev();
         $("#progressbar li").eq($("fieldset").index(current_fs.prev())).removeClass("active");
         $("#progressbar li").eq($("fieldset").index(current_fs.prev().prev())).removeClass("active");
-      } else if (ExpensesCheckbox.checked && !CompensationCheckbox.checked) {
+      } else if (ExpensesCheckbox.checked && !(selectedValue === "0" || selectedValue === "2")) {
         previous_fs = current_fs.prev().prev();
         $("#progressbar li").eq($("fieldset").index(current_fs.prev())).removeClass("active");
       }
     }
 
     if (current_fs.attr('id') === 'ThirdFieldset') {
-      if (!ExpensesCheckbox.checked && CompensationCheckbox.checked) {
+      if (!ExpensesCheckbox.checked && (selectedValue === "0" || selectedValue === "2")) {
         previous_fs = current_fs.prev().prev();
         $("#progressbar li").eq($("fieldset").index(current_fs.prev())).removeClass("active");
       }
