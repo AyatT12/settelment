@@ -12,7 +12,7 @@ const nextButtons = document.querySelectorAll(".next");
 const ExpensesCheckbox = document.getElementById('expenses');
 const selectCompensation = document.getElementById("Settlement-type");
 const fieldsets = document.querySelectorAll("fieldset");
-let   selectedValue = null
+let = selectedValue = 1
 selectCompensation.addEventListener('change', function() {
   selectedValue = this.value;
 });
@@ -58,10 +58,10 @@ $(".next").click(function () {
   let next_fs = current_fs.next();
   
   if (current_fs.attr('id') === 'firstFieldset') {
-    if (!ExpensesCheckbox.checked && (selectedValue === "0" || selectedValue === "2")) {
+    if (!ExpensesCheckbox.checked && (selectedValue === "0" )) {
         next_fs = current_fs.next().next();
         $("#progressbar li").eq($("fieldset").index(current_fs.next())).addClass("active");
-    } else if (!ExpensesCheckbox.checked &&  !(selectedValue === "0" || selectedValue === "2")) {
+    } else if (!ExpensesCheckbox.checked &&  !(selectedValue === "0" )) {
       next_fs = current_fs.next().next().next();
       $("#progressbar li").eq($("fieldset").index(current_fs.next())).addClass("active");
       $("#progressbar li").eq($("fieldset").index(current_fs.next().next())).addClass("active");
@@ -70,7 +70,7 @@ $(".next").click(function () {
     }
   }
   if (current_fs.attr('id') === 'SecondFieldset') {
-    if (ExpensesCheckbox.checked &&  !(selectedValue === "0" || selectedValue === "2")) {
+    if (ExpensesCheckbox.checked &&  !(selectedValue === "0" )) {
       next_fs = current_fs.next().next();
       $("#progressbar li").eq($("fieldset").index(current_fs.next())).addClass("active");
     }
@@ -88,20 +88,20 @@ $(".previous").click(function () {
     current_fs = $(prevBtn).closest("fieldset");
     previous_fs = current_fs.prev();
     if (current_fs.attr('id') === 'FourthFieldset') {
-      if (ExpensesCheckbox.checked && (selectedValue === "0" || selectedValue === "2")) {
+      if (ExpensesCheckbox.checked && (selectedValue === "0" )) {
         previous_fs = current_fs.prev();
-      } else if (!ExpensesCheckbox.checked && !(selectedValue === "0" || selectedValue === "2")) {
+      } else if (!ExpensesCheckbox.checked && !(selectedValue === "0" )) {
         previous_fs = current_fs.prev().prev().prev();
         $("#progressbar li").eq($("fieldset").index(current_fs.prev())).removeClass("active");
         $("#progressbar li").eq($("fieldset").index(current_fs.prev().prev())).removeClass("active");
-      } else if (ExpensesCheckbox.checked && !(selectedValue === "0" || selectedValue === "2")) {
+      } else if (ExpensesCheckbox.checked && !(selectedValue === "0" )) {
         previous_fs = current_fs.prev().prev();
         $("#progressbar li").eq($("fieldset").index(current_fs.prev())).removeClass("active");
       }
     }
 
     if (current_fs.attr('id') === 'ThirdFieldset') {
-      if (!ExpensesCheckbox.checked && (selectedValue === "0" || selectedValue === "2")) {
+      if (!ExpensesCheckbox.checked && (selectedValue === "0" )) {
         previous_fs = current_fs.prev().prev();
         $("#progressbar li").eq($("fieldset").index(current_fs.prev())).removeClass("active");
       }
@@ -391,6 +391,8 @@ image.addEventListener('click', function () {
     } else {
         dropdown.style.display = 'block';
         dropdown2.style.display = 'none';
+        dropdown5.style.display = 'none';
+
 
     }
 });
@@ -402,10 +404,13 @@ const dropdown2 = document.getElementById('dropdown-content-Settlement2');
 image2.addEventListener('click', function () {
 	if (dropdown2.style.display === 'block') {
         dropdown2.style.display = 'none';
+        dropdown5.style.display = 'none';
 
     } else {
         dropdown2.style.display = 'block';
         dropdown.style.display = 'none';
+        dropdown5.style.display = 'none';
+
 
     }
 });
@@ -436,6 +441,23 @@ image4.addEventListener('click', function () {
     } else {
         dropdown4.style.display = 'block';
         dropdown3.style.display = 'none';
+
+    }
+});
+//====================================================================================================
+//====================================================================================================
+const image5 = document.getElementById('Settlement-type-Data');
+const dropdown5 = document.getElementById('dropdown-content-Settlement5');
+
+image5.addEventListener('click', function () {
+	if (dropdown5.style.display === 'block') {
+        dropdown2.style.display = 'none';
+        dropdown.style.display = 'none';
+
+    } else {
+        dropdown5.style.display = 'block';
+        dropdown2.style.display = 'none';
+        dropdown.style.display = 'none';
 
     }
 });
