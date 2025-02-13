@@ -2313,7 +2313,7 @@ in1.addEventListener("input", splitNumber);
             let value = this.value;
 
             // السماح فقط بالأرقام والنقطة العشرية
-            value = value.replace(/[^0-9.,]/g, '');
+            value = value.replace(/[^0-9.]/g, '');
 
             // منع وجود أكثر من نقطة عشرية
             let parts = value.split('.');
