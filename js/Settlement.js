@@ -250,8 +250,10 @@ document.addEventListener("DOMContentLoaded", () => {
           let rawValue = inputCell ? inputCell.value : valueCell.textContent;
           let value = parseFloat(rawValue.replace(/,/g, '') || 0);
 
-          if (!isNaN(value)) {
-              sum += value;
+          if (!isNaN(value) && value <= 1000000) {
+            sum += value;
+          }else if(value >= 1000000) {
+            sum += 1000000;
           }
       });
 
