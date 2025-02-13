@@ -524,7 +524,7 @@
                                                     </div>
 
 
-                                                </fieldset>
+                                            </fieldset>
                                                 <fieldset id="SecondFieldset">
                                                     <div class="form-card form-card1">
                                                         
@@ -536,7 +536,7 @@
                                                                         <thead>
                                                                             <tr>
                                                                                 <th style="min-width: 250px;"> البيان </th>
-                                                                                <th style="width: 100px;min-width: 100px;"> القيمة</th>
+                                                                                <th style="width: 110px;min-width: 110px;"> القيمة</th>
                                                                                 <th> الخدمة </th>
 
                                                                             </tr>
@@ -550,7 +550,7 @@
                                                                                         name="Expenses1"></textarea>
                                                                                 </td>
                                                                                 <td>
-                                                                                   100.00
+                                                                                    <input type="text" class="Table-inputs" name="ChangeOil" value="100.00">
                                                                                 </td>
                                                                                 <td>
                                                                                     تغيير الزيت
@@ -565,7 +565,8 @@
                                                                                         name="Expenses2"></textarea>
                                                                                 </td>
                                                                                 <td>
-                                                                                   75.00
+                                                                                    <input type="text" class="Table-inputs" name="TiresExpenses" value="75.00">
+
                                                                                 </td>
                                                                                 <td>
                                                                                     الإطارات 
@@ -580,7 +581,8 @@
                                                                                         name="Expenses3"></textarea>
                                                                                 </td>
                                                                                 <td>
-                                                                                  8.50
+                                                                                    <input type="text" class="Table-inputs" name="Transportation" value=" 8.50">
+
                                                                                 </td>
                                                                                 <td>
                                                                                     النقل 
@@ -595,7 +597,7 @@
                                                                                         name="Expenses4"></textarea>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <input class="Table-inputs" name="otherExpenses">
+                                                                                    <input type="text" class="Table-inputs" name="otherExpenses">
                                                                                 </td>
                                                                                 <td>
                                                                                     أخرى 
@@ -717,7 +719,7 @@
                                                                             <thead>
                                                                                 <tr>
                                                                                     <th style="min-width: 250px;"> البيان </th>
-                                                                                    <th style="width: 100px;min-width: 100px;"> القيمة</th>
+                                                                                    <th style="width: 110px;min-width: 110px;"> القيمة</th>
                                                                                     <th> الخدمة </th>
     
                                                                                 </tr>
@@ -731,7 +733,7 @@
                                                                                             name="compensation1"></textarea>
                                                                                     </td>
                                                                                     <td>
-                                                                                       100.00
+                                                                                        <input type="text" class="Table-inputs" name="SpareParts" value="100.00">
                                                                                     </td>
                                                                                     <td>
                                                                                       قطع الغيار
@@ -746,7 +748,7 @@
                                                                                             name="compensation2"></textarea>
                                                                                     </td>
                                                                                     <td>
-                                                                                       75.00
+                                                                                        <input type="text" class="Table-inputs" name="HandFare" value="75.00">
                                                                                     </td>
                                                                                     <td>
                                                                                         أجرة اليد
@@ -761,7 +763,7 @@
                                                                                             name="compensation3"></textarea>
                                                                                     </td>
                                                                                     <td>
-                                                                                      8.50
+                                                                                        <input type="text" class="Table-inputs" name="Transportation" value="75.00">
                                                                                     </td>
                                                                                     <td>
                                                                                         النقل 
@@ -776,7 +778,7 @@
                                                                                             name="compensation4"></textarea>
                                                                                     </td>
                                                                                     <td>
-                                                                                     <input class="Table-inputs " name="AdministrativeFees">
+                                                                                     <input type="text" class="Table-inputs " name="AdministrativeFees" value="">
                                                                                     </td>
                                                                                     <td>
                                                                                         رسوم إدارية 
@@ -791,7 +793,7 @@
                                                                                             name="compensation5"></textarea>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <input class="Table-inputs " name="otherCompensation">
+                                                                                        <input type="text" class="Table-inputs " name="otherCompensation">
                                                                                     </td>
                                                                                     <td>
                                                                                         أخرى 
@@ -2113,7 +2115,6 @@
    <script src="js/TechnicalCheckUp.js"></script>
    <script src="js/Loader.js"></script>
    <script>
-    ///////////////////////////////////////////////the-Modal-6-digit-vaildation/////////////////////
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector("#UnifiedContract-otc-form").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -2302,7 +2303,48 @@ in1.addEventListener("input", splitNumber);
             }, 2000); 
         });
     });
-</script>
+   </script>
+
+   <!-- سكربت يعمل على جزئية حقول ادخال القيمة في المصروفات و التعويضات -->
+   <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".Table-inputs").forEach(input => {
+        input.addEventListener("input", function () {
+            let value = this.value;
+
+            // السماح فقط بالأرقام والنقطة العشرية
+            value = value.replace(/[^0-9.,]/g, '');
+
+            // منع وجود أكثر من نقطة عشرية
+            let parts = value.split('.');
+            if (parts.length > 2) {
+                value = parts[0] + '.' + parts.slice(1).join('');
+            }
+
+            this.value = value; 
+        });
+
+        // التحقق من القيمة و تنسيقها  عند تغيير القيمة
+        function validateAndFormat() {
+            let num = parseFloat(this.value.replace(/,/g, '')); // تحويل النص إلى رقم
+
+            // التأكد من أن الرقم  (بين 0 و 1,000,000.00)
+            if (isNaN(num) || num < 0) {
+                num = 0;
+            } else if (num > 1000000) {
+                num = 1000000;
+            }
+
+            // تنسيق الرقم بحيث يحتوي على منزلتين عشريتين
+            this.value = num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        input.addEventListener("blur", validateAndFormat);
+
+        input.addEventListener("change", validateAndFormat);
+    });
+});
+   </script>
 </body>
 
 </html>
