@@ -17,75 +17,7 @@
     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/dripicons/2.0.0/webfont.min.css' />
 
     <!-- <link href="css/English_style.css" rel="styleSheet"> -->
-  <style>
-.password-modal-header {
-  flex-direction: column-reverse;
-  align-items: center;
-  border-bottom: none;}
-  .card-title {
-    color: #FF9626;
-    text-shadow: 1px 4px 4px rgb(187 187 187 / 68%);
-    font-size: 1rem;
-    letter-spacing: 0.32px;
-}
-.password-modal-header .close {
-  padding: 1rem;
-  padding-left: .1rem;
-  margin: -1rem -1rem -2.5rem auto;
-  direction: rtl;
-}
-.password-modal-body {
-  font-size: .8125rem;
-}
-
-.password-container {
-  border-radius: 8px;
-  border: 1px solid #39629C;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 15px;
-  margin: 0px 30px;
-  color: #000;
-}
-.pass-titles {
-  text-align: end;
-}
-.password-input {
-  border-radius: 8px;
-  border: 2px solid #FF9626;
-  text-align: center;
-  color: #39629C;
-  width: 100%;
-  direction: rtl;
-  height: 30px;
-}
-.requird-field {
-  justify-content: flex-end;
-  height: 20px;
-  text-align: end;
-  padding-right: 20px;
-  color: red;
-  font-size: 10px;
-}
-.password-save-button-row {
-  border: none;
-  flex-direction: row-reverse;
-  padding-left: 40px;
-}
-#passowrd-save {
-  padding-left: 25px;
-}
-.password-btn-custom {
-  color: #fff !important;
-  background-color: #FF9626 !important;
-  border-color: #FF9626;
-  padding-top: 0;
-  padding-bottom: 1px;
-  padding-right: 15px;
-  border-radius: 8px;
-  padding-left: 15px;
-}
-
-  </style>
+  
 </head>
 
 <body id="page-top" style="background-color:rgba(254, 248, 232, 1);">
@@ -1009,9 +941,16 @@
                                                                                     </th>
                                                                                     <th scope="col">
                                                                                         الفحص</th>
-                                                                                    <th scope="col">
-                                                                                        بنود الفحص</th>
-    
+                                                                                        <th scope="col">
+                                                                                            <div
+                                                                                                class="d-flex justify-content-center gap-3">
+                                                                                                <div class="col"> بنود الفحص
+                                                                                                </div>
+                                                                                                <div class="col-auto p-0">
+                                                                                                    <input type="checkbox">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
@@ -2114,7 +2053,7 @@
    <script src="js/Settlement.js"></script>
    <script src="js/TechnicalCheckUp.js"></script>
    <script src="js/Loader.js"></script>
-   <script>
+ <script>
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector("#UnifiedContract-otc-form").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -2146,7 +2085,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 let in1 = document.getElementById("UnifiedContract-otc-1"),
-  ins = document.querySelectorAll('input[type="number"]'),
+  ins = document.querySelectorAll('.UnifiedContract-OTP'),
   splitNumber = function (e) {
     let data = e.data || e.target.value; 
     if (!data) return; 
@@ -2303,7 +2242,7 @@ in1.addEventListener("input", splitNumber);
             }, 2000); 
         });
     });
-   </script>
+   </script> 
 
    <!-- سكربت يعمل على جزئية حقول ادخال القيمة في المصروفات و التعويضات -->
    <script>
