@@ -96,8 +96,6 @@ input[type="date"] {
     padding:5px 10px;
     position: relative;
     text-align: start;
-    direction: ltr;
-    color:red
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
