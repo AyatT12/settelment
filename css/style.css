@@ -17,7 +17,11 @@ body {
     font-size: .875rem;
     letter-spacing: 0.28px;
 }
-
+input[type="date"] {
+    padding: 5px 10px;
+    position: relative;
+    text-align: end;
+}
 nav {
     background-color: rgba(255, 206, 148, 1);
     padding: .5rem 1rem !important;
