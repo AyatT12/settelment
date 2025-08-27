@@ -17,11 +17,6 @@ body {
     font-size: .875rem;
     letter-spacing: 0.28px;
 }
-input[type="date"] {
-    padding: 5px 10px;
-    position: relative;
-    text-align: end;
-}
 nav {
     background-color: rgba(255, 206, 148, 1);
     padding: .5rem 1rem !important;
@@ -2735,4 +2730,18 @@ fieldset:disabled .btn {
 .form-select{
     background-position:left .75rem center;
     padding: .375rem .75rem .375rem 2.25rem !important;
+}
+
+/*  */
+input[type="date"] {
+  padding: 5px 10px;
+  position: relative;
+  text-align: end;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: block;
+  left: 10px;
+  position: absolute;
+
 }
