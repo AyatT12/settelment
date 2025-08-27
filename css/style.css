@@ -2745,17 +2745,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   left: 10px;
   position: absolute;
 }
-.inputs,
-.select-style,
-.textarea-inputs {
-  border-radius: 8px;
-  border: 2px solid #faa64d;
-  resize: none;
-  font-size: .875rem;
-  color: var(--primary-color);
-}
-.select-style:focus,
-.inputs:focus,
+
 .textarea-inputs:focus {
   box-shadow: none !important;
   border: 2px solid #facd9c !important;
