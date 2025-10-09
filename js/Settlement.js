@@ -287,48 +287,83 @@ var examinationArray = [];
 function examinationImgUpload() {
   var imgWrap = '';
   var uploadBtnBox = document.getElementById('examination-upload-box');
-  var errorMessageDiv = document.getElementById('examinationError');
+  var errorMessageDivs = document.getElementsByClassName('Examination-error-message');
 
   $('#examination-images').each(function () {
     $(this).on('change', function (e) {
       imgWrap = $(this).closest('.upload__box').find('.upload_img-wrap_inner');
-      var maxLength = 12;
+      var maxLength = 16;
       var files = e.target.files;
       var filesArr = Array.prototype.slice.call(files);
    
       if (examinationArray.length + filesArr.length >= maxLength) {
         uploadBtnBox.style.display = 'none';
-        errorMessageDiv.textContent = 'بحد أدنى صورة واحدة (۱) وحدأقصى اثني عشرة صورة (۱۲) ';
-        errorMessageDiv.style.display = 'block';
+
+        for (var j = 0; j < errorMessageDivs.length; j++) {
+          errorMessageDivs[j].textContent = 'الرجاء ... التحقق من جميع البنود و بحد اقصى 22 صورة';
+          errorMessageDivs[j].style.display = 'block';
+        }
       } else {
         uploadBtnBox.style.display = 'flex';
-        errorMessageDiv.style.display = 'none';
+
+        for (var j = 0; j < errorMessageDivs.length; j++) {
+          errorMessageDivs[j].style.display = 'none';
+        }
       }
 
       for (var i = 0; i < Math.min(filesArr.length, maxLength - examinationArray.length); i++) {
-        (function(f) {
-          if (!f.type.match('image.*')) {
-            return;
-          }
+        (function (f) {
+          console.log("Selected file type:", f.type);
 
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            var html =
-              "<div class='upload__img-box'><div style='background-image: url(" +
-              e.target.result +
-              ")' data-number='" +
-              $('.upload__img-close1').length +
-              "' data-file='" +
-              f.name +
-              "' class='img-bg'><div class='upload__img-close1'><img src='delete.png'></div></div></div>";
-            imgWrap.append(html);
-            examinationArray.push({
-              f: f,
-              url: e.target.result
+          if (f.type === 'image/heic' || f.type === 'image/heif' || f.name.endsWith('.heic') || f.name.endsWith('.heif')) {
+            console.log("Processing HEIC/HEIF file:", f.name); 
+
+            heic2any({
+              blob: f,
+              toType: "image/jpeg"
+            }).then(function (convertedBlob) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                var html =
+                  "<div class='upload__img-box'><div style='background-image: url(" +
+                  e.target.result +
+                  ")' data-number='" +
+                  $('.upload__img-close').length +
+                  "' data-file='" +
+                  f.name +
+                  "' class='img-bg'><div class='upload__img-close1'><i class='fa-regular fa-trash-can'></i></div>";
+
+                imgWrap.append(html);
+                examinationArray.push({
+                  f: f,
+                  url: e.target.result
+                });
+                console.log(examinationArray);
+              };
+              reader.readAsDataURL(convertedBlob); 
+            }).catch(function (err) {
+              console.error("Error converting HEIC/HEIF image:", err);
             });
-            console.log(examinationArray);
-          };
-          reader.readAsDataURL(f);
+          } else {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              var html =
+                "<div class='upload__img-box'><div style='background-image: url(" +
+                e.target.result +
+                ")' data-number='" +
+                $('.upload__img-close').length +
+                "' data-file='" +
+                f.name +
+                "' class='img-bg'><div class='upload__img-close1'><i class='fa-regular fa-trash-can'></i></div>";
+              imgWrap.append(html);
+              examinationArray.push({
+                f: f,
+                url: e.target.result
+              });
+              console.log(examinationArray);
+            };
+            reader.readAsDataURL(f); 
+          }
         })(filesArr[i]);
       }
     });
@@ -348,24 +383,24 @@ function examinationImgUpload() {
     $(this).parent().parent().remove();
     console.log(examinationArray);
 
-    var maxLength = 12;
+    var maxLength = 16;
 
-    
     if (examinationArray.length >= maxLength) {
       uploadBtnBox.style.display = 'none';
-      errorMessageDiv.textContent = 'بحد أدنى صورة واحدة (۱) وحدأقصى اثني عشرة صورة (۱۲) ';
-      errorMessageDiv.style.display = 'block';
+
+      for (var j = 0; j < errorMessageDivs.length; j++) {
+        errorMessageDivs[j].textContent = 'الرجاء ... التحقق من جميع البنود و بحد اقصى 22 صورة';
+        errorMessageDivs[j].style.display = 'block';
+      }
     } else {
       uploadBtnBox.style.display = 'flex';
-      errorMessageDiv.style.display = 'none';
+
+      for (var j = 0; j < errorMessageDivs.length; j++) {
+        errorMessageDivs[j].style.display = 'none';
+      }
     }
   });
 
-  $('body').on('click', '.img-bg', function (e) {
-    var imageUrl = $(this).css('background-image');
-    $('#preview-image').attr('src', imageUrl);
-    $('#image-preview').modal('show');
-  });
 }
 //====================================================================================================
 
@@ -382,88 +417,120 @@ $('body').on('click', '.img-bg', function (e) {
     'justify-content': 'center',
   });
 });
+
 //====================================================================================================
 //====================================================================================================
 const image = document.getElementById('hover-image-Settlement');
 const dropdown = document.getElementById('dropdown-content-Settlement');
 
-image.addEventListener('click', function () {
-	if (dropdown.style.display === 'block') {
-        dropdown.style.display = 'none';
-    } else {
-        dropdown.style.display = 'block';
-        dropdown2.style.display = 'none';
-        dropdown5.style.display = 'none';
+image.addEventListener("click", function(event) {
+  event.stopPropagation(); 
+  if (dropdown.style.display === "none" || dropdown.style.display === "") {
+    dropdown.style.display = "block";
+    dropdown2.style.display = "none";
+  } else {
+    dropdown.style.display = "none";
+  }
+});
 
+document.addEventListener("click", function(event) {
+  if (!image.contains(event.target) && !dropdown.contains(event.target)) {
+    dropdown.style.display = "none";
+  }
+});
 
-    }
+dropdown.addEventListener("click", function(event) {
+  event.stopPropagation();
 });
 //====================================================================================================
 //====================================================================================================
 const image2 = document.getElementById('contract-value-Settlement2');
 const dropdown2 = document.getElementById('dropdown-content-Settlement2');
 
-image2.addEventListener('click', function () {
-	if (dropdown2.style.display === 'block') {
-        dropdown2.style.display = 'none';
-        dropdown5.style.display = 'none';
+image2.addEventListener("click", function(event) {
+  event.stopPropagation(); 
+  if (dropdown2.style.display === "none" || dropdown2.style.display === "") {
+    dropdown2.style.display = "block";
+    dropdown.style.display = "none";
+  } else {
+    dropdown2.style.display = "none";
+  }
+});
 
-    } else {
-        dropdown2.style.display = 'block';
-        dropdown.style.display = 'none';
-        dropdown5.style.display = 'none';
+document.addEventListener("click", function(event) {
+  if (!image2.contains(event.target) && !dropdown2.contains(event.target)) {
+    dropdown2.style.display = "none";
+  }
+});
 
-
-    }
+dropdown2.addEventListener("click", function(event) {
+  event.stopPropagation();
 });
 //====================================================================================================
 //====================================================================================================
 const image3 = document.getElementById('contract-value-Settlement3');
 const dropdown3 = document.getElementById('dropdown-content-Settlement3');
 
-image3.addEventListener('click', function () {
-	if (dropdown3.style.display === 'block') {
-        dropdown3.style.display = 'none';
+image3.addEventListener("click", function(event) {
+  event.stopPropagation(); 
+  if (dropdown3.style.display === "none" || dropdown3.style.display === "") {
+    dropdown3.style.display = "block";
+    dropdown4.style.display = "none";
+  } else {
+    dropdown3.style.display = "none";
+  }
+});
 
-    } else {
-        dropdown3.style.display = 'block';
-        dropdown4.style.display = 'none';
+document.addEventListener("click", function(event) {
+  if (!image3.contains(event.target) && !dropdown3.contains(event.target)) {
+    dropdown3.style.display = "none";
+  }
+});
 
-    }
+dropdown3.addEventListener("click", function(event) {
+  event.stopPropagation();
 });
 //====================================================================================================
 //====================================================================================================
 const image4 = document.getElementById('contract-value-Settlement4');
 const dropdown4 = document.getElementById('dropdown-content-Settlement4');
+image4.addEventListener("click", function(event) {
+  event.stopPropagation(); 
+  if (dropdown4.style.display === "none" || dropdown4.style.display === "") {
+    dropdown4.style.display = "block";
+    dropdown3.style.display = "none";
+  } else {
+    dropdown4.style.display = "none";
+  }
+});
 
-image4.addEventListener('click', function () {
-	if (dropdown4.style.display === 'block') {
-        dropdown4.style.display = 'none';
+document.addEventListener("click", function(event) {
+  if (!image4.contains(event.target) && !dropdown4.contains(event.target)) {
+    dropdown4.style.display = "none";
+  }
+});
 
-    } else {
-        dropdown4.style.display = 'block';
-        dropdown3.style.display = 'none';
-
-    }
+dropdown4.addEventListener("click", function(event) {
+  event.stopPropagation();
 });
 //====================================================================================================
 //====================================================================================================
-const image5 = document.getElementById('Settlement-type-Data');
-const dropdown5 = document.getElementById('dropdown-content-Settlement5');
+// const image5 = document.getElementById('Settlement-type-Data');
+// const dropdown5 = document.getElementById('dropdown-content-Settlement5');
 
-image5.addEventListener('click', function () {
-	if (dropdown5.style.display === 'block') {
-        dropdown5.style.display = 'none';
-        dropdown2.style.display = 'none';
-        dropdown.style.display = 'none';
+// image5.addEventListener('click', function () {
+// 	if (dropdown5.style.display === 'block') {
+//         dropdown5.style.display = 'none';
+//         dropdown2.style.display = 'none';
+//         dropdown.style.display = 'none';
 
-    } else {
-        dropdown5.style.display = 'block';
-        dropdown2.style.display = 'none';
-        dropdown.style.display = 'none';
+//     } else {
+//         dropdown5.style.display = 'block';
+//         dropdown2.style.display = 'none';
+//         dropdown.style.display = 'none';
 
-    }
-});
+//     }
+// });
 //====================================================================================================
 
 $('#examination-images').click(function(){
@@ -501,27 +568,51 @@ UploadSigntaurePic.addEventListener("click", function () {
   imageUpload.click();
 });
 
-imageUpload.addEventListener("change", function () {
+imageUpload.addEventListener("change", async function () {
   const file = imageUpload.files[0];
-  if (file) {
+  if (!file) return;
+
+  const isHEIC = file.type === "image/heic" || file.type === "image/heif" || file.name.toLowerCase().endsWith(".heic") || file.name.toLowerCase().endsWith(".heif");
+
+  const handleSignaturePreview = (dataURL) => {
+    const previewImage = document.createElement("img");
+    previewImage.classList.add("preview-image");
+    previewImage.src = dataURL;
+    previewImage.id = "signatureImage";
+    imgeURL = dataURL;
+
+    mainContainer.innerHTML = '<i class="fa-regular fa-circle-xmark xmark-icon"></i>';
+    uploadContainer.innerHTML = "";
+    uploadContainer.appendChild(previewImage);
+    uploadContainer.classList.add("previewing");
+  };
+
+  if (isHEIC) {
+    try {
+      const convertedBlob = await heic2any({
+        blob: file,
+        toType: "image/jpeg",
+        quality: 0.9,
+      });
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        handleSignaturePreview(e.target.result);
+      };
+      reader.readAsDataURL(convertedBlob);
+
+    } catch (err) {
+      console.error("HEIC conversion failed", err);
+      alert("فشل تحويل صورة HEIC، يرجى اختيار صورة بصيغة أخرى.");
+    }
+  } else {
     const reader = new FileReader();
     reader.onload = function (e) {
-      const imageURL = e.target.result;
-      const previewImage = document.createElement("img");
-      previewImage.classList.add("preview-image");
-      previewImage.src = imageURL;
-      previewImage.id = "signatureImage";
-      imgeURL = imageURL;
-      mainContainer.innerHTML =
-        '<i class="fa-regular fa-circle-xmark"  style="cursor: pointer;"></i>';
-      uploadContainer.innerHTML = "";
-      uploadContainer.appendChild(previewImage);
-      uploadContainer.classList.add("previewing");
+      handleSignaturePreview(e.target.result);
     };
     reader.readAsDataURL(file);
   }
 });
-
 removeSignatureImg.addEventListener("click", function (event) {
   event.preventDefault();
   if (uploadContainer.firstChild) {
