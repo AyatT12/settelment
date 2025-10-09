@@ -17,6 +17,7 @@ body {
     font-size: .875rem;
     letter-spacing: 0.28px;
 }
+
 nav {
     background-color: rgba(255, 206, 148, 1);
     padding: .5rem 1rem !important;
@@ -26,6 +27,7 @@ nav {
 .on-mobile {
     text-align: end;
 }
+
 .img-profile {
     margin-right: 12px;
     height: 53px;
@@ -49,16 +51,18 @@ nav {
     resize: none;
     font-size: .875rem;
 }
+
 .inputs:focus,
 .textarea-inputs:focus,
 .form-select-driver:focus,
 .form-control2:focus,
 .form-control1:focus,
-.form-select-last:focus ,
-.form-select-settel:focus  {
+.form-select-last:focus,
+.form-select-settel:focus {
     box-shadow: none !important;
     border: 2px solid #facd9c !important;
 }
+
 .textarea-inputs {
     /* border-top: none; */
     /* min-height: calc(3em + 0.75rem + calc(var(--bs-border-width)* 2)) !important; */
@@ -76,9 +80,11 @@ nav {
     width: 90px;
     text-align: center;
 }
-#days-number-input{
+
+#days-number-input {
     width: 110px;
 }
+
 .form-control2 {
     text-align: center;
     width: 120px;
@@ -89,14 +95,9 @@ nav {
     /* border-top: none; */
     text-align: right;
     width: 100%;
-   
+
 }
 
-.form-select-settel {
-    /* border-top: none; */
-   
-    text-align: end;
-}
 
 .form-select-selling {
     text-align: right;
@@ -117,7 +118,24 @@ nav {
     box-shadow: 0px 9px 20px 0rem #ff962610;
     /* border-top: none; */
 }
-
+/* global */
+.centered-input-label{
+    padding-top: calc((35px - 1.5em) / 2);
+}
+.form-select {
+     background-position: left .75rem center !important;
+     direction: rtl;
+     padding: .2rem .75rem .2rem 2rem;
+     height: 35px;
+}
+.modal-header .btn-close {
+    background: url(../img/cancel-2.svg) !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    opacity: 1;
+    width: .5em;
+    border-radius: 0;
+}
 /*======================================================================
 //           ========================== account style ==============================================================================================
 //          =====================================================================*/
@@ -336,7 +354,11 @@ nav {
     flex-direction: column-reverse;
     background-color: #FCFCFC;
 }
-
+.sinature-Btn-Card {
+    cursor: pointer;
+    box-shadow: 1px 0.5px 8px 0px #FF962633;
+    border-radius: 8px;
+}
 .title_signture {
     display: flex;
     justify-content: center;
@@ -409,17 +431,24 @@ nav {
 #SettlementForm {
     text-align: end;
     position: relative;
-    /* margin-top: 10px; */
-    height: 88%;
 }
 
 .invalid-feedback {
     color: red;
-    font-size: 13px;
+    display: block;
+    font-size: 12px;
 }
-
+@media (max-width:992px) {
+    .invalid-feedback {
+    font-size: 10px;
+}
+.requird-field {
+       font-size: 10px;
+ 
+}
+}
 .content-row {
-    /* width: 100%; */
+    height:100%;
     align-items: center;
     justify-content: center;
 }
@@ -429,12 +458,13 @@ nav {
     border: 1px solid #39629c9c;
     border-radius: 7px;
     box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
-    padding: 20px 10px 10px 10px;
+    padding: 18px;
     box-sizing: border-box;
-    width: 94%;
+    width: 100%;
     position: relative;
-    margin: 5px;
-    margin-bottom: 25px;
+    height: 62vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .layout-row {
@@ -460,6 +490,7 @@ nav {
 .main-card {
     box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15) !important;
     height: 100%;
+    justify-content: space-between;
 }
 
 fieldset {
@@ -478,8 +509,6 @@ fieldset {
     width: 100%;
     margin: 0;
     position: relative;
-    height: 90%;
-
 }
 
 .form-card {
@@ -660,8 +689,8 @@ textarea {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    position: sticky;
-    top: 0;
+    /* position: sticky;
+    top: 0; */
     /* /// background-color:rgba(223, 221, 221, 0.274);*/
 }
 
@@ -822,14 +851,8 @@ footer {
 
 /* ///////////////////////////////////////////extension1////////////////////////////////////// */
 #extensionTable tr {
-    cursor: auto;
-}
-
-#extensionTable tr .name {
     cursor: pointer;
-
 }
-
 
 
 /* ////////////////////////////////////////extension2////////////// */
@@ -845,15 +868,15 @@ footer {
     background-color: white;
     padding: 10px;
     font-size: 0.75rem;
-    box-shadow: 0px 2px 4px 0px #39629C3D;
 }
 
 .dropdown-content-extension p {
     margin-bottom: .4rem !important;
 }
-.dropdown-content-extension{
+
+.dropdown-content-extension {
     width: fit-content;
-    min-width: 200px;
+    min-width: 255px;
     right: 0px;
 }
 
@@ -862,13 +885,6 @@ footer {
     text-align: end;
 }
 
-.requird-field {
-    /* margin-bottom: 0px; */
-    font-size: 10px;
-    color: red;
-    width: fit-content;
-    display: none;
-}
 
 .requird-field-row-last {
     justify-content: flex-end;
@@ -926,6 +942,9 @@ footer {
 
 /* =========================================================================Settlement ==================================================== */
 /* Hide all except first fieldset */
+#SettlementForm .form-card{
+    height: 62vh;
+}
 #SettlementForm fieldset:not(:first-of-type) {
     display: none;
 }
@@ -935,9 +954,6 @@ footer {
     flex-direction: row-reverse;
 }
 
-#SettlementForm {
-    height: 97%;
-}
 
 /* action Buttons*/
 #SettlementForm .action-button {
@@ -1099,9 +1115,7 @@ footer {
     cursor: pointer;
 }
 
-/* .form-card5-settl{
-    gap:15px;
-} */
+
 
 /* /////////////////////////////////////SettlementCard2//////////////////////////////////// */
 .expensesDiv {
@@ -1210,7 +1224,6 @@ flex-direction: row-reverse;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
-    padding-bottom: 100%;
     width: 100%;
     height: 100%;
     background-size: contain;
@@ -1260,8 +1273,10 @@ flex-direction: row-reverse;
     color: #000;
 }
 
- @media (min-width:1544px) {
-    .upload__img-box ,.upload-container-checking {
+@media (min-width:1544px) {
+
+    .upload__img-box,
+    .upload-container-checking {
         width: 90px;
         height: 90px;
     }
@@ -1271,7 +1286,8 @@ flex-direction: row-reverse;
         height: 115px;
     } */
 
-} 
+}
+
 /***************************************************SettlementCard5**************************************************/
 .payment-input {
     border: 1px solid #faa64d;
@@ -1281,9 +1297,14 @@ flex-direction: row-reverse;
     border-radius: 8px;
     border: 1px solid #faa64d;
     border-top: none;
-   
-}
 
+}
+/***************************************************ميديا شاشة التسوية **************************************************/
+@media (max-height: 786px) {
+    #SettlementForm .form-card {
+        height: 55vh;
+    }
+}
 /***************************************************cards-media**************************************************/
 
 @media (max-width: 320px) {
@@ -1327,13 +1348,6 @@ flex-direction: row-reverse;
 
 }
 
-@media (min-height: 650px) {
-
-
-    .form-card5-settl {
-        gap: .2rem;
-    }
-}
 
 @media(min-height:700px) {
 
@@ -1350,9 +1364,6 @@ flex-direction: row-reverse;
     /* .seacrh-row {
         padding-top: 20px;
     } */
-
-
-
 }
 
 @media (max-width: 768px) {
@@ -1463,130 +1474,48 @@ flex-direction: row-reverse;
 
 /* ///////////////////////////////////////////////settlement////////////////////////////////////////////////////////////////////////// */
 @media (max-height:550px) {
-    .form-card {
+    /* .form-card {
         height: fit-content;
-    }
+    } */
 
     #SettlementForm fieldset {
         height: fit-content;
     }
 }
 
-@media (max-height:650px) {
 
-    .SettlementCard1 {
-        gap: 10px
-    }
-
-    .form-card5-settl {
-        gap: 10px
-    }
-
-}
 
 @media (min-height:700px) {
-    /* .data-row-Settl {
-
-        padding-top: 1.1rem;
-    } */
-
-    .expensesRow {
-        min-height: 40vh;
-    }
-
     .compensation-Row {
         min-height: 35vh;
-    }
-
-    .form-card5-settl {
-        gap: .6rem;
     }
 }
 
 @media (min-height:750px) {
-    /* .data-row-Settl {
-
-        padding-top: 1.5rem;
-    } */
-
-    .expensesRow {
-        min-height: 45vh;
-    }
 
     .compensation-Row {
         min-height: 40vh;
     }
-
-    .form-card5-settl {
-        gap: 1rem;
-    }
-
-
 }
 
-@media (min-height:800px) {
-    /* .data-row-Settl {
-
-        padding-top: 2rem;
-    } */
-
-    .form-card5-settl {
-        gap: 1.5rem;
-    }
-
-
-}
 
 @media (min-height:850px) {
-    /* .data-row-Settl {
-
-        padding-top: 2.3rem;
-    } */
-
-    .expensesRow {
-        min-height: 48vh;
-    }
 
     .compensation-Row {
         min-height: 44vh;
     }
-
-    .form-card5-settl {
-        gap: 1.8rem;
-    }
-
-
 }
 
 @media (min-height:900px) {
-    /* .data-row-Settl {
-
-        padding-top: 2rem;
-    } */
-
-    .expensesRow {
-        min-height: 50vh;
-    }
-
     .compensation-Row {
         min-height: 45vh;
     }
-
-    .form-card5-settl {
-        gap: 2rem;
-    }
-
-
 }
 
 @media (max-width:740px) {
     .contract-Settl-row {
         flex-wrap: wrap;
     }
-
-    /* .seacrh-icon-col1{
-        padding-bottom: 20px;
-    } */
 }
 
 @media (min-width:1200px) and (max-width:1300px) {
@@ -1894,88 +1823,6 @@ flex-direction: row-reverse;
 
 
 
-/*######################################################## */
-.password-modal-header {
-    flex-direction: column-reverse;
-    align-items: center;
-    border-bottom: none;
-}
-
-.card-title {
-    color: #FF9626;
-    text-shadow: 1px 4px 4px rgb(187 187 187 / 68%);
-    font-size: 1.2rem;
-    letter-spacing: 0.32px;
-}
-
-.password-modal-header .close {
-    padding: 1rem;
-    padding-left: .1rem;
-    margin: -1rem -1rem -2.5rem auto;
-    direction: rtl;
-}
-
-.password-modal-body {
-    font-size: .8125rem;
-}
-
-.password-container {
-    border-radius: 8px;
-    border: 1px solid #39629C;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    padding: 15px;
-    margin: 0px 30px;
-    color: #000;
-}
-
-.pass-titles {
-    text-align: end;
-}
-
-.password-input {
-    border-radius: 8px;
-    border: 2px solid #FF9626;
-    text-align: center;
-    color: #39629C;
-    width: 100%;
-    direction: rtl;
-    height: 30px;
-}
-
-.requird-field {
-    justify-content: flex-end;
-    height: 20px;
-    text-align: end;
-    padding-right: 20px;
-    color: red;
-    font-size: 10px;
-}
-
-.password-save-button-row {
-    border: none;
-    flex-direction: row-reverse;
-    padding-left: 40px;
-}
-
-#passowrd-save {
-    padding-left: 25px;
-}
-
-.password-btn-custom {
-    color: #fff !important;
-    background-color: #FF9626 !important;
-    border-color: #FF9626;
-    padding-top: 0;
-    padding-bottom: 1px;
-    padding-right: 15px;
-    border-radius: 8px;
-    padding-left: 15px;
-}
-
-.passowrd-modal-content {
-    border: 3px solid #FF9626;
-    border-radius: 10px;
-}
 
 /*######################################################## */
 
@@ -2031,6 +1878,7 @@ flex-direction: row-reverse;
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .spinner-payment-check {
     background-color: white;
     padding: 0px 70px !important;
@@ -2058,9 +1906,22 @@ flex-direction: row-reverse;
 
 
 /* *******************************************************************************تعديل جدول الفحص الظاهري****************************************************************************************************** */
-
+.options-col{
+    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    gap: 5px;
+}
+.Checkup-table td{
+    vertical-align: middle;
+}
+.check-table-notes{
+    resize: none;
+    height: 30px;
+}
 #referenceDiv {
-    height: 52vh;
+    height: 56vh;
     min-height: 450px;
     display: flex;
     flex-direction: column;
@@ -2076,6 +1937,7 @@ flex-direction: row-reverse;
     text-align: right;
     /* min-width: 30%; */
 }
+
 .check-table-notes {
     border: none;
     height: 40px;
@@ -2084,6 +1946,7 @@ flex-direction: row-reverse;
     padding: 0 0.75rem;
 
 }
+
 .table-select-style {
     border: 1px solid #faa64d;
     border-radius: 8px;
@@ -2095,37 +1958,30 @@ flex-direction: row-reverse;
     box-shadow: none !important;
     border: 2px solid #facd9c !important;
 }
+
 input[type=checkbox] {
     width: 20px;
     height: 20px;
 }
+
 @media (max-width : 425px) {
     #SettlementForm {
         height: 100%;
     }
 }
-@media (max-width : 1305px) {
-   .virtual-check-table , .virtual-check-data{
-    width: 100%;
-   }
-}
+
+/* @media (max-width : 1305px) {
+
+    .virtual-check-table,
+    .virtual-check-data {
+        width: 100%;
+    }
+} */
 
 .check-table td {
     color: #000000;
 }
-/* تعديل اتجاه مدخل التاريخ حسب اللغة  */
-input[type="date"] {
-    padding: 5px 10px;
-    position: relative;
-    text-align: end;
-}
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: block;
-    left: 10px;
-    position: absolute;
-
-}
 /* تعديل صور ال pdf */
 
 .pdf_img {
@@ -2168,14 +2024,23 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 /*  */
-@media(max-width:700px){
-    
-.form-card {
-    height: auto;
-}
+/* @media(max-width:700px) {
 
-}
+    .form-card {
+        height: auto;
+    }
+
+} */
+
 /************************************************************************* الفحص الفني * */
+@media (max-width:520px) {
+    .TechnicalCheckUp_Btn{
+        padding: 8px;
+    }
+    .TechnicalCheckUp_Btn_Title{
+        display: none;
+    }
+}
 .car-container {
     position: relative;
     display: flex;
@@ -2207,28 +2072,34 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: #FF992E !important;
     color: white !important;
 }
+
 .undo-redo-btn {
     color: #fff;
     background-color: #FF9626;
     border: none;
     border-radius: 8px;
 }
+
 .modal-content {
     border: 3px solid #FF9626;
     border-radius: 10px;
 }
+
 /******************************************************** التوقيع */
-.signature-modal-content  , .IDphoto-modal-content{
+.signature-modal-content,
+.IDphoto-modal-content {
     width: 300px;
 }
 
-.Signature-modal-body , .IDphoto-modal-body {
+.Signature-modal-body,
+.IDphoto-modal-body {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.SignatureCard ,.ID-Card{
+.SignatureCard,
+.ID-Card {
     position: relative;
     width: 230px;
     height: 250px;
@@ -2241,7 +2112,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: rgba(255, 150, 38, 0.08);
     cursor: url(img/pen.jpg)
 }
-.upload-container , .ID-upload-container{
+
+.upload-container,
+.ID-upload-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -2249,23 +2122,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     justify-content: center;
     align-items: center;
 }
-#removeSignatureImg  , #removeIDImg{
+
+#removeSignatureImg,
+#removeIDImg {
     position: absolute;
     top: 5px;
     left: 10px;
     font-size: 20px;
 }
+
 /* /////////////////////////////////////version2////////////////////////////////////////////////////// */
 /* ستايل عام علي كل الصفحات */
-.card-tables{
-    justify-content: flex-start;
-}
-.scroll-table-div  {
-    height: 53vh;
+
+.scroll-table-div {
+    height: 58vh;
     min-height: 400px;
     overflow: auto;
     /* width: 1540px; */
 }
+
 .scroll-table-div::-webkit-scrollbar {
     width: 5px !important;
     border-radius: 8px;
@@ -2292,7 +2167,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background: #3e4958;
 }
 
-.tables-style{
+.tables-style {
     border-collapse: separate;
     text-align: center;
     direction: ltr;
@@ -2300,16 +2175,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 100%;
 }
 
-.tables-style thead{
+.tables-style thead {
     text-align: center;
     direction: ltr;
     font-size: .9375rem;
     width: 100%;
 }
-.firstTable-col{
+
+.firstTable-col {
     text-align: end;
-   
+
 }
+
 /* .tenat{
     text-align: end;
 } */
@@ -2318,20 +2195,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-shadow: 1px 0px 0px 0px rgb(255 242 228), 2px 3px 0px 1px rgb(255 159 64 / 18%);
     border-radius: 0px 8px 8px 0px
 }
+
 .tables-style th:first-child {
     box-shadow: 1px 0px 0px 0px rgb(255 242 228), 2px 3px 0px 1px rgb(255 159 64 / 18%);
     border-radius: 8px 0px 0px 8px
 }
+
 .tables-style th {
     padding: 5px 5px;
     background: #fff2e4;
-    color:#39629C;
+    color: #39629C;
     z-index: 1;
     box-shadow: 20px 0px 0px 0px rgb(255 242 228), 2px 3px 0px 1px rgb(255 159 64 / 18%)
-
 }
 
-.tables-style td  {
+.tables-style td {
     border-radius: 8px;
     border-width: 10px 0;
     border-color: white;
@@ -2342,13 +2220,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-shadow: 0px 8px 8px -4px rgba(255, 159, 64, 0.08), 0px 4px 6px -4px rgba(255, 159, 64, 0.04);
 
 }
- .number{
+
+.number {
     min-width: auto !important;
- }
-.tables-style tbody tr  {
+}
+
+.tables-style tbody tr {
     box-shadow: 0px 3px 2px 0px #ff962629;
     border-radius: 8px;
 }
+
 .tables-style tbody {
     width: 100%;
 }
@@ -2356,48 +2237,59 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .tenat p {
     margin-bottom: .4rem;
 }
-.tenat{
+
+.tenat {
     width: 300px;
 }
-.active{
-    color:#39629C;
+
+.active {
+    color: #39629C;
 }
-.tenant{
-    color:#70CC33;
+
+.tenant {
+    color: #70CC33;
 }
+
 .status {
     height: 10px;
     width: 10px;
     border-radius: 50%;
 }
- .green-state{
+
+.green-state {
     background: #70CC33;
 }
- .blue-state{
+
+.blue-state {
     background: #39629C;
 }
-.red-state{
+
+.red-state {
     background: #aa0d02;
 }
-.orange-state{
+
+.orange-state {
     background: #FF9626;
 }
-.later-state{
+
+.later-state {
     background: #70399C;
 }
-.status-number{
+
+.status-number {
     display: flex;
-align-items: center;
-justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
+
 .date-col {
     font-size: 12px;
 
-padding-right:0px ;
+    padding-right: 0px;
 }
 
 @media (max-width:425px) {
-    .tables-style{
+    .tables-style {
         font-size: .8rem;
     }
 
@@ -2429,205 +2321,130 @@ padding-right:0px ;
         border-spacing: 0 10px;
     }
 }
-@media(min-width:425px){
+
+@media(min-width:425px) {
     .tables-style th {
         min-width: 120px;
     }
+
     .tables-style th:last-child {
         min-width: auto;
     }
-    
+
 }
+
 @media (max-width :600px) {
-    .not-in-mobile{
+    .not-in-mobile {
         display: none;
     }
 }
+
 @media (min-width : 1600px) {
-    .licence-dates{
-        gap: 40px;  
+    .licence-dates {
+        gap: 40px;
     }
 }
+
 /*  ستايل صفحة بيانات المستأجر التفصيلية  */
 .data-col {
     flex-direction: row-reverse;
     flex-wrap: wrap;
 }
-#Table-details{
-height: 47vh;
+
+#Table-details {
+    height: 47vh;
 }
-.licence-dates , .licence-dates-settel{
+
+.licence-dates,
+.licence-dates-settel {
     font-size: 12px;
     margin: 0;
     justify-content: end;
-    
+
 }
+
 /* التمديد */
-#contract-extension2-form .form-card{
-    height: 100%;
+.contract-id{
+    white-space: nowrap;
 }
+
 @media (min-width:767px) {
-    #dropdown-content-extension2{
-        min-width: 300px;
+    #dropdown-content-extension2 {
+        min-width: 350px;
+    }
+}
+@media (max-width:1500px) {
+    .licence-dates-settel{
+      flex-direction: column-reverse;
     }
 }
 /* تقرير مالي  */
 
-#reportTable p{
+#reportTable p {
     margin-bottom: .4rem;
 }
+
 /* تسوية */
-.settelDate{
+.settelDate {
     padding: 0px 5px;
 }
-#SettlementForm .form-card{
-    height: 100%;
-    margin-bottom: 10px;
-    gap: 10px;
-}
+
+
 @media (min-width:767px) {
-    #dropdown-content-Settlement , #dropdown-content-Settlement3{
-        min-width: 300px;
+
+    #dropdown-content-Settlement,
+    #dropdown-content-Settlement3 {
+        min-width: 380px;
     }
 }
-.compensation-Div-textarea textarea , .expensesDiv-textarea textarea{
-    height:50vh ;
+
+.compensation-Div-textarea textarea,
+.expensesDiv-textarea textarea {
+    height: 50vh;
     min-height: 300px;
 }
+
 /* العهدة */
-#custody-table-div{
+#custody-table-div {
     height: 40vh;
 }
 
-/* new style  */
-.sinature-Btn-Card {
-    cursor: pointer;
-    box-shadow: 1px 0.5px 8px 0px #FF962633;
-    border-radius: 8px;
+
+
+/* /////////////////////////////////////OTP-modal////////////////////////////////////////////////////// */
+
+.OTP-modal-version2 {
+    flex-direction: row-reverse;
+    border: none;
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-.otc label {
-    border: 0 !important;
-    clip: rect(1px, 1px, 1px, 1px) !important;
-    -webkit-clip-path: inset(50%) !important;
-    clip-path: inset(50%) !important;
-    height: 1px !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    position: absolute !important;
-    width: 1px !important;
-    white-space: nowrap !important;
-}
-.btn.disabled,
-.btn:disabled,
-fieldset:disabled .btn {
+
+.otp-modal2-btns #confirmButton:disabled {
+    background-color: #6b6b6b;
     color: white;
-    pointer-events: none;
-    background-color: #4A4A4A;
-    border-color: #4A4A4A !important;
-    opacity: var(--bs-btn-disabled-opacity);
-}
-.requird-field-row{
-    justify-content: flex-end;
-    height: 30px;
-}
-.otc {
-    position: relative;
-    margin: 0 auto;
+    border: 2px solid #6b6b6b !important;
 }
 
-.otc fieldset {
-    border: 0;
-    padding: 0;
-    margin: 0;
+.otp-modal2-btns .cancel:disabled {
+    background-color: #ffffff;
+    color: #454343;
+    border: 2px solid #6b6b6b !important;
 }
 
-.modal-content {
-    border: 3px solid #FF9626;
-    border-radius: 10px;
+.otp-modal2-btns .cancel {
+    border-color: #FF9626;
+    background-color: white;
+    color: #FF9626;
 }
+
+
+
 
 .otc legend {
-    margin: 0 auto 1em;
+    margin: 0 auto 0em;
     color: #000;
     font-size: .875rem;
 }
-.UnifiedContract-header{
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    border: none;
-}
-.UnifiedContract-close{
-  background:transparent url(../img/CloseModal.svg) center/1.7em auto no-repeat;
-  opacity: 1;
 
-}
-.custom-img-button{
-    min-width: 95px;
-    height: 100%;
-    border-radius: 8px;
-    padding: 15px;
-    gap: 10px;
-    box-shadow: 0px 1px 4px 0px rgb(255,150,38,25%);
-    border: none;
-    background-color:transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-.custom-img-button:hover{
-    box-shadow: 0px 3px 4px 0px rgb(255,150,38,40%);
-    background-color:rgb(255, 150, 38 , 30%);
-
-}
-.loader {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    position: relative;
-    animation: rotate 1s linear infinite
-  }
-  .loader::before {
-    content: "";
-    box-sizing: border-box;
-    position: absolute;
-    inset: 0px;
-    border-radius: 50%;
-    border: 5px solid #FF9626;
-    animation: prixClipFix 2s linear infinite ;
-  }
-.small-loader{
-    width: 29px;
-    height: 29px;
-}
-  @keyframes rotate {
-    100%   {transform: rotate(360deg)}
-  }
-
-  @keyframes prixClipFix {
-      0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
-      25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
-      50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-      75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
-      100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
-  }
-  .UnifiedContract-btn{
-    gap: 10px;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-  }
-  .loader-active{
-    background-color: white;
-    border-color: #FF9626;
-  }
-/* edited style  */
 .OTP {
     width: 0.8599999999999999em;
     margin: 0.1em;
@@ -2642,8 +2459,37 @@ fieldset:disabled .btn {
     border-bottom: 2px solid #39629C;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
-/* *******************************************************************************تعديل  المصروفات ****************************************************************************************************** */
+/* 2 groups of 3 items */
+input[type="number"]:nth-child(n+4) {
+    order: 2;
+}
+/****************************************************************************** Virtual Inspection Error */
+
+@media (max-width:1199px) {
+   #error-message{
+    display: none !important;
+   }
+}
+/********************************************************************************تعديل  المصروفات و التعويضات ****************************************************************************************************** */
+.check-table-notes{
+    background: transparent !important;
+}
+.check-table-notes:focus{
+ border: none;
+ background: transparent !important;
+ box-shadow: none;
+}
+.Table-inputs:focus{
+ border: none;
+ background: transparent !important;
+ box-shadow: none;
+}
 .TablesReferenceDiv {
     height: 35vh;
     min-height: 415px;
@@ -2703,7 +2549,7 @@ fieldset:disabled .btn {
 #Expenses-upload-box , #compensation-upload-box{
     justify-content: center;
 }
-.upload__img-close1 i {
+.upload__img-close1  {
     font-size: 20px;
     background: white;
     padding: 1px;
@@ -2711,8 +2557,8 @@ fieldset:disabled .btn {
 }
 .Attatchments-img-box{
     background-color: transparent;
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
 }
 .Expenses-compensation-Upload{
     background-color: transparent;
@@ -2727,12 +2573,7 @@ fieldset:disabled .btn {
 }
 
 /* *******************************************************************************تعديل  ستايل الدروب داون  ****************************************************************************************************** */
-.form-select{
-    background-position:left .75rem center;
-    padding: .375rem .75rem .375rem 2.25rem !important;
-}
-
-/*  */
+/* تعديل اتجاه مدخل التاريخ حسب اللغة  */
 input[type="date"] {
   padding: 5px 10px;
   position: relative;
@@ -2745,7 +2586,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   left: 10px;
   position: absolute;
 }
-
-.textarea-inputs:focus {
-  box-shadow: none !important;
-  border: 2px solid #facd9c !important;
+/* gloabal pages layout   */
+.form-card {
+    height: 70vh;
+}
+fieldset {
+    justify-content: space-between;
+}
+@media (max-height: 786px) {
+    .form-card {
+        height: 68vh;
+    }
+}

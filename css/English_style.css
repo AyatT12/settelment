@@ -160,6 +160,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
 /* ////////// */
+.form-select {
+     background-position: right .75rem center !important;
+     direction: ltr;
+     padding: .2rem 2rem .2rem .75rem;
+     height: 35px;
+}
+
 .form-select-last {
     text-align: end;
 }
@@ -182,7 +189,3 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 8px 0px 0px 8px;
 }
 /* //////// */
-.form-select{
-    background-position:right .75rem center !important;
-    padding: .375rem 2.25rem .375rem .75rem !important;
-  }
