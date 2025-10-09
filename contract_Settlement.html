@@ -16,7 +16,7 @@
     <link href="css/style.css" rel="styleSheet">
     <link href="css/loader.css" rel="styleSheet">
     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/dripicons/2.0.0/webfont.min.css' />
-    <!-- <link href="css/English_style.css" rel="styleSheet"> -->
+    <!-- <link href="../../css/English_style.css" rel="styleSheet"> -->
 
 </head>
 
@@ -2147,42 +2147,12 @@
     </div>
 
         <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-        <div class="container main-loader-container">
-            <div class="row flex-column align-items-center justify-content-center g-3 main-loader-row ">
-                <div id="app">
-                    <div class="base-timer">
-                        <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <g class="base-timer__circle">
-                                <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-                                <path id="base-timer-path-remaining" stroke-dasharray="0 283"
-                                    class="base-timer__path-remaining blue" d="
-                                        M 50, 50
-                                        m -45, 0
-                                        a 45,45 0 1,0 90,0
-                                        a 45,45 0 1,0 -90,0
-                                        "></path>
-                            </g>
-                        </svg>
-
-                        <div id="base-timer-label" class="base-timer__label">
-                            <div>
-                                إنتظر من فضلك
-                            </div>
-
-                            <div class="Dots-container">
-                                <div class="Dot"></div>
-                                <div class="Dot"></div>
-                                <div class="Dot"></div>
-                                <div class="Dot"></div>
-                                <div class="Dot"></div>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="LoaderArea" style="display: none;">
+                <div class="loader-content d-flex flex-column gap-4 py-5 px-5">
+                    <h2 class="mb-4">الرجاء الانتظار</h2>
+                    <div id="stageContainer"></div>
                 </div>
-
             </div>
-        </div>
     </div>
 
 
