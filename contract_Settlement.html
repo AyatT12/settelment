@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>تسوية العقد</title>
     <link rel="icon" href="img/logo.png">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=Cairo:500,400,700" rel="stylesheet">
-    <link href="css/style.css" rel="styleSheet">
+    <link href="../../css/style.css" rel="styleSheet">
     <link href="css/loader.css" rel="styleSheet">
     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/dripicons/2.0.0/webfont.min.css' />
     <!-- <link href="../../css/English_style.css" rel="styleSheet"> -->
@@ -70,6 +70,8 @@
                                                     <li id="compensation">التعويضات</li>
                                                     <li id="check">الفحص الظاهري </li>
                                                     <li id="payment"> الدفع</li>
+
+
                                                 </ul>
                                             </div>
                                             <fieldset id="firstFieldset">
@@ -478,7 +480,7 @@
                                             </fieldset>
                                             <fieldset id="SecondFieldset">
                                                 <div class="form-card form-card1">
-                                                    <div class="row expensesRow flex-lg-row-reverse  g-2 ">
+                                                    <div class="row expensesRow flex-lg-row-reverse g-2 ">
                                                         <div class="col-lg-6">
                                                             <div class="TablesReferenceDiv">
                                                                 <div>
@@ -688,7 +690,6 @@
                                             </fieldset>
                                             <fieldset id="ThirdFieldset">
                                                 <div class="form-card form-card1">
-
                                                     <div class="row expensesRow flex-lg-row-reverse g-2 ">
                                                         <div class="col-lg-6">
                                                             <div class="TablesReferenceDiv">
@@ -902,9 +903,9 @@
 
 
                                             </fieldset>
-                                          <fieldset id="FourthFieldset">
+                                            <fieldset id="FourthFieldset">
                                                 <div class="form-card">
-                                                    <div class="row g-3">
+                                                    <div class="row">
                                                         <div class="col-xl-6 virtual-check-data d-flex flex-column">
                                                             <div class="row CurrentReadingg_row flex-row-reverse">
                                                                 <div class="col-md-auto sett_checkField">
@@ -969,7 +970,7 @@
                                                                     </button>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
+                                                            <div class="row virtual-check-images-row">
                                                                 <div class="upload__box d-flex">
                                                                     <div class="upload_img-wrap_inner">
                                                                         <div class="upload__img-box "
@@ -1006,7 +1007,7 @@
 
                                                         </div>
 
-                                                        <div class="col-xl-6 virtual-check-table">
+                                                        <div class="col-xl-6 virtual-check-table mt-3 mt-xl-0">
                                                             <div id="referenceDiv">
                                                                 <div id="tableContainer" class="table-scroll">
                                                                     <table
@@ -1775,40 +1776,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="row flex-row-reverse g-2 mb-2">
-                                                            <!-- edited -->
-                                                      <div class="col-md-6 col-lg-4 d-flex align-items-start
+                                                        <!-- edited -->
+                                                        <div class="col-md-6 col-lg-4 d-flex align-items-start
                                                             justify-content-end ">
-                                                        <div class="col-auto">
-                                                            <input type="tel" class="form-control form-control2"
-                                                                id="amount-paid-input" name="amount-paid"
-                                                                autocomplete="off">
-                                                            <div class="row requird-field-row-last">
-                                                                <div class="invalid-feedback" style="display: none;">
-                                                                    الحقل مطلوب
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-auto centered-input-label px-0">
-                                                            <label id="amount-paid" for="amount-paid-input"> المبلغ
-                                                                المدفوع</label>
-                                                        </div>
-                                                    </div>
-                                                    <!-- edited -->
-                                                    <div
-                                                        class="col-md-6 col-lg-4 d-flex align-items-start justify-content-end">
-                                                        <div class="col-md-7 ">
-                                                            <div class="offset">
-                                                                <select class="form-select form-select-last"
-                                                                    id="payment-method-select" name="payment-method"
-                                                                    required>
-                                                                    <option selected disabled>
-                                                                    </option>
-                                                                    <option value="نقدا"> نقدا</option>
-                                                                    <option value="مدي"> مدي</option>
-                                                                    <option value="فيزا"> فيزا</option>
-                                                                    <option value="فيزا"> ماسترد كارد</option>
-
-                                                                </select>
+                                                            <div class="col-auto">
+                                                                <input type="tel" class="form-control form-control2"
+                                                                    id="amount-paid-input" name="amount-paid"
+                                                                    autocomplete="off">
                                                                 <div class="row requird-field-row-last">
                                                                     <div class="invalid-feedback"
                                                                         style="display: none;">
@@ -1816,47 +1790,77 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-auto centered-input-label px-0">
+                                                                <label id="amount-paid" for="amount-paid-input"> المبلغ
+                                                                    المدفوع</label>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-auto centered-input-label px-0"
-                                                            style="justify-content: flex-end;">
-                                                            <label id="payment-method" for="payment-method-select">طريقة
-                                                                الدفع</label>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="col-md-6 col-lg-4 d-flex align-items-start justify-content-end ">
-                                                        <div class="col-md-9">
-                                                            <div class="offset">
-                                                                <select class="form-select form-select-last"
-                                                                    id="selling-point-dropdown" name="selling-point"
-                                                                    required>
-                                                                    <option selected disabled>
-                                                                    </option>
-                                                                    <option value="">ايرادات المستأجرين بمصرف
-                                                                        الراجحي </option>
-                                                                    <option value=""> </option>
-                                                                    <option value=""> </option>
-                                                                </select>
-                                                                <div class="row requird-field-row-last">
-                                                                    <div class="invalid-feedback"
-                                                                        style="display: none;">
-                                                                        الحقل مطلوب
+                                                        <!-- edited -->
+                                                        <div
+                                                            class="col-md-6 col-lg-4 d-flex align-items-start justify-content-end">
+                                                            <div class="col-md-7 ">
+                                                                <div class="offset">
+                                                                    <select class="form-select form-select-last"
+                                                                        id="payment-method-select" name="payment-method"
+                                                                        required>
+                                                                        <option selected disabled>
+                                                                        </option>
+                                                                        <option value="نقدا"> نقدا</option>
+                                                                        <option value="مدي"> مدي</option>
+                                                                        <option value="فيزا"> فيزا</option>
+                                                                        <option value="فيزا"> ماسترد كارد</option>
+
+                                                                    </select>
+                                                                    <div class="row requird-field-row-last">
+                                                                        <div class="invalid-feedback"
+                                                                            style="display: none;">
+                                                                            الحقل مطلوب
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-auto centered-input-label px-0"
+                                                                style="justify-content: flex-end;">
+                                                                <label id="payment-method"
+                                                                    for="payment-method-select">طريقة
+                                                                    الدفع</label>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="col-md-6 col-lg-4 d-flex align-items-start justify-content-end ">
+                                                            <div class="col-md-9">
+                                                                <div class="offset">
+                                                                    <select class="form-select form-select-last"
+                                                                        id="selling-point-dropdown" name="selling-point"
+                                                                        required>
+                                                                        <option selected disabled>
+                                                                        </option>
+                                                                        <option value="">ايرادات المستأجرين بمصرف
+                                                                            الراجحي </option>
+                                                                        <option value=""> </option>
+                                                                        <option value=""> </option>
+                                                                    </select>
+                                                                    <div class="row requird-field-row-last">
+                                                                        <div class="invalid-feedback"
+                                                                            style="display: none;">
+                                                                            الحقل مطلوب
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="col-auto centered-input-label px-0"
+                                                                style="justify-content: flex-end;">
+                                                                <label id="selling-point" for="selling-point-dropdown">
+                                                                    نقطة
+                                                                    البيع
+                                                                </label>
+
+                                                            </div>
 
                                                         </div>
-                                                        <div class="col-auto centered-input-label px-0"
-                                                            style="justify-content: flex-end;">
-                                                            <label id="selling-point" for="selling-point-dropdown"> نقطة
-                                                                البيع
-                                                            </label>
-
-                                                        </div>
-
                                                     </div>
-                                                    </div>
-                                                     <div class="row align-items-center flex-row-reverse">
+                                                    <div class="row align-items-center flex-row-reverse">
                                                         <div class="col-auto">
                                                             <label id="notes" class="mb-lg-0">الملاحظات</label>
                                                         </div>
@@ -1866,7 +1870,8 @@
                                                         </div>
 
                                                     </div>
-                                            </div>
+                                                </div>
+
                                                 <div class="row button-row align-items-center">
                                                     <div class="col-auto py-2 px-0  d-flex flex-wrap gap-1">
                                                         <button type="button" class="btn check-btn payment-button"
@@ -2088,58 +2093,60 @@
         </div>
         <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-       <!-- signature modal----------------------------  -->
-    <div class="modal fade" id="signature-modal" tabindex="-1" aria-labelledby="PicignaturPopupModalLabel"
-        data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
-            <div class="modal-content signature-modal-content p-3">
-                <div class="modal-header p-1 border-0">
-                    <button type="button" class="btn-close m-0 p-1" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body Signature-modal-body">
-                    <div class="SignatureCard">
-                        <div class="main-container" id="removeSignatureImg"></div>
-                        <div class="upload-container">
-
-
-                        </div>
+        <!-- signature modal----------------------------  -->
+        <div class="modal fade" id="signature-modal" tabindex="-1" aria-labelledby="PicignaturPopupModalLabel"
+            data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+                <div class="modal-content signature-modal-content p-3">
+                    <div class="modal-header p-1 border-0">
+                        <button type="button" class="btn-close m-0 p-1" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="sinature-Btn-Card p-2">
-                                <img src="img/signature/Pic.svg" class="w-100" id="UploadSigntaurePic">
-                                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                    <div class="modal-body Signature-modal-body">
+                        <div class="SignatureCard">
+                            <div class="main-container" id="removeSignatureImg"></div>
+                            <div class="upload-container">
+
+
                             </div>
                         </div>
-                        <div class="col-3">
-                            <div class="sinature-Btn-Card p-2">
-                                <img src="img/signature/file-signature_9795523 1.svg" class="w-100" id="WriteSignature">
+                        <br>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="sinature-Btn-Card p-2">
+                                    <img src="img/signature/Pic.svg" class="w-100" id="UploadSigntaurePic">
+                                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="sinature-Btn-Card p-2">
-                                <img src="img/signature/Frame.svg" class="w-100" id="clear">
+                            <div class="col-3">
+                                <div class="sinature-Btn-Card p-2">
+                                    <img src="img/signature/file-signature_9795523 1.svg" class="w-100"
+                                        id="WriteSignature">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="sinature-Btn-Card p-2">
-                                <img src="img/signature/save.svg" class="w-100" id="save">
+                            <div class="col-3">
+                                <div class="sinature-Btn-Card p-2">
+                                    <img src="img/signature/Frame.svg" class="w-100" id="clear">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="sinature-Btn-Card p-2">
+                                    <img src="img/signature/save.svg" class="w-100" id="save">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
         <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-                <div class="LoaderArea" style="display: none;">
-                <div class="loader-content d-flex flex-column gap-4 py-5 px-5">
-                    <h2 class="mb-4">الرجاء الانتظار</h2>
-                    <div id="stageContainer"></div>
-                </div>
+        <div class="LoaderArea" style="display: none;">
+            <div class="loader-content d-flex flex-column gap-4 py-5 px-5">
+                <h2 class="mb-4">الرجاء الانتظار</h2>
+                <div id="stageContainer"></div>
             </div>
+        </div>
     </div>
 
 
@@ -2158,6 +2165,7 @@
     <script src="js/Settlement.js"></script>
     <script src="js/TechnicalCheckUp.js"></script>
     <script src="js/Loader.js"></script>
+   
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.querySelector("#UnifiedContract-otc-form").addEventListener("submit", function (event) {
