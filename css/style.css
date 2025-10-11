@@ -1272,6 +1272,7 @@ footer {
 .upload__img-close1,
 .upload__img-close2,
 .upload__img-close3 {
+    font-size: 18px;
     border-radius: 50%;
     position: absolute;
     bottom: 0px;
