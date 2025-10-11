@@ -51,7 +51,7 @@ $(document).ready(function () {
 });
 
 $(".next").click(function () {
-  console.log(selectedValue)
+  // console.log(selectedValue)
 
   const nextBtn = this; 
   const current_fs = $(nextBtn).closest("fieldset");
@@ -311,12 +311,15 @@ function examinationImgUpload() {
         }
       }
 
-      for (var i = 0; i < Math.min(filesArr.length, maxLength - examinationArray.length); i++) {
+      var processedCount = 0;
+      var totalToProcess = Math.min(filesArr.length, maxLength - examinationArray.length);
+
+      for (var i = 0; i < totalToProcess; i++) {
         (function (f) {
-          console.log("Selected file type:", f.type);
+          // console.log("Selected file type:", f.type);
 
           if (f.type === 'image/heic' || f.type === 'image/heif' || f.name.endsWith('.heic') || f.name.endsWith('.heif')) {
-            console.log("Processing HEIC/HEIF file:", f.name); 
+            // console.log("Processing HEIC/HEIF file:", f.name); 
 
             heic2any({
               blob: f,
@@ -338,11 +341,20 @@ function examinationImgUpload() {
                   f: f,
                   url: e.target.result
                 });
-                console.log(examinationArray);
+                // console.log(examinationArray);
+                
+                processedCount++;
+                if (processedCount === totalToProcess) {
+                  setTimeout(setImageRowHeight, 100);
+                }
               };
               reader.readAsDataURL(convertedBlob); 
             }).catch(function (err) {
               console.error("Error converting HEIC/HEIF image:", err);
+              processedCount++;
+              if (processedCount === totalToProcess) {
+                setTimeout(setImageRowHeight, 100);
+              }
             });
           } else {
             var reader = new FileReader();
@@ -360,7 +372,12 @@ function examinationImgUpload() {
                 f: f,
                 url: e.target.result
               });
-              console.log(examinationArray);
+              // console.log(examinationArray);
+              
+              processedCount++;
+              if (processedCount === totalToProcess) {
+                setTimeout(setImageRowHeight, 100);
+              }
             };
             reader.readAsDataURL(f); 
           }
@@ -381,7 +398,7 @@ function examinationImgUpload() {
     }
 
     $(this).parent().parent().remove();
-    console.log(examinationArray);
+    // console.log(examinationArray);
 
     var maxLength = 22;
 
@@ -399,9 +416,78 @@ function examinationImgUpload() {
         errorMessageDivs[j].style.display = 'none';
       }
     }
+    setTimeout(setImageRowHeight, 50);
   });
-
 }
+
+function setImageRowHeight() {
+    if (window.innerWidth <= 1199) {
+        const imagesRow = document.querySelector('.virtual-check-images-row');
+        if (imagesRow) {
+            imagesRow.style.height = '';
+        }
+        return;
+    }
+    
+    const virtualCheckData = document.querySelector('.virtual-check-data');
+    const imagesRow = document.querySelector('.virtual-check-images-row');
+    
+    if (!virtualCheckData || !imagesRow) return;
+    
+    let attempts = 0;
+    const maxAttempts = 5;
+    
+    function measureHeight() {
+        const parentHeight = virtualCheckData.offsetHeight;
+        const currentReadingRows = document.querySelectorAll('.CurrentReadingg_row');
+        const errorMessage = document.querySelector('.virtual-check-data > .row.mt-auto');
+        
+        let otherElementsHeight = 0;
+        
+        currentReadingRows.forEach(row => {
+            otherElementsHeight += row.offsetHeight;
+        });
+        
+        if (errorMessage) {
+            otherElementsHeight += errorMessage.offsetHeight;
+        }
+        
+        const buffer = 20;
+        const availableHeight = parentHeight - otherElementsHeight - buffer;
+        
+
+        if (availableHeight > 50 || attempts >= maxAttempts) {
+            imagesRow.style.height = `${Math.max(availableHeight, 200)}px`;
+            return true;
+        }
+        
+        return false;
+    }
+    
+    function tryMeasure() {
+        attempts++;
+        const success = measureHeight();
+        
+        if (!success && attempts < maxAttempts) {
+            setTimeout(tryMeasure, 100);
+        }
+    }
+    
+    tryMeasure();
+}
+
+// Initialize with multiple attempts
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(setImageRowHeight, 100);
+    setTimeout(setImageRowHeight, 500);
+    setTimeout(setImageRowHeight, 1000);
+});
+
+window.addEventListener('resize', function() {
+    setTimeout(setImageRowHeight, 50);
+    setTimeout(setImageRowHeight, 100);
+    setTimeout(setImageRowHeight, 200);
+});
 //====================================================================================================
 
 $('body').on('click', '.img-bg', function (e) {
