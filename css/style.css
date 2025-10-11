@@ -1198,58 +1198,39 @@ footer {
     order: 1;
 }
 
-/* .upload__img-wrap {
-display: flex;
-gap: 10px;
-flex-direction: row-reverse;
- 
-} */
+.virtual-check-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.CurrentReadingg_row {
+    flex-shrink: 0; 
+}
+
+.virtual-check-images-row {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.virtual-check-data > .row.mt-auto {
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
 .upload_img-wrap_inner {
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
     flex-direction: row-reverse;
-
+    height: fit-content;
 }
 
 .upload__img-box {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 80px;
     background-color: rgba(217, 217, 217, 0.32);
     display: inline-block;
 }
-@media (max-width:1199px) {
-   .upload__img-box {
-    width: 80px;
-    height: 80px;
-}
-}
-
-.upload__img-close1,
-.upload__img-close2,
-.upload__img-close3 {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    /* background-color: rgba(0, 0, 0, 0.5); */
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    text-align: center;
-    line-height: 24px;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.textarea_table {
-    border: none;
-    /* height: 24px; */
-    resize: none;
-    width: 100%;
-    background-color: white;
-}
-
-
 
 .img-bg {
     background-repeat: no-repeat;
@@ -1262,8 +1243,8 @@ flex-direction: row-reverse;
 
 .upload-container-checking {
     position: relative;
-    width: 79px;
-    height: 79px;
+    width: 100px;
+    height: 80px;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
@@ -1273,8 +1254,11 @@ flex-direction: row-reverse;
     background-color: rgba(217, 217, 217, 0.32);
 }
 
-
-
+.upload-icon {
+    width: 40px;
+    height: 40px;
+    transition: opacity 0.3s ease;
+}
 
 .preview-image {
     max-width: 100%;
@@ -1285,12 +1269,27 @@ flex-direction: row-reverse;
     opacity: 1;
 }
 
-
-
-.CurrentReadingg_row {
-    padding-bottom: .25rem;
-
+.upload__img-close1,
+.upload__img-close2,
+.upload__img-close3 {
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+    line-height: 24px;
+    z-index: 1;
+    cursor: pointer;
 }
+
+.textarea_table {
+    border: none;
+    resize: none;
+    width: 100%;
+    background-color: white;
+}
+
+
 
 .sett_checkField {
     display: flex;
@@ -1304,19 +1303,6 @@ flex-direction: row-reverse;
     color: #000;
 }
 
-@media (min-width:1500px) {
-
-    .upload__img-box,
-    .upload-container-checking {
-        width: 100px;
-        height: 80px;
-    }
-
-    .upload_img-wrap_inner{
-        gap: 10px;
-    }
-
-}
 
 /***************************************************SettlementCard5**************************************************/
 .payment-input {
@@ -1916,11 +1902,7 @@ flex-direction: row-reverse;
 }
 
 
-.upload-icon {
-    width: 50px;
-    height: 50px;
-    transition: opacity 0.3s ease;
-}
+
 
 .preview-image {
     max-width: 100%;
@@ -2580,7 +2562,7 @@ input[type="number"]:nth-child(n+4) {
     justify-content: center;
 }
 .upload__img-close1  {
-    font-size: 20px;
+    font-size: 18px;
     background: white;
     padding: 1px;
     border-radius: 4px;
