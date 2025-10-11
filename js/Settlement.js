@@ -292,7 +292,7 @@ function examinationImgUpload() {
   $('#examination-images').each(function () {
     $(this).on('change', function (e) {
       imgWrap = $(this).closest('.upload__box').find('.upload_img-wrap_inner');
-      var maxLength = 16;
+      var maxLength = 22;
       var files = e.target.files;
       var filesArr = Array.prototype.slice.call(files);
    
@@ -383,7 +383,7 @@ function examinationImgUpload() {
     $(this).parent().parent().remove();
     console.log(examinationArray);
 
-    var maxLength = 16;
+    var maxLength = 22;
 
     if (examinationArray.length >= maxLength) {
       uploadBtnBox.style.display = 'none';
