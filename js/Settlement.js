@@ -161,7 +161,7 @@ function handleImageUpload(event, tableSelector, array, maxLength, uploadBtnBox,
     })(filesArr[i]);
   }
 
-  $('body').on('click', '.upload__img-close1', function (e) {
+  $('body').on('click', '.upload__img-close2', function (e) {
     e.stopPropagation();
     var file = $(this).parent().data('file');
 
@@ -195,7 +195,7 @@ function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnB
     var html = `
       <div class='upload__img-box Attatchments-img-box'>
         <div style='background-image: url(${e.target.result})' data-file='${fileName}' class='img-bg'>
-          <div class='upload__img-close1'><i class='fa-regular fa-trash-can'></i></div>
+          <div class='upload__img-close2'><i class='fa-regular fa-trash-can'></i></div>
         </div>
       </div>
     `;
