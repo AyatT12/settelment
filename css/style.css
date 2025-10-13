@@ -709,11 +709,14 @@ textarea {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    position: sticky;
+    top: 0;
 }
 
-/* .table td {
-    color: #39629C;
-} */
+.pdf-Tableicons{
+    width: 40px;
+    height: 40px;
+}
 
 .table tbody tr {
     cursor: pointer;
@@ -1924,6 +1927,9 @@ footer {
 .Checkup-table td{
     vertical-align: middle;
 }
+.Checkup-table th{
+position: static;
+}
 .check-table-notes{
     resize: none;
     min-height: 30px;
@@ -2161,29 +2167,22 @@ input[type=checkbox] {
 }
 
 .scroll-table-div::-webkit-scrollbar {
-    width: 5px !important;
-    border-radius: 8px;
+    width: 10px;
     height: 5px;
-
 }
 
 .scroll-table-div::-webkit-scrollbar-track {
-    background: #fffdfd;
-    border-radius: 8px;
-
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
 }
 
 .scroll-table-div::-webkit-scrollbar-thumb {
-    background: #a3b5cf;
+  background: rgba(255, 150, 38, 0.40);
+    border-radius: 5px;
     height: 10px;
-    border-radius: 8px;
-
-
 }
-
 .scroll-table-div::-webkit-scrollbar-thumb:hover {
-    border-radius: 8px;
-    background: #3e4958;
+  background: #ff9626af;
 }
 
 .tables-style {
@@ -2211,12 +2210,12 @@ input[type=checkbox] {
 } */
 
 .tables-style th:last-child {
-    box-shadow: 1px 0px 0px 0px rgb(255 242 228), 2px 3px 0px 1px rgb(255 159 64 / 18%);
+    box-shadow: -4px -6px 0px 0px rgb(255 242 228), 1px -1px 0px 1px rgb(255 159 64 / 18%);
     border-radius: 0px 8px 8px 0px
 }
 
 .tables-style th:first-child {
-    box-shadow: 1px 0px 0px 0px rgb(255 242 228), 2px 3px 0px 1px rgb(255 159 64 / 18%);
+    box-shadow: 2px -2px 0px 0px rgb(255 242 228), 20px -1px 0px 1px rgb(255 159 64 / 18%);
     border-radius: 8px 0px 0px 8px
 }
 
@@ -2225,7 +2224,7 @@ input[type=checkbox] {
     background: #fff2e4;
     color: #39629C;
     z-index: 1;
-    box-shadow: 20px 0px 0px 0px rgb(255 242 228), 2px 3px 0px 1px rgb(255 159 64 / 18%)
+    box-shadow: 20px 0px 0px 0px rgb(255 242 228), 20px -1px 0px 1px rgb(255 159 64 / 18%)
 }
 
 .tables-style td {
@@ -2366,6 +2365,7 @@ input[type=checkbox] {
 
 /*  ستايل صفحة بيانات المستأجر التفصيلية  */
 .data-col {
+    display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
 }
@@ -2395,7 +2395,7 @@ input[type=checkbox] {
      min-width: 350px;
     }
 }
-@media (max-width:1500px) {
+@media (max-width:1600px) {
     .licence-dates-settel{
       flex-direction: column-reverse;
     }
@@ -2647,7 +2647,21 @@ input[type="number"]:nth-child(n+4) {
 
 }
 
+ .Cancel-Contract-Btn {
+            border-radius: 8px;
+            background: #FFF;
+            box-shadow: 0px 1px 4px 0px rgba(255, 150, 38, 0.25);
+        }
 
+        .Cancel-Contract-Btn:hover {
+            background: rgba(255, 150, 38, 0.25);
+            transform: scale(1.05);
+        }
+
+        #Contract-Cancle .modal-header {
+            justify-content: start;
+            padding: 0;
+        }
 /* confirm save  */
 
 .Save-otp-inputs{
@@ -2690,7 +2704,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 }
 
-/* *******************************************************************************  تعديل  حج التيكست ايريا  ****************************************************************************************************** */
+/* *******************************************************************************  تعديل  حجم التيكست ايريا  ****************************************************************************************************** */
 .textarea-inputs{
     width: 690px;
+}
+/*  جدول المستأجرين*/
+.Tenants-table-div{
+    height: 53vh;
+    min-height: 400px;
 }
