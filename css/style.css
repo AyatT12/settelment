@@ -3,17 +3,11 @@
     padding: 0;
 }
 
-html {
-    min-height: 100vh;
-    height: 100%;
-}
-
 /*Background color*/
 body {
     font-family: cairo;
     font-weight: 400;
-    min-height: 100vh;
-    height: 100%;
+    height: 100vh;
     font-size: .875rem;
     letter-spacing: 0.28px;
 }
@@ -118,16 +112,19 @@ nav {
     box-shadow: 0px 9px 20px 0rem #ff962610;
     /* border-top: none; */
 }
+
 /* global */
-.centered-input-label{
+.centered-input-label {
     padding-top: calc((35px - 1.5em) / 2);
 }
+
 .form-select {
-     background-position: left .75rem center !important;
-     direction: rtl;
-     padding: .2rem .75rem .2rem 2rem;
-     height: 35px;
+    background-position: left .75rem center !important;
+    direction: rtl;
+    padding: .2rem .75rem .2rem 2rem;
+    height: 35px;
 }
+
 .modal-header .btn-close {
     background: url(../img/cancel-2.svg) !important;
     background-size: contain !important;
@@ -136,29 +133,38 @@ nav {
     width: .5em;
     border-radius: 0;
 }
+
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  border-radius: 7px;
+    width: 5px;
+    height: 5px;
+    border-radius: 7px;
 
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.678);
-  background: #fffdfd;
-  border-radius: 7px;
+    box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.678);
+    background: #fffdfd;
+    border-radius: 7px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #FF9626;
-  border-radius: 7px;
+    background: #FF9626;
+    border-radius: 7px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+    background: #555;
+}
+
+.secondline-p {
+    font-size: .8rem;
+    margin-bottom: .4rem;
+}
+.btn{
+    white-space: nowrap;
 }
 
 /*======================================================================
@@ -372,11 +378,13 @@ nav {
     flex-direction: column-reverse;
     background-color: #FCFCFC;
 }
+
 .sinature-Btn-Card {
     cursor: pointer;
     box-shadow: 1px 0.5px 8px 0px #FF962633;
     border-radius: 8px;
 }
+
 .title_signture {
     display: flex;
     justify-content: center;
@@ -456,17 +464,20 @@ nav {
     display: block;
     font-size: 12px;
 }
+
 @media (max-width:992px) {
     .invalid-feedback {
-    font-size: 10px;
+        font-size: 10px;
+    }
+
+    .requird-field {
+        font-size: 10px;
+
+    }
 }
-.requird-field {
-       font-size: 10px;
- 
-}
-}
+
 .content-row {
-    height:100%;
+    height: 100%;
     align-items: center;
     justify-content: center;
 }
@@ -605,10 +616,13 @@ textarea {
 .form-check-inline {
     display: inline-flex;
     margin-right: 0rem;
-    flex-direction: row-reverse;
     gap: 30px;
 }
-
+@media (max-width:500px) {
+   .form-check-inline {
+    padding: 2px;
+   } 
+}
 .data-row {
     flex-direction: row-reverse;
 }
@@ -648,7 +662,6 @@ textarea {
 
 #reportTable {
     direction: ltr;
-
 }
 
 #SettlementTable {
@@ -676,13 +689,15 @@ textarea {
 }
 
 .table-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 150, 38, 0.40);
+    background: rgba(255, 150, 38, 0.40);
     border-radius: 5px;
     height: 10px;
 }
+
 .table-scroll::-webkit-scrollbar-thumb:hover {
-  background: #ff9626af;
+    background: #ff9626af;
 }
+
 .table {
     --bs-table-hover-bg: #fff7de;
     width: 100%;
@@ -713,7 +728,7 @@ textarea {
     top: 0;
 }
 
-.pdf-Tableicons{
+.pdf-Tableicons {
     width: 40px;
     height: 40px;
 }
@@ -866,7 +881,8 @@ footer {
     -moz-appearance: none;
     appearance: none;
     position: static;
-    margin-left: 10px;
+    margin: 0px;
+    margin-bottom: 10px;
 }
 
 /* ///////////////////////////////////////////extension1////////////////////////////////////// */
@@ -932,8 +948,8 @@ footer {
 
 
 /* //////////////////////////////report/////////////////////////////////////////// */
-.report_table {
-    height: 250px;
+.reportTable-div {
+    height: 50vh !important;
 }
 
 .modal-header .close {
@@ -962,9 +978,10 @@ footer {
 
 /* =========================================================================Settlement ==================================================== */
 /* Hide all except first fieldset */
-#SettlementForm .form-card{
+#SettlementForm .form-card {
     height: 62vh;
 }
+
 #SettlementForm fieldset:not(:first-of-type) {
     display: none;
 }
@@ -1199,7 +1216,7 @@ footer {
 }
 
 .CurrentReadingg_row {
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .virtual-check-images-row {
@@ -1207,7 +1224,7 @@ footer {
     overflow-x: hidden;
 }
 
-.virtual-check-data > .row.mt-auto {
+.virtual-check-data>.row.mt-auto {
     flex-shrink: 0;
     margin-top: auto;
 }
@@ -1311,12 +1328,14 @@ footer {
     border-top: none;
 
 }
+
 /***************************************************ميديا شاشة التسوية **************************************************/
 @media (max-height: 786px) {
     #SettlementForm .form-card {
         height: 55vh;
     }
 }
+
 /***************************************************cards-media**************************************************/
 
 @media (max-width: 320px) {
@@ -1598,52 +1617,6 @@ footer {
 }
 
 /*======================================================================
-//           ========================== feed media ==============================================================================================
-//          =====================================================================*/
-@media (max-height:700px) {
-    .feed-card {
-        gap: 1rem
-    }
-}
-
-@media (min-height:700px) {
-    .feed-card {
-        gap: 1rem
-    }
-}
-
-@media (min-height:750px) {
-    .feed-card {
-        gap: 1.5rem
-    }
-
-}
-
-@media (min-height:800px) {
-    .feed-card {
-        gap: 1rem
-    }
-}
-
-@media (min-height:850px) {
-    .feed-card {
-        gap: 2.5rem
-    }
-}
-
-@media (min-height:900px) {
-    .feed-card {
-        gap: 3rem
-    }
-}
-
-@media (max-width:1000px) {
-    .feed-card {
-        gap: 3.5em
-    }
-}
-
-/*======================================================================
 //           ==========================  loader ==============================================================================================
 //          =====================================================================*/
 .main {
@@ -1914,27 +1887,32 @@ footer {
 
 
 /* *******************************************************************************تعديل جدول الفحص الظاهري****************************************************************************************************** */
-.options-col{
+.options-col {
     text-align: end;
     display: flex;
     justify-content: flex-end;
     align-items: stretch;
     gap: 5px;
 }
+
 .Checkup-table label {
     margin: 0;
 }
-.Checkup-table td{
+
+.Checkup-table td {
     vertical-align: middle;
 }
-.Checkup-table th{
-position: static;
+
+.Checkup-table th {
+    position: static;
 }
-.check-table-notes{
+
+.check-table-notes {
     resize: none;
     min-height: 30px;
     height: 30px !important;
 }
+
 #referenceDiv {
     height: 56vh;
     min-height: 450px;
@@ -2048,19 +2026,22 @@ input[type=checkbox] {
 
 /************************************************************************* الفحص الفني * */
 @media (max-width:550px) {
-    .TechnicalCheckUp_Btn{
+    .TechnicalCheckUp_Btn {
         padding: 8px;
     }
-    .TechnicalCheckUp_Btn_Title{
+
+    .TechnicalCheckUp_Btn_Title {
         display: none;
     }
 }
+
 .car-container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .canvas-wrapper {
     width: 100%;
     max-width: 100%;
@@ -2150,12 +2131,15 @@ input[type=checkbox] {
     left: 10px;
     font-size: 20px;
 }
-#removeSignatureImg i{
-        color: #39629C;
+
+#removeSignatureImg i {
+    color: #39629C;
 }
-#removeIDImg i{
-        color: #39629C;
+
+#removeIDImg i {
+    color: #39629C;
 }
+
 /* /////////////////////////////////////version2////////////////////////////////////////////////////// */
 /* ستايل عام علي كل الصفحات */
 
@@ -2163,7 +2147,9 @@ input[type=checkbox] {
     height: 58vh;
     min-height: 400px;
     overflow: auto;
-    /* width: 1540px; */
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
 }
 
 .scroll-table-div::-webkit-scrollbar {
@@ -2177,12 +2163,13 @@ input[type=checkbox] {
 }
 
 .scroll-table-div::-webkit-scrollbar-thumb {
-  background: rgba(255, 150, 38, 0.40);
+    background: rgba(255, 150, 38, 0.40);
     border-radius: 5px;
     height: 10px;
 }
+
 .scroll-table-div::-webkit-scrollbar-thumb:hover {
-  background: #ff9626af;
+    background: #ff9626af;
 }
 
 .tables-style {
@@ -2383,7 +2370,7 @@ input[type=checkbox] {
 }
 
 /* التمديد */
-.contract-id{
+.contract-id {
     white-space: nowrap;
 }
 
@@ -2391,15 +2378,18 @@ input[type=checkbox] {
     #dropdown-content-extension2 {
         min-width: 350px;
     }
-    #dropdown-ContractData{
-     min-width: 350px;
+
+    #dropdown-ContractData {
+        min-width: 350px;
     }
 }
+
 @media (max-width:1600px) {
-    .licence-dates-settel{
-      flex-direction: column-reverse;
+    .licence-dates-settel {
+        flex-direction: column-reverse;
     }
 }
+
 /* تقرير مالي  */
 
 #reportTable p {
@@ -2491,21 +2481,24 @@ input::-webkit-inner-spin-button {
 input[type="number"]:nth-child(n+4) {
     order: 2;
 }
+
 /****************************************************************************** Virtual Inspection Error */
 
 @media (max-width:1199px) {
-   #error-message{
-    display: none !important;
-   }
+    #error-message {
+        display: none !important;
+    }
 }
+
 /********************************************************************************تعديل  المصروفات و التعويضات ****************************************************************************************************** */
-.check-table-notes{
+.check-table-notes {
     background: transparent !important;
 }
-.check-table-notes:focus{
- border: none;
- background: transparent !important;
- box-shadow: none;
+
+.check-table-notes:focus {
+    border: none;
+    background: transparent !important;
+    box-shadow: none;
 }
 
 .TablesReferenceDiv {
@@ -2515,6 +2508,7 @@ input[type="number"]:nth-child(n+4) {
     flex-direction: column;
     overflow: auto;
 }
+
 .TablesReferenceDiv::-webkit-scrollbar {
     width: 10px;
     height: 5px;
@@ -2533,62 +2527,76 @@ input[type="number"]:nth-child(n+4) {
 
 .Expenses-compensation-Table {
     border-collapse: separate;
-    border-spacing: 0;  
-    border-radius: 10px; 
-    overflow: hidden; 
-    border: 1px solid #f1b16c; 
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #f1b16c;
     height: 100%;
-    white-space:nowrap;
+    white-space: nowrap;
 }
+
 .Expenses-compensation-Table td {
     border: 1px solid #f1b16c;
     vertical-align: middle;
     padding: 5px 10px;
 }
+
 .Expenses-compensation-Table thead th {
     background-color: #fdc28214;
-    border: 1px solid #f1b16c; 
+    border: 1px solid #f1b16c;
 }
+
 .upload__box2 {
     align-items: center;
     justify-content: center;
 }
-.attatchments-table{
+
+.attatchments-table {
     table-layout: fixed;
     direction: rtl;
 }
-.attatchments-table td{
+
+.attatchments-table td {
     height: 120px;
     text-align: center;
 }
-.expensesRow{
+
+.expensesRow {
     justify-content: space-evenly;
 }
-#Expenses-upload-box , #compensation-upload-box{
+
+#Expenses-upload-box,
+#compensation-upload-box {
     justify-content: center;
 }
-.upload__img-close1  {
+
+.upload__img-close1 {
     font-size: 18px;
     background: white;
     padding: 1px;
     border-radius: 4px;
 }
-.Attatchments-img-box{
+
+.Attatchments-img-box {
     background-color: transparent;
     width: 100%;
     height: 100%;
 }
-.Expenses-compensation-Upload{
+
+.Expenses-compensation-Upload {
     background-color: transparent;
 }
-.Table-inputs{
+
+.Table-inputs {
     border: none;
     text-align: end;
     width: 100%;
 }
-.total p{
+
+.total p {
     margin-bottom: .9rem;
 }
+
 /* ====================================================================================================================================== */
 /* =============================================================== Saved Contracts ======================================================================= */
 /* ====================================================================================================================================== */
@@ -2597,74 +2605,88 @@ input[type="number"]:nth-child(n+4) {
 #progressbar #Contract_summary:after {
     width: 50%;
 }
+
 #progressbar #Contract_summary:before {
     content: "";
     box-shadow: 2px 2px 2px #00000052;
 }
-#Contract-data-icon , #tenant-data-icon ,#Car-data-icon ,#contract-value-icon{
+
+#Contract-data-icon,
+#tenant-data-icon,
+#Car-data-icon,
+#contract-value-icon {
     cursor: pointer;
 }
-.dropdown-Saved-Contracts{
+
+.dropdown-Saved-Contracts {
     min-width: 250px;
 }
-.sinature-Btn-Card{
+
+.sinature-Btn-Card {
     cursor: pointer;
     box-shadow: 1px 0.5px 8px 0px #FF962633;
     border-radius: 8px;
 }
 
-.warning{
+.warning {
     padding: 5px;
     background-color: #ff962636;
     border-right: 5px solid #FF9626;
     text-align: end;
 }
-.warning h5 , i{
+
+.warning h5,
+i {
     color: #f78409;
 }
-.Cancle-ConfirmBtn{
+
+.Cancle-ConfirmBtn {
     background: white;
     color: #FF9626;
     border: 1px solid #FF9626;
     padding: 0px 12px;
     line-height: normal;
 }
-.Confirm-CancleBtn{
+
+.Confirm-CancleBtn {
     color: white;
     background: #FF9626;
     border: 1px solid #FF9626;
     padding: 0px 12px;
     line-height: normal;
 }
-.Confirm-CancleBtn:hover{
+
+.Confirm-CancleBtn:hover {
     color: white;
     background: #fb890e;
 }
-.Cancle-ConfirmBtn:hover{
+
+.Cancle-ConfirmBtn:hover {
     background: white;
     color: #FF9626;
     border: 1px solid #FF9626;
 
 }
 
- .Cancel-Contract-Btn {
-            border-radius: 8px;
-            background: #FFF;
-            box-shadow: 0px 1px 4px 0px rgba(255, 150, 38, 0.25);
-        }
+.Cancel-Contract-Btn {
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 1px 4px 0px rgba(255, 150, 38, 0.25);
+}
 
-        .Cancel-Contract-Btn:hover {
-            background: rgba(255, 150, 38, 0.25);
-            transform: scale(1.05);
-        }
+.Cancel-Contract-Btn:hover {
+    background: rgba(255, 150, 38, 0.25);
+    transform: scale(1.05);
+}
 
-        #Contract-Cancle .modal-header {
-            justify-content: start;
-            padding: 0;
-        }
+#Contract-Cancle .modal-header {
+    justify-content: start;
+    padding: 0;
+}
+
 /* confirm save  */
 
-.Save-otp-inputs{
+.Save-otp-inputs {
     width: 100%;
     height: 40px;
     border: 1px solid #d5d2d2;
@@ -2673,26 +2695,47 @@ input[type="number"]:nth-child(n+4) {
     border: 2px solid;
 }
 
+.Plate-Number {
+    display: none;
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: rgba(0, 0, 0, 0.753);
+    --bs-tooltip-color: white;
+}
+
 @media (min-width:992px) {
-    #dropdown-content-contractValue{
-    right: 15px;
-    bottom: 35px;
+    #dropdown-content-contractValue {
+        right: 15px;
+        bottom: 35px;
     }
 }
+
+@media (max-width:520px) {
+    .CarInfo {
+        display: none;
+    }
+
+    .Plate-Number {
+        display: block;
+    }
+}
+
 /* *******************************************************************************تعديل  ستايل الدروب داون  ****************************************************************************************************** */
 /* تعديل اتجاه مدخل التاريخ حسب اللغة  */
 input[type="date"] {
-  padding: 5px 10px;
-  position: relative;
-  text-align: end;
-  direction: rtl;
+    padding: 5px 10px;
+    position: relative;
+    text-align: end;
+    direction: rtl;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-  display: block;
-  left: 10px;
-  position: absolute;
+    display: block;
+    left: 10px;
+    position: absolute;
 }
+
 /* gloabal pages layout   */
 .form-card {
     height: 70vh;
@@ -2705,11 +2748,261 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 /* *******************************************************************************  تعديل  حجم التيكست ايريا  ****************************************************************************************************** */
-.textarea-inputs{
+.textarea-inputs {
     width: 690px;
 }
+
 /*  جدول المستأجرين*/
-.Tenants-table-div{
+.Tenants-table-div {
     height: 53vh;
     min-height: 400px;
+}
+
+/* تغذية الصندوق */
+.feed-acceptt-btn {
+    background: #FF9626;
+    color: white;
+}
+
+.feed-acceptt-btn:hover {
+    background: white;
+    color: #FF9626;
+    border: 1px solid #FF9626;
+}
+
+/* حسابي */
+.inputs,
+.select-style,
+.textarea-inputs {
+    border-radius: 8px;
+    border: 2px solid #faa64d;
+    resize: none;
+    font-size: .875rem;
+    color: var(--primary-color);
+    height: 37px;
+    color: #39629C;
+}
+
+.select-style {
+    background-position: left .75rem center;
+    padding: .375rem .75rem .375rem 2.25rem !important;
+}
+
+.form-select.is-invalid,
+.was-validated .form-select:invalid {
+    background-position: left .75rem center, center right .5rem !important;
+}
+
+.select-style:focus,
+.inputs:focus,
+.textarea-inputs:focus {
+    box-shadow: none !important;
+    border: 2px solid #facd9c !important;
+}
+
+#AccountForm {
+    direction: rtl;
+}
+
+.AccountTitle {
+    text-align: start;
+}
+
+.AccountSave {
+    text-align: end;
+}
+
+.custom-img-btn {
+    border: none;
+    background: none;
+}
+
+.sinature-Btn-Card {
+    cursor: pointer;
+}
+
+#previewSignature {
+    width: 100px;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #f7f7f7;
+}
+
+.change-profile-btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+
+#Profile-photo {
+    border-radius: 50%;
+    height: 100%;
+}
+
+.user-name {
+    color: #504949;
+}
+
+.info-card {
+    box-shadow: 0.5px 1px 4px 0px #39629C3D;
+    border-radius: 8px;
+
+}
+
+.header-card {
+    border-bottom: 1px solid #D9D9D9;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.profile-section {
+    border-right: 2px solid #D9D9D9;
+}
+
+.counterCode {
+    border-radius: 8px 0px 0px 8px !important;
+    border-right: none;
+    background-color: white;
+    color: var(--primary-color);
+    direction: ltr;
+    height: 37px;
+    padding: 0px !important;
+    width: 78px;
+    color: #39629C
+}
+
+.tel-input {
+    border-radius: 0px 8px 8px 0px !important;
+}
+
+.Saved-data {
+    color: #39629C
+}
+
+.data-card {
+    text-align: start;
+}
+
+/*  */
+.alert-col {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox-alert-col {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: .5rem;
+}
+
+/* Style the container */
+
+.number-input-container {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid #ff9626;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.number-input-container.disabled {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Style the buttons with arrows */
+.number-input-container button {
+    background-color: transparent;
+    border: none;
+    padding: 2px;
+    margin: 0px 0px 0px 7px;
+    cursor: pointer;
+    font-size: 9px;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+}
+
+.number-input-container button:hover {
+    background-color: #fffcfc86;
+}
+
+/* Up arrow */
+.increment {
+    width: 15px;
+    height: 15px;
+    background-image: url("./images/up.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    background-position: center;
+}
+
+.increment::before {
+    content: '';
+}
+
+/* Down arrow */
+.deincrement {
+    width: 15px;
+    height: 15px;
+    background-image: url(./images/down1.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    background-position: center;
+}
+
+.deincrement::before {
+    content: '';
+}
+
+/* Style the input */
+.alert-input {
+    width: 60px;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+}
+
+.alert-input.disabled {
+    color: rgb(110, 110, 110);
+}
+
+/* Remove spin buttons */
+.alert-input::-webkit-outer-spin-button,
+.alert-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.alert-input {
+    -moz-appearance: textfield;
+}
+
+@media (max-width : 991px) {
+    .acoount-cards-row {
+        flex-direction: column-reverse;
+    }
 }

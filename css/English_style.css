@@ -18,17 +18,19 @@ body {
     direction: rtl;
    
 }
-.button-card img{
+.button-row img{
+    transform: rotate(180deg);
+} img{
     transform: rotateY(180deg);
 }
 .radio-container {
     gap: 10px
 }
 
-.form-check-inline {
-
-    gap: 10px;
-}
+   .form-check-inline {
+    padding-left: 21px;
+    gap: 5px;
+   } 
 
 .cancle-icon {
 
@@ -188,4 +190,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     box-shadow: 3px -1px 0px 0px rgb(255 242 228), 2px 3px 0px 1px rgb(255 159 64 / 18%);
     border-radius: 8px 0px 0px 8px;
 }
-/* //////// */
+/* account */
+#AccountForm {
+    direction: ltr;
+}
+.counterCode {
+    border-radius: 0px 8px 8px 0px !important;
+    border-left: none;
+   border-right:2px solid #faa64d ;
+}
+.tel-input {
+    border-radius: 8px 0px 0px 8px !important;
+}
+.number-input-container button{
+    margin: 0px 7px 0px 0px;
+}
+.profile-section {
+    border-left: 2px solid #D9D9D9;
+    border-right:none ;
+}
+.select-style{
+    background-position:right .75rem center;
+}
