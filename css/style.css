@@ -1,13 +1,19 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
 /*Background color*/
 body {
-    font-family: cairo;
-    font-weight: 400;
+    background-color: rgba(254, 248, 232, 1);
+    min-height: 100dvh;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo';
+    font-weight: 400;
     font-size: .875rem;
     letter-spacing: 0.28px;
 }
@@ -26,6 +32,10 @@ nav {
     margin-right: 12px;
     height: 53px;
     width: 53px;
+}
+
+.Long_Text_align {
+    text-align: end;
 }
 
 /*######################################################## */
@@ -163,7 +173,8 @@ nav {
     font-size: .8rem;
     margin-bottom: .4rem;
 }
-.btn{
+
+.btn {
     white-space: nowrap;
 }
 
@@ -483,7 +494,6 @@ nav {
 }
 
 .form-card {
-    /* background: rgb(255, 255, 255); */
     border: 1px solid #39629c9c;
     border-radius: 7px;
     box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
@@ -491,9 +501,8 @@ nav {
     box-sizing: border-box;
     width: 100%;
     position: relative;
-    height: 62vh;
     overflow-y: auto;
-    /* overflow-x: hidden; */
+    overflow-x: clip;
 }
 
 #custody-form,
@@ -516,6 +525,7 @@ fieldset {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    width: 100%;
 }
 
 
@@ -534,7 +544,7 @@ fieldset {
     flex-direction: column;
     color: black;
     /* height: 100%; */
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 
@@ -607,11 +617,13 @@ textarea {
     margin-right: 0rem;
     gap: 30px;
 }
+
 @media (max-width:500px) {
-   .form-check-inline {
-    padding: 2px;
-   } 
+    .form-check-inline {
+        padding: 2px;
+    }
 }
+
 .data-row {
     flex-direction: row-reverse;
 }
@@ -728,7 +740,6 @@ textarea {
 
 /* /////////////global////////////// */
 .container-fluid {
-    height: 85%;
     position: relative;
 }
 
@@ -873,17 +884,63 @@ footer {
     margin: 0px;
     margin-bottom: 10px;
 }
-@media (max-width:768px) {
-    .paid-order{
+
+@media (max-width:1399.98px) {
+    .Available-order {
+        order: 1;
+    }
+
+    .paid-order {
         order: 2;
     }
-    .credit-order{
+
+    .credit-order {
         order: 3;
+
     }
-    .debit-order{
+
+    .debit-order {
         order: 4;
     }
 }
+
+@media (max-width:767px) {
+    .Available-order {
+        min-width: 50%;
+    }
+
+    .paid-order {
+        min-width: 50%;
+    }
+
+    .credit-order {
+        min-width: 50%;
+
+    }
+
+    .debit-order {
+        min-width: 50%;
+    }
+
+    .Report-reserved-balance {
+        min-width: 50%;
+    }
+
+    .Report-avaliable-balance {
+        min-width: 50%;
+    }
+
+    .report-credit {
+        min-width: 50%;
+    }
+
+    .report-debit {
+        min-width: 50%;
+    }
+
+}
+
+
 /* ///////////////////////////////////////////extension1////////////////////////////////////// */
 #extensionTable tr {
     cursor: pointer;
@@ -947,9 +1004,7 @@ footer {
 
 
 /* //////////////////////////////report/////////////////////////////////////////// */
-.reportTable-div {
-    height: 50vh !important;
-}
+
 
 .modal-header .close {
     padding: 0;
@@ -977,9 +1032,6 @@ footer {
 
 /* =========================================================================Settlement ==================================================== */
 /* Hide all except first fieldset */
-#SettlementForm .form-card {
-    height: 62vh;
-}
 
 #SettlementForm fieldset:not(:first-of-type) {
     display: none;
@@ -1328,12 +1380,6 @@ footer {
 
 }
 
-/***************************************************ميديا شاشة التسوية **************************************************/
-@media (max-height: 786px) {
-    #SettlementForm .form-card {
-        height: 55vh;
-    }
-}
 
 /***************************************************cards-media**************************************************/
 
@@ -2144,11 +2190,11 @@ input[type=checkbox] {
 
 .scroll-table-div {
     height: 58vh;
-    min-height: 400px;
+    /* min-height: 400px; */
     overflow: auto;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-start;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    width: 100%;
 }
 
 .scroll-table-div::-webkit-scrollbar {
@@ -2220,9 +2266,8 @@ input[type=checkbox] {
     border-style: solid;
     background-color: white;
     color: black;
-    /* padding: 4px 5px; */
+    padding: 4px 5px;
     box-shadow: 0px 8px 8px -4px rgba(255, 159, 64, 0.08), 0px 4px 6px -4px rgba(255, 159, 64, 0.04);
-
 }
 
 .number {
@@ -2236,6 +2281,13 @@ input[type=checkbox] {
 
 .tables-style tbody {
     width: 100%;
+}
+
+.Receipt_Col {
+    width: 60px !important;
+    min-width: 60px !important;
+    max-width: 80px !important;
+    text-align: center;
 }
 
 .tenat p {
@@ -2351,10 +2403,6 @@ input[type=checkbox] {
     flex-wrap: wrap;
 }
 
-#Table-details {
-    height: 47vh;
-}
-
 .licence-dates,
 .licence-dates-settel {
     font-size: 12px;
@@ -2364,7 +2412,7 @@ input[type=checkbox] {
 }
 
 /* التمديد */
-.contract-id {
+.No_Wrap_Text {
     white-space: nowrap;
 }
 
@@ -2411,9 +2459,6 @@ input[type=checkbox] {
 }
 
 /* العهدة */
-#custody-table-div {
-    height: 40vh;
-}
 
 
 /* /////////////////////////////////////OTP-modal////////////////////////////////////////////////////// */
@@ -2729,17 +2774,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
 }
 
-/* gloabal pages layout   */
-.form-card {
-    height: 70vh;
-}
-
-@media (max-height: 786px) {
-    .form-card {
-        height: 68vh;
-    }
-}
-
 /* *******************************************************************************  تعديل  حجم التيكست ايريا  ****************************************************************************************************** */
 .textarea-inputs {
     width: 690px;
@@ -2748,7 +2782,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /*  جدول المستأجرين*/
 .Tenants-table-div {
     height: 53vh;
-    min-height: 400px;
+    /* min-height: 400px; */
 }
 
 /* تغذية الصندوق */
@@ -2999,25 +3033,132 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         flex-direction: column-reverse;
     }
 }
-/*  */
-@media (max-width : 500px) {
-    .container-fluid {
-        height: 75vh;
-    }
-    .form-card{
-        height: 65vh;
-    }
-    .Hidden-word{
+
+/* Small screens (mobiles) */
+@media (max-width: 767.98px) {
+    .Hidden-word {
         display: none;
     }
 }
+
 @media (max-width:991px) {
     .profile-photo {
         width: 100px;
         height: 100px;
     }
+
     .user-name {
-       margin-bottom: .2rem;
+        margin-bottom: .2rem;
     }
 
+}
+
+/* NEW LAYOUT STRUCTURE */
+#content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.container-fluid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    align-items: center;
+}
+
+.section-mainCard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.main-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    max-height: 95%;
+}
+
+.content-row {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: visible;
+}
+
+form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+fieldset {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.form-card {
+    height: 70vh;
+    max-height: calc(100% - 65px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* REPORT LAYOUT STRUCTURE */
+.reportTable-div {
+    height: 52vh !important;
+}
+
+@media(max-width:1399.98px) {
+    .main-card {
+        max-height: 80%;
+    }
+
+    .form-card {
+        height: 70vh;
+    }
+    #SettlementForm .form-card {
+        height: 50vh;
+    }
+    .reportTable-div {
+        height: 40vh !important;
+    }
+}
+
+/* CUSTODY LAYOUT STRUCTURE */
+#custody-table-div {
+    height: 45vh;
+}
+
+@media(max-width:1399.98px) {
+    #custody-table-div {
+        height: 30vh;
+    }
+}
+
+/* Tenant LAYOUT STRUCTURE */
+
+#Table-details {
+    height: 47vh;
+}
+
+@media(max-width:1399.98px) {
+    #Table-details {
+        height: 30vh;
+    }
+}
+
+@media (min-width:1399.98px) {
+    #SettlementForm .form-card {
+        flex: 1;
+    }
 }
