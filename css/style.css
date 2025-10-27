@@ -1073,7 +1073,7 @@ footer {
 
 /*progressbar*/
 #progressbar {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     overflow: hidden;
     color: lightgrey;
     padding-left: 0;
@@ -2189,7 +2189,7 @@ input[type=checkbox] {
 /* ستايل عام علي كل الصفحات */
 
 .scroll-table-div {
-    height: 58vh;
+    height: 55vh;
     /* min-height: 400px; */
     overflow: auto;
     -webkit-overflow-scrolling: touch;
@@ -2412,9 +2412,7 @@ input[type=checkbox] {
 }
 
 /* التمديد */
-.No_Wrap_Text {
-    white-space: nowrap;
-}
+
 
 @media (min-width:767px) {
     #dropdown-content-extension2 {
@@ -2666,18 +2664,6 @@ input[type="number"]:nth-child(n+4) {
     border-radius: 8px;
 }
 
-.warning {
-    padding: 5px;
-    background-color: #ff962636;
-    border-right: 5px solid #FF9626;
-    text-align: end;
-}
-
-.warning h5,
-i {
-    color: #f78409;
-}
-
 .Cancle-ConfirmBtn {
     background: white;
     color: #FF9626;
@@ -2779,11 +2765,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 690px;
 }
 
-/*  جدول المستأجرين*/
-.Tenants-table-div {
-    height: 53vh;
-    /* min-height: 400px; */
-}
 
 /* تغذية الصندوق */
 .feed-acceptt-btn {
@@ -2892,6 +2873,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-bottom: 1px solid #D9D9D9;
     font-size: 20px;
     font-weight: 500;
+    box-shadow: 0px -3px 0px 0px #39629c08;
+    border-radius: 8px 8px 0px 0px;
 }
 
 .profile-section {
@@ -3054,6 +3037,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 /* NEW LAYOUT STRUCTURE */
+.No_Wrap_Text {
+    white-space: nowrap;
+    margin-bottom: .2rem;
+}
+
 #content-wrapper {
     flex: 1;
     display: flex;
@@ -3126,11 +3114,33 @@ fieldset {
     .form-card {
         height: 70vh;
     }
+
     #SettlementForm .form-card {
         height: 50vh;
     }
+
     .reportTable-div {
         height: 40vh !important;
+    }
+
+    .scroll-table-div {
+        height: 40vh;
+    }
+    .upload-container-checking,.upload__img-box {
+        width: 80px;
+    }
+    .TablesReferenceDiv {
+    height: 35vh;
+    min-height: fit-content;
+    }
+    .Expenses-compensation-Table thead th{
+        padding: 2px 5px;
+    }
+    .Expenses-compensation-Table td{
+     padding: 2px 5px;
+    }
+    .Expenses-compensation-Table{
+      margin: 0;
     }
 }
 
@@ -3147,6 +3157,10 @@ fieldset {
 
 /* Tenant LAYOUT STRUCTURE */
 
+.Tenants-table-div {
+    height: 50vh;
+}
+
 #Table-details {
     height: 47vh;
 }
@@ -3155,10 +3169,37 @@ fieldset {
     #Table-details {
         height: 30vh;
     }
+
+    .Tenants-table-div {
+        height: 40vh;
+    }
 }
 
 @media (min-width:1399.98px) {
     #SettlementForm .form-card {
         flex: 1;
+    }
+}
+
+/* FLIP MOBILE */
+@media(max-height:440px) {
+    .form-card {
+        height: 400px;
+    }
+
+    .main-card {
+        height: fit-content;
+        max-height: none;
+    }
+
+    .scroll-table-div {
+        height: 300px;
+    }
+}
+
+/* ACCOUNT IN DESKTOP */
+@media (max-width:1399.98px) {
+    .header-card{
+     display: none;
     }
 }
