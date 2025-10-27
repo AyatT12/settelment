@@ -41,7 +41,7 @@
         </header>
         <main class="container-fluid">
             <div class="row justify-content-center w-100 h-100" style="flex: 1;">
-                <div class="col-xl-10 text-center ">
+                <div class="col-xl-10 text-center h-100">
                     <div class="card main-card ">
                         <!-- edited -->
                         <div class="col-md-12">
@@ -362,6 +362,45 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
     <script src="js/settementList.js"></script>
+     <script>
+        function setScrollToRight(el) {
+            if (!el) return;
+            const style = getComputedStyle(el);
+            const isRTL = style.direction === 'rtl';
+            const max = Math.max(0, el.scrollWidth - el.clientWidth);
+            function attempt() {
+                el.scrollLeft = max;
+
+                if (isRTL && Math.abs(el.scrollLeft) < Math.max(1, max - 1)) {
+                    try { el.scrollLeft = -max; } catch (e) { }
+                }
+
+                if (Math.abs(el.scrollLeft) < Math.max(1, max - 1)) {
+                    try { el.scrollTo({ left: max, behavior: 'instant' }); } catch (e) { el.scrollLeft = max; }
+                }
+            }
+            requestAnimationFrame(() => {
+                attempt();
+                setTimeout(attempt, 50);
+            });
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.scroll-table-div');
+            if (!container) return;
+            setScrollToRight(container);
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => setScrollToRight(container), 120);
+            });
+            const observer = new MutationObserver(() => {
+                setTimeout(() => setScrollToRight(container), 40);
+            });
+            observer.observe(container, { childList: true, subtree: true, attributes: true });
+            const imgs = container.querySelectorAll('img');
+            imgs.forEach(img => img.addEventListener('load', () => setTimeout(() => setScrollToRight(container), 30)));
+        });
+    </script>
 </body>
 
 </html>
