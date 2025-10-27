@@ -494,7 +494,7 @@ $('body').on('click', '.img-bg', function (e) {
   var imageUrl = $(this).css('background-image');
   imageUrl = imageUrl.replace(/^url\(['"](.+)['"]\)/, '$1');
   var newTab = window.open();
-  newTab.document.body.innerHTML = '<img src="' + imageUrl + '">';
+  newTab.document.body.innerHTML = '<img src="' + imageUrl + '" class="w-100">';
 
   $(newTab.document.body).css({
     'background-color': 'black',
@@ -643,7 +643,7 @@ document
     saveSignatureBtn = "WriteSignature";
   });
 const uploadContainer = document.querySelector(".upload-container");
-const mainContainer = document.querySelector(".main-container");
+const mainContainer = document.querySelector(".Signature-main-container");
 const UploadSigntaurePic = document.getElementById("UploadSigntaurePic");
 const imageUpload = document.getElementById("imageUpload");
 var imgeURL;
