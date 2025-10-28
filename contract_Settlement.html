@@ -448,8 +448,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="row align-items-center flex-row-reverse">
+                                                <div class="row align-items-center flex-row-reverse gx-2">
                                                     <div class="col-auto">
                                                         <label id="notes" class="mb-lg-0">الملاحظات</label>
                                                     </div>
@@ -617,7 +616,6 @@
                                                                                                     id="addImage">
                                                                                                 <input type="file"
                                                                                                     multiple
-                                                                                                    accept="image/*"
                                                                                                     id="Expenses-images"
                                                                                                     class="upload__inputfile ">
                                                                                             </div>
@@ -824,7 +822,6 @@
                                                                                                     id="addImage">
                                                                                                 <input type="file"
                                                                                                     multiple
-                                                                                                    accept="image/*"
                                                                                                     id="compensation-images"
                                                                                                     class="upload__inputfile ">
                                                                                             </div>
@@ -916,31 +913,32 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="row CurrentReadingg_row flex-row-reverse g-3 justify-content-between">
+                                                        <div class="row CurrentReadingg_row flex-row-reverse g-2 justify-content-between">
                                                             <div class="col-auto">
-                                                              <div class="row sett_checkField flex-nowrap gx-2">
-                                                                  <div class="col-auto">
-                                                                    <label id="CurrentReadingg"
-                                                                        for="CurrentReadingg-input">
-                                                                        القراءة الحالية</label>
-                                                                </div>
-                                                                <div
-                                                                    class="col-lg-auto d-flex flex-column align-items-end">
-                                                                    <input type="tel" class="form-control form-control1"
-                                                                        id="CurrentReadingg-input"
-                                                                        name="CurrentReadingg-input"
-                                                                        aria-describedby="inputGroupPrepend"
-                                                                        autocomplete="off" style="width: 90px;">
-                                                                    <div class="row requird-field-row-last">
-                                                                        <div class="col-12">
-                                                                            <div class="invalid-feedback">
-                                                                                لا تكون أقل من العداد عند التسليم
-                                                                            </div>
+                                                                <div class="row sett_checkField flex-nowrap gx-2">
+                                                                    <div class="col-auto">
+                                                                        <label id="CurrentReadingg"
+                                                                            for="CurrentReadingg-input">
+                                                                            القراءة الحالية</label>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-lg-auto d-flex flex-column align-items-end">
+                                                                        <input type="tel"
+                                                                            class="form-control form-control1"
+                                                                            id="CurrentReadingg-input"
+                                                                            name="CurrentReadingg-input"
+                                                                            aria-describedby="inputGroupPrepend"
+                                                                            autocomplete="off" style="width: 90px;">
+                                                                        <div class="row requird-field-row-last">
+                                                                            <div class="col-12">
+                                                                                <div class="invalid-feedback">
+                                                                                    لا تكون أقل من العداد عند التسليم
+                                                                                </div>
 
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                              </div>
                                                             </div>
                                                             <div class="col-auto  mb-3">
                                                                 <button type="button"
@@ -986,411 +984,885 @@
                                                     </div>
 
                                                     <div class="col-xl-6 virtual-check-table mt-3 mt-xl-0">
-                                                        <div id="referenceDiv">
-                                                            <div id="tableContainer" class="table-scroll">
-                                                                <table
-                                                                    class="table table-bordered  table-hover Checkup-table ">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th scope="col" class="value-tabel-header">
-                                                                                الملاحظات
-                                                                            </th>
-                                                                            <th scope="col">
-                                                                                الفحص</th>
-                                                                            <th scope="col">
-                                                                                <div
-                                                                                    class="d-flex justify-content-center">
-                                                                                    <div class="col"> بنود الفحص
+                                                        <div>
+                                                            <div class="table-container-single">
+                                                                <div class="table-scroll">
+                                                                    <table
+                                                                        class="table table-bordered table-hover Checkup-table">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col"
+                                                                                    class="value-tabel-header">الملاحظات
+                                                                                </th>
+                                                                                <th scope="col">الفحص</th>
+                                                                                <th scope="col">
+                                                                                    <div
+                                                                                        class="d-flex justify-content-center">
+                                                                                        <div class="col">بنود الفحص
+                                                                                        </div>
+                                                                                        <div class="col-auto p-0">
+                                                                                            <input type="checkbox"
+                                                                                                id="All_Check_items">
+                                                                                        </div>
                                                                                     </div>
-                                                                                    <div class="col-auto p-0">
-                                                                                        <input type="checkbox"
-                                                                                            id="All_Check_items">
+                                                                                </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="text-center">
+                                                                                    <textarea
+                                                                                        class="form-control check-table-notes"
+                                                                                        id="Tires-textarea"
+                                                                                        maxlength="100"
+                                                                                        name="Tires-textarea"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select
+                                                                                        class="form-select table-select-style"
+                                                                                        aria-label="Default select example">
+                                                                                        <option selected> </option>
+                                                                                        <option value="1">ممتلئ
+                                                                                        </option>
+                                                                                        <option value="2"> 3/4 </option>
+                                                                                        <option value="2"> 1/2 </option>
+                                                                                        <option value="2"> 1/4 </option>
+                                                                                        <option value="2"> فارغ
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="options-col">
+                                                                                        <label class="Tires"
+                                                                                            for="Tires">
+                                                                                            الإطارات
+
+                                                                                        </label>
+                                                                                        <input class="Tires-input"
+                                                                                            type="checkbox"
+                                                                                            name="Examination-items"
+                                                                                            value="Tires" id="Tires">
                                                                                     </div>
-                                                                                </div>
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr>
-                                                                            <td class="text-center">
-                                                                                <textarea
-                                                                                    class="form-control check-table-notes"
-                                                                                    id="Tires-textarea" maxlength="100"
-                                                                                    name="Tires-textarea"></textarea>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select
-                                                                                    class="form-select table-select-style"
-                                                                                    aria-label="Default select example">
-                                                                                    <option selected> </option>
-                                                                                    <option value="1">ممتلئ
-                                                                                    </option>
-                                                                                    <option value="2"> 3/4 </option>
-                                                                                    <option value="2"> 1/2 </option>
-                                                                                    <option value="2"> 1/4 </option>
-                                                                                    <option value="2"> فارغ
-                                                                                    </option>
-                                                                                </select>
-                                                                            </td>
-                                                                            <td>
-                                                                                <div class="options-col">
-                                                                                    <label class="Tires" for="Tires">
-                                                                                        الإطارات
+                                                                                </td>
 
-                                                                                    </label>
-                                                                                    <input class="Tires-input"
-                                                                                        type="checkbox"
-                                                                                        name="Examination-items"
-                                                                                        value="Tires" id="Tires">
-                                                                                </div>
-                                                                            </td>
+                                                                            </tr>
+                                                                            <tr>
 
-                                                                        </tr>
-                                                                        <tr>
-
-                                                                            <td class="text-center">
-                                                                                <textarea
-                                                                                    class="form-control check-table-notes"
-                                                                                    id="lights-textarea" maxlength="100"
-                                                                                    name="lights-textarea"></textarea>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select
-                                                                                    class="form-select table-select-style"
-                                                                                    aria-label="Default select example">
-                                                                                    <option selected> </option>
-                                                                                    <option value="2"> ممتاز
-                                                                                    </option>
-                                                                                    <option value="2"> جيد </option>
-                                                                                    <option value="2"> ضعيف
-                                                                                    </option>
-                                                                                    <option value="2"> لا يعمل
-                                                                                    </option>
-                                                                                    <option value="2"> موجود
-                                                                                    </option>
-                                                                                    <option value="2"> غير موجود
-                                                                                    </option>
+                                                                                <td class="text-center">
+                                                                                    <textarea
+                                                                                        class="form-control check-table-notes"
+                                                                                        id="lights-textarea"
+                                                                                        maxlength="100"
+                                                                                        name="lights-textarea"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select
+                                                                                        class="form-select table-select-style"
+                                                                                        aria-label="Default select example">
+                                                                                        <option selected> </option>
+                                                                                        <option value="2"> ممتاز
+                                                                                        </option>
+                                                                                        <option value="2"> جيد </option>
+                                                                                        <option value="2"> ضعيف
+                                                                                        </option>
+                                                                                        <option value="2"> لا يعمل
+                                                                                        </option>
+                                                                                        <option value="2"> موجود
+                                                                                        </option>
+                                                                                        <option value="2"> غير موجود
+                                                                                        </option>
 
 
-                                                                                </select>
-                                                                            </td>
+                                                                                    </select>
+                                                                                </td>
 
-                                                                            <td>
-                                                                                <div class="options-col">
-                                                                                    <label class="lights" for="lights">
-                                                                                        الأنوار
+                                                                                <td>
+                                                                                    <div class="options-col">
+                                                                                        <label class="lights"
+                                                                                            for="lights">
+                                                                                            الأنوار
 
-                                                                                    </label>
-                                                                                    <input class="lights-input"
-                                                                                        type="checkbox"
-                                                                                        name="Examination-items"
-                                                                                        value="lights" id="lights">
+                                                                                        </label>
+                                                                                        <input class="lights-input"
+                                                                                            type="checkbox"
+                                                                                            name="Examination-items"
+                                                                                            value="lights" id="lights">
 
-                                                                                </div>
-                                                                            </td>
+                                                                                    </div>
+                                                                                </td>
 
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="text-center">
-                                                                                <textarea
-                                                                                    class="form-control check-table-notes"
-                                                                                    id="Air_conditioner-textarea"
-                                                                                    maxlength="100"
-                                                                                    name="Air_conditioner-textarea"></textarea>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select
-                                                                                    class="form-select table-select-style"
-                                                                                    aria-label="Default select example">
-                                                                                    <option selected> </option>
-                                                                                    <option value="2"> ممتاز
-                                                                                    </option>
-                                                                                    <option value="2"> جيد </option>
-                                                                                    <option value="2"> ضعيف
-                                                                                    </option>
-                                                                                    <option value="2"> لا يعمل
-                                                                                    </option>
-                                                                                    <option value="2"> موجود
-                                                                                    </option>
-                                                                                    <option value="2"> غير موجود
-                                                                                    </option>
-                                                                                </select>
-                                                                            </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center">
+                                                                                    <textarea
+                                                                                        class="form-control check-table-notes"
+                                                                                        id="Air_conditioner-textarea"
+                                                                                        maxlength="100"
+                                                                                        name="Air_conditioner-textarea"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select
+                                                                                        class="form-select table-select-style"
+                                                                                        aria-label="Default select example">
+                                                                                        <option selected> </option>
+                                                                                        <option value="2"> ممتاز
+                                                                                        </option>
+                                                                                        <option value="2"> جيد </option>
+                                                                                        <option value="2"> ضعيف
+                                                                                        </option>
+                                                                                        <option value="2"> لا يعمل
+                                                                                        </option>
+                                                                                        <option value="2"> موجود
+                                                                                        </option>
+                                                                                        <option value="2"> غير موجود
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </td>
 
 
-                                                                            <td>
-                                                                                <div class="options-col">
-                                                                                    <label class="Air_conditioner"
-                                                                                        for="Air_conditioner">
-                                                                                        المكيف
+                                                                                <td>
+                                                                                    <div class="options-col">
+                                                                                        <label class="Air_conditioner"
+                                                                                            for="Air_conditioner">
+                                                                                            المكيف
 
-                                                                                    </label>
-                                                                                    <input class="Air_conditioner-input"
-                                                                                        type="checkbox"
-                                                                                        name="Examination-items"
-                                                                                        value="Air_conditioner"
-                                                                                        id="Air_conditioner">
-                                                                                </div>
-                                                                            </td>
+                                                                                        </label>
+                                                                                        <input
+                                                                                            class="Air_conditioner-input"
+                                                                                            type="checkbox"
+                                                                                            name="Examination-items"
+                                                                                            value="Air_conditioner"
+                                                                                            id="Air_conditioner">
+                                                                                    </div>
+                                                                                </td>
 
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="text-center">
-                                                                                <textarea
-                                                                                    class="form-control check-table-notes"
-                                                                                    id="Safety_Security-textarea"
-                                                                                    maxlength="100"
-                                                                                    name="Safety_Security-textarea"></textarea>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select
-                                                                                    class="form-select table-select-style"
-                                                                                    aria-label="Default select example">
-                                                                                    <option selected> </option>
-                                                                                    <option value="2"> ممتاز
-                                                                                    </option>
-                                                                                    <option value="2"> جيد </option>
-                                                                                    <option value="2"> ضعيف
-                                                                                    </option>
-                                                                                    <option value="2"> لا يعمل
-                                                                                    </option>
-                                                                                    <option value="2"> موجود
-                                                                                    </option>
-                                                                                    <option value="2"> غير موجود
-                                                                                    </option>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center">
+                                                                                    <textarea
+                                                                                        class="form-control check-table-notes"
+                                                                                        id="Safety_Security-textarea"
+                                                                                        maxlength="100"
+                                                                                        name="Safety_Security-textarea"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select
+                                                                                        class="form-select table-select-style"
+                                                                                        aria-label="Default select example">
+                                                                                        <option selected> </option>
+                                                                                        <option value="2"> ممتاز
+                                                                                        </option>
+                                                                                        <option value="2"> جيد </option>
+                                                                                        <option value="2"> ضعيف
+                                                                                        </option>
+                                                                                        <option value="2"> لا يعمل
+                                                                                        </option>
+                                                                                        <option value="2"> موجود
+                                                                                        </option>
+                                                                                        <option value="2"> غير موجود
+                                                                                        </option>
 
-                                                                                </select>
-                                                                            </td>
+                                                                                    </select>
+                                                                                </td>
 
-                                                                            <td>
-                                                                                <div class="options-col">
-                                                                                    <label class="Safety_Security"
-                                                                                        for="Safety_Security">
-                                                                                        المرايا الداخلية و الخارجية
+                                                                                <td>
+                                                                                    <div class="options-col">
+                                                                                        <label class="Safety_Security"
+                                                                                            for="Safety_Security">
+                                                                                            المرايا الداخلية و الخارجية
 
-                                                                                    </label>
-                                                                                    <input class="Safety_Security-input"
-                                                                                        type="checkbox"
-                                                                                        name="Examination-items"
-                                                                                        value="Safety_Security"
-                                                                                        id="Safety_Security">
-                                                                                </div>
-                                                                            </td>
+                                                                                        </label>
+                                                                                        <input
+                                                                                            class="Safety_Security-input"
+                                                                                            type="checkbox"
+                                                                                            name="Examination-items"
+                                                                                            value="Safety_Security"
+                                                                                            id="Safety_Security">
+                                                                                    </div>
+                                                                                </td>
 
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="text-center">
-                                                                                <textarea
-                                                                                    class="form-control check-table-notes"
-                                                                                    id="wiper-textarea" maxlength="100"
-                                                                                    name="wiper-textarea"></textarea>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select
-                                                                                    class="form-select table-select-style"
-                                                                                    aria-label="Default select example">
-                                                                                    <option selected> </option>
-                                                                                    <option value="2"> ممتاز
-                                                                                    </option>
-                                                                                    <option value="2"> جيد </option>
-                                                                                    <option value="2"> ضعيف
-                                                                                    </option>
-                                                                                    <option value="2"> لا يعمل
-                                                                                    </option>
-                                                                                    <option value="2"> موجود
-                                                                                    </option>
-                                                                                    <option value="2"> غير موجود
-                                                                                    </option>
-                                                                                </select>
-                                                                            </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center">
+                                                                                    <textarea
+                                                                                        class="form-control check-table-notes"
+                                                                                        id="wiper-textarea"
+                                                                                        maxlength="100"
+                                                                                        name="wiper-textarea"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select
+                                                                                        class="form-select table-select-style"
+                                                                                        aria-label="Default select example">
+                                                                                        <option selected> </option>
+                                                                                        <option value="2"> ممتاز
+                                                                                        </option>
+                                                                                        <option value="2"> جيد </option>
+                                                                                        <option value="2"> ضعيف
+                                                                                        </option>
+                                                                                        <option value="2"> لا يعمل
+                                                                                        </option>
+                                                                                        <option value="2"> موجود
+                                                                                        </option>
+                                                                                        <option value="2"> غير موجود
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </td>
 
-                                                                            <td>
-                                                                                <div class="options-col">
-                                                                                    <label class="wiper" for="wiper">
-                                                                                        المساحات
+                                                                                <td>
+                                                                                    <div class="options-col">
+                                                                                        <label class="wiper"
+                                                                                            for="wiper">
+                                                                                            المساحات
 
-                                                                                    </label>
-                                                                                    <input class="wiper-input"
-                                                                                        type="checkbox"
-                                                                                        name="Examination-items"
-                                                                                        value="wiper" id="wiper">
-                                                                                </div>
-                                                                            </td>
+                                                                                        </label>
+                                                                                        <input class="wiper-input"
+                                                                                            type="checkbox"
+                                                                                            name="Examination-items"
+                                                                                            value="wiper" id="wiper">
+                                                                                    </div>
+                                                                                </td>
 
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="text-center">
-                                                                                <textarea
-                                                                                    class="form-control check-table-notes"
-                                                                                    id="signals-textarea"
-                                                                                    maxlength="100"
-                                                                                    name="signals-textarea"></textarea>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select
-                                                                                    class="form-select table-select-style"
-                                                                                    aria-label="Default select example">
-                                                                                    <option selected> </option>
-                                                                                    <option value="2"> ممتاز
-                                                                                    </option>
-                                                                                    <option value="2"> جيد </option>
-                                                                                    <option value="2"> ضعيف
-                                                                                    </option>
-                                                                                    <option value="2"> لا يعمل
-                                                                                    </option>
-                                                                                    <option value="2"> موجود
-                                                                                    </option>
-                                                                                    <option value="2"> غير موجود
-                                                                                    </option>
-                                                                                </select>
-                                                                            </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center">
+                                                                                    <textarea
+                                                                                        class="form-control check-table-notes"
+                                                                                        id="signals-textarea"
+                                                                                        maxlength="100"
+                                                                                        name="signals-textarea"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select
+                                                                                        class="form-select table-select-style"
+                                                                                        aria-label="Default select example">
+                                                                                        <option selected> </option>
+                                                                                        <option value="2"> ممتاز
+                                                                                        </option>
+                                                                                        <option value="2"> جيد </option>
+                                                                                        <option value="2"> ضعيف
+                                                                                        </option>
+                                                                                        <option value="2"> لا يعمل
+                                                                                        </option>
+                                                                                        <option value="2"> موجود
+                                                                                        </option>
+                                                                                        <option value="2"> غير موجود
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </td>
 
-                                                                            <td>
-                                                                                <div class="options-col">
-                                                                                    <label class="signals"
-                                                                                        for="signals">
-                                                                                        الإشارات
+                                                                                <td>
+                                                                                    <div class="options-col">
+                                                                                        <label class="signals"
+                                                                                            for="signals">
+                                                                                            الإشارات
 
-                                                                                    </label>
-                                                                                    <input class="signals-input"
-                                                                                        type="checkbox"
-                                                                                        name="Examination-items"
-                                                                                        value="signals" id="signals">
-                                                                                </div>
-                                                                            </td>
+                                                                                        </label>
+                                                                                        <input class="signals-input"
+                                                                                            type="checkbox"
+                                                                                            name="Examination-items"
+                                                                                            value="signals"
+                                                                                            id="signals">
+                                                                                    </div>
+                                                                                </td>
 
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="text-center">
-                                                                                <textarea
-                                                                                    class="form-control check-table-notes"
-                                                                                    id="cleanliness-textarea"
-                                                                                    maxlength="100"
-                                                                                    name="cleanliness-textarea"></textarea>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select
-                                                                                    class="form-select table-select-style"
-                                                                                    aria-label="Default select example">
-                                                                                    <option selected> </option>
-                                                                                    <option value="2"> ممتاز
-                                                                                    </option>
-                                                                                    <option value="2"> جيد </option>
-                                                                                    <option value="2"> ضعيف
-                                                                                    </option>
-                                                                                    <option value="2"> لا يعمل
-                                                                                    </option>
-                                                                                    <option value="2"> موجود
-                                                                                    </option>
-                                                                                    <option value="2"> غير موجود
-                                                                                    </option>
-                                                                                </select>
-                                                                            </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center">
+                                                                                    <textarea
+                                                                                        class="form-control check-table-notes"
+                                                                                        id="cleanliness-textarea"
+                                                                                        maxlength="100"
+                                                                                        name="cleanliness-textarea"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select
+                                                                                        class="form-select table-select-style"
+                                                                                        aria-label="Default select example">
+                                                                                        <option selected> </option>
+                                                                                        <option value="2"> ممتاز
+                                                                                        </option>
+                                                                                        <option value="2"> جيد </option>
+                                                                                        <option value="2"> ضعيف
+                                                                                        </option>
+                                                                                        <option value="2"> لا يعمل
+                                                                                        </option>
+                                                                                        <option value="2"> موجود
+                                                                                        </option>
+                                                                                        <option value="2"> غير موجود
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </td>
 
-                                                                            <td>
-                                                                                <div class="options-col">
-                                                                                    <label class="cleanliness"
-                                                                                        for="cleanliness">
-                                                                                        النظافة
+                                                                                <td>
+                                                                                    <div class="options-col">
+                                                                                        <label class="cleanliness"
+                                                                                            for="cleanliness">
+                                                                                            النظافة
 
-                                                                                    </label>
-                                                                                    <input class="cleanliness-input"
-                                                                                        type="checkbox"
-                                                                                        name="Examination-items"
-                                                                                        value="cleanliness"
-                                                                                        id="cleanliness">
-                                                                                </div>
-                                                                            </td>
+                                                                                        </label>
+                                                                                        <input class="cleanliness-input"
+                                                                                            type="checkbox"
+                                                                                            name="Examination-items"
+                                                                                            value="cleanliness"
+                                                                                            id="cleanliness">
+                                                                                    </div>
+                                                                                </td>
 
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="text-center">
-                                                                                <textarea
-                                                                                    class="form-control check-table-notes"
-                                                                                    id="Front_brake-textarea"
-                                                                                    maxlength="100"
-                                                                                    name="Front_brake-textarea"></textarea>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select
-                                                                                    class="form-select table-select-style"
-                                                                                    aria-label="Default select example">
-                                                                                    <option selected> </option>
-                                                                                    <option value="2"> ممتاز
-                                                                                    </option>
-                                                                                    <option value="2"> جيد </option>
-                                                                                    <option value="2"> ضعيف
-                                                                                    </option>
-                                                                                    <option value="2"> لا يعمل
-                                                                                    </option>
-                                                                                    <option value="2"> موجود
-                                                                                    </option>
-                                                                                    <option value="2"> غير موجود
-                                                                                    </option>
-                                                                                </select>
-                                                                            </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center">
+                                                                                    <textarea
+                                                                                        class="form-control check-table-notes"
+                                                                                        id="Front_brake-textarea"
+                                                                                        maxlength="100"
+                                                                                        name="Front_brake-textarea"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select
+                                                                                        class="form-select table-select-style"
+                                                                                        aria-label="Default select example">
+                                                                                        <option selected> </option>
+                                                                                        <option value="2"> ممتاز
+                                                                                        </option>
+                                                                                        <option value="2"> جيد </option>
+                                                                                        <option value="2"> ضعيف
+                                                                                        </option>
+                                                                                        <option value="2"> لا يعمل
+                                                                                        </option>
+                                                                                        <option value="2"> موجود
+                                                                                        </option>
+                                                                                        <option value="2"> غير موجود
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </td>
 
-                                                                            <td>
-                                                                                <div class="options-col">
-                                                                                    <label class="Front_brake "
-                                                                                        for="Front_brake">
-                                                                                        الفرامل الأمامية
+                                                                                <td>
+                                                                                    <div class="options-col">
+                                                                                        <label class="Front_brake "
+                                                                                            for="Front_brake">
+                                                                                            الفرامل الأمامية
 
-                                                                                    </label>
-                                                                                    <input class="Front_brake-input"
-                                                                                        type="checkbox"
-                                                                                        name="Examination-items"
-                                                                                        value="Front_brake"
-                                                                                        id="Front_brake">
-                                                                                </div>
-                                                                            </td>
+                                                                                        </label>
+                                                                                        <input class="Front_brake-input"
+                                                                                            type="checkbox"
+                                                                                            name="Examination-items"
+                                                                                            value="Front_brake"
+                                                                                            id="Front_brake">
+                                                                                    </div>
+                                                                                </td>
 
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td class="text-center">
-                                                                                <textarea
-                                                                                    class="form-control check-table-notes"
-                                                                                    id="Rear_brake-textarea"
-                                                                                    maxlength="100"
-                                                                                    name="Rear_brake-textarea"></textarea>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select
-                                                                                    class="form-select table-select-style"
-                                                                                    aria-label="Default select example">
-                                                                                    <option selected> </option>
-                                                                                    <option value="2"> ممتاز
-                                                                                    </option>
-                                                                                    <option value="2"> جيد </option>
-                                                                                    <option value="2"> ضعيف
-                                                                                    </option>
-                                                                                    <option value="2"> لا يعمل
-                                                                                    </option>
-                                                                                    <option value="2"> موجود
-                                                                                    </option>
-                                                                                    <option value="2"> غير موجود
-                                                                                    </option>
-                                                                                </select>
-                                                                            </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td class="text-center">
+                                                                                    <textarea
+                                                                                        class="form-control check-table-notes"
+                                                                                        id="Rear_brake-textarea"
+                                                                                        maxlength="100"
+                                                                                        name="Rear_brake-textarea"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select
+                                                                                        class="form-select table-select-style"
+                                                                                        aria-label="Default select example">
+                                                                                        <option selected> </option>
+                                                                                        <option value="2"> ممتاز
+                                                                                        </option>
+                                                                                        <option value="2"> جيد </option>
+                                                                                        <option value="2"> ضعيف
+                                                                                        </option>
+                                                                                        <option value="2"> لا يعمل
+                                                                                        </option>
+                                                                                        <option value="2"> موجود
+                                                                                        </option>
+                                                                                        <option value="2"> غير موجود
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </td>
 
-                                                                            <td>
-                                                                                <div class="options-col">
-                                                                                    <label class="Rear_brake"
-                                                                                        for="Rear_brake">
-                                                                                        الفرامل الخلفية
+                                                                                <td>
+                                                                                    <div class="options-col">
+                                                                                        <label class="Rear_brake"
+                                                                                            for="Rear_brake">
+                                                                                            الفرامل الخلفية
 
-                                                                                    </label>
-                                                                                    <input class="Rear_brake-input"
-                                                                                        type="checkbox"
-                                                                                        name="Examination-items"
-                                                                                        value="Rear_brake"
-                                                                                        id="Rear_brake">
-                                                                                </div>
-                                                                            </td>
+                                                                                        </label>
+                                                                                        <input class="Rear_brake-input"
+                                                                                            type="checkbox"
+                                                                                            name="Examination-items"
+                                                                                            value="Rear_brake"
+                                                                                            id="Rear_brake">
+                                                                                    </div>
+                                                                                </td>
 
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="table-container-split">
+                                                                <div class="split-table-wrapper">
+                                                                    <div class="table-scroll">
+                                                                        <table class="table table-bordered table-hover Checkup-table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col"
+                                                                                        class="value-tabel-header">
+                                                                                        الملاحظات</th>
+                                                                                    <th scope="col">الفحص</th>
+                                                                                    <th scope="col">
+                                                                                        <div
+                                                                                            class="d-flex justify-content-center">
+                                                                                            <div class="col">بنود الفحص
+                                                                                            </div>
+                                                                                            <div class="col-auto p-0">
+                                                                                                <input type="checkbox"
+                                                                                                    class="All_Check_items_split">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="text-center">
+                                                                                        <textarea
+                                                                                            class="form-control check-table-notes"
+                                                                                            id="signals-textarea"
+                                                                                            maxlength="100"
+                                                                                            name="signals-textarea"></textarea>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select
+                                                                                            class="form-select table-select-style"
+                                                                                            aria-label="Default select example">
+                                                                                            <option selected> </option>
+                                                                                            <option value="2"> ممتاز
+                                                                                            </option>
+                                                                                            <option value="2"> جيد
+                                                                                            </option>
+                                                                                            <option value="2"> ضعيف
+                                                                                            </option>
+                                                                                            <option value="2"> لا يعمل
+                                                                                            </option>
+                                                                                            <option value="2"> موجود
+                                                                                            </option>
+                                                                                            <option value="2"> غير موجود
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </td>
+
+                                                                                    <td>
+                                                                                        <div class="options-col">
+                                                                                            <label class="signals"
+                                                                                                for="signals">
+                                                                                                الإشارات
+
+                                                                                            </label>
+                                                                                            <input class="signals-input"
+                                                                                                type="checkbox"
+                                                                                                name="Examination-items"
+                                                                                                value="signals"
+                                                                                                id="signals">
+                                                                                        </div>
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="text-center">
+                                                                                        <textarea
+                                                                                            class="form-control check-table-notes"
+                                                                                            id="cleanliness-textarea"
+                                                                                            maxlength="100"
+                                                                                            name="cleanliness-textarea"></textarea>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select
+                                                                                            class="form-select table-select-style"
+                                                                                            aria-label="Default select example">
+                                                                                            <option selected> </option>
+                                                                                            <option value="2"> ممتاز
+                                                                                            </option>
+                                                                                            <option value="2"> جيد
+                                                                                            </option>
+                                                                                            <option value="2"> ضعيف
+                                                                                            </option>
+                                                                                            <option value="2"> لا يعمل
+                                                                                            </option>
+                                                                                            <option value="2"> موجود
+                                                                                            </option>
+                                                                                            <option value="2"> غير موجود
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </td>
+
+                                                                                    <td>
+                                                                                        <div class="options-col">
+                                                                                            <label class="cleanliness"
+                                                                                                for="cleanliness">
+                                                                                                النظافة
+
+                                                                                            </label>
+                                                                                            <input
+                                                                                                class="cleanliness-input"
+                                                                                                type="checkbox"
+                                                                                                name="Examination-items"
+                                                                                                value="cleanliness"
+                                                                                                id="cleanliness">
+                                                                                        </div>
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="text-center">
+                                                                                        <textarea
+                                                                                            class="form-control check-table-notes"
+                                                                                            id="Front_brake-textarea"
+                                                                                            maxlength="100"
+                                                                                            name="Front_brake-textarea"></textarea>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select
+                                                                                            class="form-select table-select-style"
+                                                                                            aria-label="Default select example">
+                                                                                            <option selected> </option>
+                                                                                            <option value="2"> ممتاز
+                                                                                            </option>
+                                                                                            <option value="2"> جيد
+                                                                                            </option>
+                                                                                            <option value="2"> ضعيف
+                                                                                            </option>
+                                                                                            <option value="2"> لا يعمل
+                                                                                            </option>
+                                                                                            <option value="2"> موجود
+                                                                                            </option>
+                                                                                            <option value="2"> غير موجود
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </td>
+
+                                                                                    <td>
+                                                                                        <div class="options-col">
+                                                                                            <label class="Front_brake "
+                                                                                                for="Front_brake">
+                                                                                                الفرامل الأمامية
+
+                                                                                            </label>
+                                                                                            <input
+                                                                                                class="Front_brake-input"
+                                                                                                type="checkbox"
+                                                                                                name="Examination-items"
+                                                                                                value="Front_brake"
+                                                                                                id="Front_brake">
+                                                                                        </div>
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="text-center">
+                                                                                        <textarea
+                                                                                            class="form-control check-table-notes"
+                                                                                            id="Rear_brake-textarea"
+                                                                                            maxlength="100"
+                                                                                            name="Rear_brake-textarea"></textarea>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select
+                                                                                            class="form-select table-select-style"
+                                                                                            aria-label="Default select example">
+                                                                                            <option selected> </option>
+                                                                                            <option value="2"> ممتاز
+                                                                                            </option>
+                                                                                            <option value="2"> جيد
+                                                                                            </option>
+                                                                                            <option value="2"> ضعيف
+                                                                                            </option>
+                                                                                            <option value="2"> لا يعمل
+                                                                                            </option>
+                                                                                            <option value="2"> موجود
+                                                                                            </option>
+                                                                                            <option value="2"> غير موجود
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </td>
+
+                                                                                    <td>
+                                                                                        <div class="options-col">
+                                                                                            <label class="Rear_brake"
+                                                                                                for="Rear_brake">
+                                                                                                الفرامل الخلفية
+
+                                                                                            </label>
+                                                                                            <input
+                                                                                                class="Rear_brake-input"
+                                                                                                type="checkbox"
+                                                                                                name="Examination-items"
+                                                                                                value="Rear_brake"
+                                                                                                id="Rear_brake">
+                                                                                        </div>
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                 <div class="split-table-wrapper">
+                                                                    <div class="table-scroll">
+                                                                        <table class="table table-bordered table-hover Checkup-table">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th scope="col"
+                                                                                        class="value-tabel-header">
+                                                                                        الملاحظات</th>
+                                                                                    <th scope="col">الفحص</th>
+                                                                                    <th scope="col">
+                                                                                        <div
+                                                                                            class="d-flex justify-content-center">
+                                                                                            <div class="col">بنود الفحص
+                                                                                            </div>
+                                                                                            <div class="col-auto p-0">
+                                                                                                <input type="checkbox"
+                                                                                                    class="All_Check_items_split">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="text-center">
+                                                                                        <textarea
+                                                                                            class="form-control check-table-notes"
+                                                                                            id="Tires-textarea"
+                                                                                            maxlength="100"
+                                                                                            name="Tires-textarea"></textarea>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select
+                                                                                            class="form-select table-select-style"
+                                                                                            aria-label="Default select example">
+                                                                                            <option selected> </option>
+                                                                                            <option value="1">ممتلئ
+                                                                                            </option>
+                                                                                            <option value="2"> 3/4
+                                                                                            </option>
+                                                                                            <option value="2"> 1/2
+                                                                                            </option>
+                                                                                            <option value="2"> 1/4
+                                                                                            </option>
+                                                                                            <option value="2"> فارغ
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div class="options-col">
+                                                                                            <label class="Tires"
+                                                                                                for="Tires">
+                                                                                                الإطارات
+
+                                                                                            </label>
+                                                                                            <input class="Tires-input"
+                                                                                                type="checkbox"
+                                                                                                name="Examination-items"
+                                                                                                value="Tires"
+                                                                                                id="Tires">
+                                                                                        </div>
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                                <tr>
+
+                                                                                    <td class="text-center">
+                                                                                        <textarea
+                                                                                            class="form-control check-table-notes"
+                                                                                            id="lights-textarea"
+                                                                                            maxlength="100"
+                                                                                            name="lights-textarea"></textarea>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select
+                                                                                            class="form-select table-select-style"
+                                                                                            aria-label="Default select example">
+                                                                                            <option selected> </option>
+                                                                                            <option value="2"> ممتاز
+                                                                                            </option>
+                                                                                            <option value="2"> جيد
+                                                                                            </option>
+                                                                                            <option value="2"> ضعيف
+                                                                                            </option>
+                                                                                            <option value="2"> لا يعمل
+                                                                                            </option>
+                                                                                            <option value="2"> موجود
+                                                                                            </option>
+                                                                                            <option value="2"> غير موجود
+                                                                                            </option>
+
+
+                                                                                        </select>
+                                                                                    </td>
+
+                                                                                    <td>
+                                                                                        <div class="options-col">
+                                                                                            <label class="lights"
+                                                                                                for="lights">
+                                                                                                الأنوار
+
+                                                                                            </label>
+                                                                                            <input class="lights-input"
+                                                                                                type="checkbox"
+                                                                                                name="Examination-items"
+                                                                                                value="lights"
+                                                                                                id="lights">
+
+                                                                                        </div>
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="text-center">
+                                                                                        <textarea
+                                                                                            class="form-control check-table-notes"
+                                                                                            id="Air_conditioner-textarea"
+                                                                                            maxlength="100"
+                                                                                            name="Air_conditioner-textarea"></textarea>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select
+                                                                                            class="form-select table-select-style"
+                                                                                            aria-label="Default select example">
+                                                                                            <option selected> </option>
+                                                                                            <option value="2"> ممتاز
+                                                                                            </option>
+                                                                                            <option value="2"> جيد
+                                                                                            </option>
+                                                                                            <option value="2"> ضعيف
+                                                                                            </option>
+                                                                                            <option value="2"> لا يعمل
+                                                                                            </option>
+                                                                                            <option value="2"> موجود
+                                                                                            </option>
+                                                                                            <option value="2"> غير موجود
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </td>
+
+
+                                                                                    <td>
+                                                                                        <div class="options-col">
+                                                                                            <label
+                                                                                                class="Air_conditioner"
+                                                                                                for="Air_conditioner">
+                                                                                                المكيف
+
+                                                                                            </label>
+                                                                                            <input
+                                                                                                class="Air_conditioner-input"
+                                                                                                type="checkbox"
+                                                                                                name="Examination-items"
+                                                                                                value="Air_conditioner"
+                                                                                                id="Air_conditioner">
+                                                                                        </div>
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="text-center">
+                                                                                        <textarea
+                                                                                            class="form-control check-table-notes"
+                                                                                            id="Safety_Security-textarea"
+                                                                                            maxlength="100"
+                                                                                            name="Safety_Security-textarea"></textarea>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select
+                                                                                            class="form-select table-select-style"
+                                                                                            aria-label="Default select example">
+                                                                                            <option selected> </option>
+                                                                                            <option value="2"> ممتاز
+                                                                                            </option>
+                                                                                            <option value="2"> جيد
+                                                                                            </option>
+                                                                                            <option value="2"> ضعيف
+                                                                                            </option>
+                                                                                            <option value="2"> لا يعمل
+                                                                                            </option>
+                                                                                            <option value="2"> موجود
+                                                                                            </option>
+                                                                                            <option value="2"> غير موجود
+                                                                                            </option>
+
+                                                                                        </select>
+                                                                                    </td>
+
+                                                                                    <td>
+                                                                                        <div class="options-col">
+                                                                                            <label
+                                                                                                class="Safety_Security"
+                                                                                                for="Safety_Security">
+                                                                                                المرايا الداخلية و
+                                                                                                الخارجية
+
+                                                                                            </label>
+                                                                                            <input
+                                                                                                class="Safety_Security-input"
+                                                                                                type="checkbox"
+                                                                                                name="Examination-items"
+                                                                                                value="Safety_Security"
+                                                                                                id="Safety_Security">
+                                                                                        </div>
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="text-center">
+                                                                                        <textarea
+                                                                                            class="form-control check-table-notes"
+                                                                                            id="wiper-textarea"
+                                                                                            maxlength="100"
+                                                                                            name="wiper-textarea"></textarea>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select
+                                                                                            class="form-select table-select-style"
+                                                                                            aria-label="Default select example">
+                                                                                            <option selected> </option>
+                                                                                            <option value="2"> ممتاز
+                                                                                            </option>
+                                                                                            <option value="2"> جيد
+                                                                                            </option>
+                                                                                            <option value="2"> ضعيف
+                                                                                            </option>
+                                                                                            <option value="2"> لا يعمل
+                                                                                            </option>
+                                                                                            <option value="2"> موجود
+                                                                                            </option>
+                                                                                            <option value="2"> غير موجود
+                                                                                            </option>
+                                                                                        </select>
+                                                                                    </td>
+
+                                                                                    <td>
+                                                                                        <div class="options-col">
+                                                                                            <label class="wiper"
+                                                                                                for="wiper">
+                                                                                                المساحات
+
+                                                                                            </label>
+                                                                                            <input class="wiper-input"
+                                                                                                type="checkbox"
+                                                                                                name="Examination-items"
+                                                                                                value="wiper"
+                                                                                                id="wiper">
+                                                                                        </div>
+                                                                                    </td>
+
+                                                                                </tr>
+                                                                                <!-- Add remaining 4 rows here -->
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
