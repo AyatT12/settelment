@@ -20,7 +20,8 @@ body {
 }
 .button-row img{
     transform: rotate(180deg);
-} img{
+}
+.close-icon{
     transform: rotateY(180deg);
 }
 .radio-container {
@@ -44,7 +45,6 @@ textarea{
 
 }
 .table-scroll {
-    direction: ltr;
     padding-right: 0;
 }
 
