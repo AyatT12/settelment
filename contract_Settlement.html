@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -2174,29 +2175,36 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row flex-row-reverse g-2 mb-2">
+                                               <div class="row flex-row-reverse gx-2">
                                                     <!-- edited -->
-                                                    <div class="col-md-6 col-lg-4 d-flex align-items-start
-                                                            justify-content-end ">
-                                                        <div class="col-auto">
-                                                            <input type="tel" class="form-control form-control2"
-                                                                id="amount-paid-input" name="amount-paid"
-                                                                autocomplete="off">
-                                                            <div class="row requird-field-row-last">
-                                                                <div class="invalid-feedback" style="display: none;">
-                                                                    الحقل مطلوب
+                                                    <div class="col-md-6 col-lg-4">
+                                                        <div class="row flex-row-reverse g-2">
+                                                            <div class="col-auto centered-input-label">
+                                                                <label id="amount-paid" for="amount-paid-input"> المبلغ المدفوع</label>
+                                                            </div>
+                                                            <div class="col col-auto">
+                                                                <input type="tel" class="form-control form-control2"
+                                                                    id="amount-paid-input" name="amount-paid"
+                                                                    autocomplete="off">
+                                                                <div class="row requird-field-row-last">
+                                                                    <div class="invalid-feedback"
+                                                                        style="display: none;">
+                                                                        الحقل مطلوب
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-auto centered-input-label px-0">
-                                                            <label id="amount-paid" for="amount-paid-input"> المبلغ
-                                                                المدفوع</label>
+
                                                         </div>
                                                     </div>
                                                     <!-- edited -->
-                                                    <div
-                                                        class="col-md-6 col-lg-4 d-flex align-items-start justify-content-end">
-                                                        <div class="col-md-7 ">
+                                                    <div class="col-md-6 col-lg-4">
+                                                        <div class="row flex-row-reverse g-2">
+                                                            <div class="col-auto centered-input-label"
+                                                            style="justify-content: flex-end;">
+                                                            <label id="payment-method" for="payment-method-select">طريقة
+                                                                الدفع</label>
+                                                           </div>
+                                                            <div class="col col-md-7">
                                                             <div class="offset">
                                                                 <select class="form-select form-select-last"
                                                                     id="payment-method-select" name="payment-method"
@@ -2217,15 +2225,18 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-auto centered-input-label px-0"
-                                                            style="justify-content: flex-end;">
-                                                            <label id="payment-method" for="payment-method-select">طريقة
-                                                                الدفع</label>
                                                         </div>
                                                     </div>
-                                                    <div
-                                                        class="col-md-6 col-lg-4 d-flex align-items-start justify-content-end ">
-                                                        <div class="col-md-9">
+                                                    <div class="col-md-6 col-lg-4">
+                                                        <div class="row flex-row-reverse g-2">
+                                                            <div class="col-auto centered-input-label"
+                                                            style="justify-content: flex-end;">
+                                                            <label id="selling-point" for="selling-point-dropdown"> نقطة
+                                                                البيع
+                                                            </label>
+
+                                                        </div>
+                                                        <div class="col col-md-9">
                                                             <div class="offset">
                                                                 <select class="form-select form-select-last"
                                                                     id="selling-point-dropdown" name="selling-point"
@@ -2244,20 +2255,11 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
-                                                        <div class="col-auto centered-input-label px-0"
-                                                            style="justify-content: flex-end;">
-                                                            <label id="selling-point" for="selling-point-dropdown">
-                                                                نقطة
-                                                                البيع
-                                                            </label>
-
                                                         </div>
-
                                                     </div>
-                                                </div>
-                                                <div class="row align-items-center flex-row-reverse">
+                                                  </div>
+                                                  <div class="row align-items-center flex-row-reverse gx-2">
                                                     <div class="col-auto">
                                                         <label id="notes" class="mb-lg-0">الملاحظات</label>
                                                     </div>
