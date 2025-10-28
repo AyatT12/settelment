@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -94,8 +93,8 @@
 
                                                 </div>
                                                 <!-- //// -->
-                                                <div class="row data-row-Settl ">
-                                                    <div class="col-md-12 col-lg-7">
+                                                <div class="row data-row-Settl gap-xxl-4 ">
+                                                    <div class="col-md-12 col-lg-6 col-xxl-7">
                                                         <div class="row flex-row-reverse align-items-center g-2 mb-3 ">
                                                             <div class="col-auto ">
                                                                 <P class="mb-0">رقم العقد</P>
@@ -194,9 +193,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row data-row-Settl">
-                                                    <div class="col-md-12  col-lg-6 col-xl-4">
+                                                     <div class="col-md-12  col-lg-auto  col-xxl-12">
                                                         <div class="row flex-row-reverse align-items-center g-2 mb-3 ">
                                                             <div class="col-auto">
                                                                 <P class="mb-0">قيمة العقد </P>
@@ -205,7 +202,7 @@
                                                                 <P class="mb-0"> 454.25</P>
                                                             </div>
                                                             <!-- edited -->
-                                                            <div class="col-md-5 col-lg-5 col-xl-4  seacrh-icon-col ">
+                                                            <div class="col-md-5 col-lg-auto col-xxl-4  seacrh-icon-col ">
                                                                 <div class="col-sm-12  d-flex justify-content-end px-0">
                                                                     <img src="img/Rectangle 129.svg"
                                                                         alt="seacrh-icon Image"
@@ -328,28 +325,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="col-md-auto  seacrh-icon-col">
-                                                                    <div class="col-sm-12 d-flex justify-content-end ">
-
-                                                                        <img src="img/Rectangle 129.svg"
-                                                                            alt="seacrh-icon Image"
-                                                                            id="Settlement-type-Data"
-                                                                            style="cursor: pointer;">
-                                                                    </div>
-                                                                    <div class="dropdown-content dropdown-content-extension"
-                                                                        id="dropdown-content-Settlement5" >
-                                                                        <div class="row dropdown-content-row">
-                                                                            <div class="col-12 col-md-auto ">
-                                                                                <p> نوع التسوية </p>
-                                                                            </div>
-                                                                            <div class="col personal-data">
-                                                                                <p>نوع التسوية</p>
-                                                                            </div>
-
-                                                                        </div>
-              
-                                                                    </div>
-                                                                </div> -->
                                                     </div>
                                                     <div class="col-md-5 data-col-Settl mb-3">
                                                         <div class="col-auto  d-flex align-items-start gap-1 px-0">
@@ -467,8 +442,6 @@
                                                 </div>
 
                                             </div>
-
-
                                         </fieldset>
                                         <fieldset id="SecondFieldset">
                                             <div class="form-card form-card1">
@@ -2123,19 +2096,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-lg-8">
-                                                        <div class="row flex-row-reverse align-items-center">
-                                                            <div class="col-auto">
-                                                                <P> تاريخ التسوية</P>
-                                                            </div>
-                                                            <div class="col-auto personal-data ">
-                                                                <P>2025/11/03 09:22</P>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="row data-col-Settl">
                                                     <div class="col-md-6 col-lg-4">
                                                         <div class="row flex-row-reverse align-items-center">
                                                             <div class="col-auto ">
@@ -2156,7 +2116,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
+                                               
                                                 <div class="row data-col-Settl g-lg-3">
                                                     <div class="col-md-6 col-lg-4">
                                                         <div class="row flex-row-reverse align-items-center">
@@ -2825,14 +2787,20 @@
         });
     </script>
     <!-- check all items in virtual check -->
-    <script>
-        document.getElementById('All_Check_items').addEventListener('change', function () {
-            const checkboxes = document.querySelectorAll('input[name="Examination-items"]');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = this.checked;
-            });
+   <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const splitCheckboxes = document.querySelectorAll('.All_Check_items_split');
+    
+    splitCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            splitCheckboxes.forEach(cb => cb.checked = this.checked);            
+            // Check/uncheck all items in both tables
+            const allItems = document.querySelectorAll('input[name="Examination-items"]');
+            allItems.forEach(item => item.checked = this.checked);
         });
-    </script>
+    });
+});
+</script>
 </body>
 
 </html>
