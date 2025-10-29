@@ -1943,7 +1943,9 @@ footer {
 .Checkup-table label {
     margin: 0;
 }
-
+.Checkup-table {
+    margin-bottom: 0;
+}
 .Checkup-table td {
     vertical-align: middle;
 }
@@ -2001,25 +2003,15 @@ input[type=checkbox] {
     height: 20px;
 }
 
-@media (max-width : 425px) {
-    #SettlementForm {
-        height: 100%;
-    }
-}
-
-/* @media (max-width : 1305px) {
-
-    .virtual-check-table,
-    .virtual-check-data {
-        width: 100%;
-    }
-} */
-
 .check-table td {
     color: #000000;
 }
 
 /* تعديل صور ال pdf */
+.pdfs_Container {
+    position: absolute;
+    left: 0px;
+}
 .pdf_imgs {
     position: absolute;
     left: 70px;
@@ -2030,7 +2022,6 @@ input[type=checkbox] {
     /* width: 60px; */
     position: absolute;
     left: 70px;
-
 }
 
 .pdf-anchor {
@@ -2059,7 +2050,9 @@ input[type=checkbox] {
 
     .pdf_img,
     .pdf_img2,
-    .pdf_img3 {
+    .pdf_img3,
+    .pdfs_Container
+    {
         position: static;
     }
 
@@ -3156,7 +3149,7 @@ fieldset {
 }
 @media (max-width:1199.98px) {
     .table-scroll {
-        height: 33vh;
+        height: 17vh;
     }
     
 }
