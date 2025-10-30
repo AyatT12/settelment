@@ -17,7 +17,7 @@ selectCompensation.addEventListener('change', function() {
   selectedValue = this.value;
 });
 function setFocusToFirstInput(fieldset) {
-    var firstFocusable = fieldset.find("input, select , textarea").first();
+    var firstFocusable = fieldset.find('input:not(.Table-inputs), textarea:not(.check-table-notes), select:not(.check-table-notes)')?.first();
     if (firstFocusable.length) {
         firstFocusable.focus();
     }
@@ -494,7 +494,7 @@ $('body').on('click', '.img-bg', function (e) {
   var imageUrl = $(this).css('background-image');
   imageUrl = imageUrl.replace(/^url\(['"](.+)['"]\)/, '$1');
   var newTab = window.open();
-  newTab.document.body.innerHTML = '<img src="' + imageUrl + '"style="max-width: 100%; max-height: 100%;">';
+  newTab.document.body.innerHTML = '<img src="' + imageUrl + '"style="max-width: 80%; max-height: 80%;">';
 
   $(newTab.document.body).css({
     'background-color': 'black',
