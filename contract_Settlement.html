@@ -303,7 +303,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row data-row-Settl">
-                                                    <div class="col-md-10 col-lg-6  data-col-Settl flex-wrap">
+                                                    <div class="col-md-6  data-col-Settl flex-wrap">
                                                         <div class="row flex-row-reverse align-items-start  w-100 gx-2">
                                                             <div class="col-auto  centered-input-label">
                                                                 <label for="Settlement-type">
@@ -340,7 +340,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row data-row-Settl g-3">
-                                                    <div class="col-lg-6  data-col-Settl flex-wrap">
+                                                    <div class="col-md-6  data-col-Settl flex-wrap">
                                                         <div class="row flex-row-reverse align-items-start w-100 gx-2">
                                                             <div class="col-auto centered-input-label">
                                                                 <label for="contract_real_endTime" class="form-label">
@@ -360,7 +360,7 @@
 
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-5">
+                                                    <div class="col-md-5">
                                                         <div class="row flex-row-reverse align-items-center gx-2">
                                                             <div class="col-auto">
                                                                 <p> عدد الأيام الفعلية</p>
@@ -374,7 +374,7 @@
 
                                                 </div>
                                                 <div class="row data-row-Settl mb-3">
-                                                    <div class="col-lg-6">
+                                                    <div class="col-md-6">
                                                         <div class="row flex-row-reverse align-items-center gx-2">
                                                             <div class="col-auto">
                                                                 <p>ايام التأخير</p>
@@ -392,7 +392,7 @@
                                                                     غرامة التأخير
                                                                 </label>
                                                             </div>
-                                                            <div class="col-12 col-md-7 col-lg-5">
+                                                            <div class="col-12  col-md-5">
                                                                 <select class="form-select form-select-settel"
                                                                     id="Delay-fine" name="Delay-fine">
                                                                     <option selected>
@@ -407,7 +407,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row data-row-Settl">
-                                                    <div class="col-lg-6">
+                                                    <div class="col-md-6">
                                                       <div class="row flex-row-reverse gx-2">
                                                           <div class="col-auto">
                                                             <p>فرع الاستلام </p>
@@ -450,11 +450,10 @@
                                         </fieldset>
                                         <fieldset id="SecondFieldset">
                                             <div class="form-card form-card1">
-                                                <div class="row expensesRow flex-lg-row-reverse g-2 ">
-                                                    <div class="col-lg-6">
+                                                <div class="row expensesRow flex-lg-row-reverse">
+                                                    <div class="col-lg-6 expenses-compensation-TableColumn">
                                                         <div class="TablesReferenceDiv">
-                                                            <div>
-                                                                <table class="table Expenses-compensation-Table "
+                                                            <table class="table Expenses-compensation-Table "
                                                                     id="Expenses-Data-Table">
                                                                     <thead>
                                                                         <tr>
@@ -552,7 +551,6 @@
                                                                             </td>
 
                                                                         </tr>
-
                                                                         <tr class="total">
                                                                             <td colspan="2">
                                                                                 <p id="TotalExpenses">183.50</p>
@@ -563,10 +561,9 @@
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
-                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-5">
+                                                    <div class="col-lg-5 attachments-col">
                                                         <div class="TablesReferenceDiv">
                                                             <table
                                                                 class="table Expenses-compensation-Table attatchments-table "
@@ -656,11 +653,10 @@
                                         </fieldset>
                                         <fieldset id="ThirdFieldset">
                                             <div class="form-card form-card1">
-                                                <div class="row expensesRow flex-lg-row-reverse g-2 ">
-                                                    <div class="col-lg-6">
+                                                <div class="row expensesRow flex-lg-row-reverse">
+                                                    <div class="col-lg-6 expenses-compensation-TableColumn">
                                                         <div class="TablesReferenceDiv">
-                                                            <div>
-                                                                <table class="table Expenses-compensation-Table "
+                                                             <table class="table Expenses-compensation-Table "
                                                                     id="compensation-Data-Table">
                                                                     <thead>
                                                                         <tr>
@@ -768,10 +764,9 @@
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
-                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-5">
+                                                    <div class="col-lg-5 attachments-col">
                                                         <div class="TablesReferenceDiv">
                                                             <table
                                                                 class="table Expenses-compensation-Table attatchments-table "
@@ -834,10 +829,10 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="row justify-content-end">
-
-                                                    <div class="col-md-auto">
-                                                        <p style="color:#D92626;margin: 0;" id="ExpensesError"> ضد
+                                                <div class="row justify-content-evenly">
+                                                    <div class="col-md-5"></div>
+                                                    <div class="col-lg-6">
+                                                        <p style="color:red;margin: 0;" class="px-xxl-3" id="ExpensesError"> ضد
                                                             الغير </p>
                                                     </div>
                                                 </div>
@@ -861,8 +856,8 @@
                                         </fieldset>
                                         <fieldset id="FourthFieldset">
                                             <div class="form-card">
-                                                <div class="row">
-                                                    <div class="col-xl-6 virtual-check-data d-flex flex-column">
+                                                <div class="row virtual-check-row">
+                                                    <div class="col-xl-6 d-flex flex-column">
                                                         <div class="row CurrentReadingg_row flex-row-reverse">
                                                         <div class="col-md-auto">
                                                             <div class="row flex-row-reverse gx-2">
@@ -968,8 +963,8 @@
 
                                                     </div>
 
-                                                    <div class="col-xl-6 virtual-check-table mt-3 mt-xl-0">
-                                                        <div class="table-container-single">
+                                                    <div class="col-xl-6 virtual-check-table  mt-xl-0">
+                                                        <div class="table-container-single h-100">
                                                                 <div class="table-scroll">
                                                                     <table
                                                                         class="table table-bordered table-hover Checkup-table">
@@ -1862,7 +1857,6 @@
 
                                                                     </p>
                                                                 </div>
-                                                                <div class="col-xl-6"></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1885,8 +1879,8 @@
                                         </fieldset>
                                         <fieldset id="FifthFieldset">
                                             <div class="form-card form-card5-settl">
-                                                <div class="row data-col-Settl g-3 mb-2">
-                                                    <div class="col-xl-8">
+                                                <div class="row data-col-Settl g-3 mb-2 h-100">
+                                                    <div class="col-md-12 col-xl-12">
                                                         <div class="row flex-row-reverse align-items-center g-2">
                                                             <div class="col-auto ">
                                                                 <P class="mb-0">رقم العقد </P>
@@ -1894,7 +1888,7 @@
                                                             <div class="col-auto personal-data">
                                                                 <P class="mb-0">24-1401-4001105-000078</P>
                                                             </div>
-                                                            <div class="col-md-5 col-lg-5 col-xl-4 seacrh-icon-col1">
+                                                            <div class="col-md-auto seacrh-icon-col1">
                                                                 <div>
                                                                     <img src="img/Rectangle 129.svg"
                                                                         alt="seacrh-icon Image"
@@ -2009,18 +2003,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                </div>
-                                                <div class="row data-col-Settl">
-                                                    <div class="col-md-6 col-lg-4">
+                                                     <div class="col-md-4">
                                                         <div class="row flex-row-reverse align-items-center g-2">
                                                             <div class="col-auto">
                                                                 <P class="mb-0">قيمة العقد</P>
                                                             </div>
                                                             <div class="col-auto personal-data ">
-                                                                <P class="mb-0">4,235.45</P>
+                                                                <P class="mb-0">999,999.99</P>
                                                             </div>
-                                                            <div class="col-md-5 col-lg-5 col-xl-4  seacrh-icon-col">
+                                                            <div class="col-md-auto  seacrh-icon-col">
                                                                 <div>
 
                                                                     <img src="img/Rectangle 129.svg"
@@ -2109,31 +2100,27 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-lg-4">
+                                                    <div class="col-md-4">
                                                         <div class="row flex-row-reverse align-items-center">
                                                             <div class="col-auto ">
-                                                                <p> قيمة العقد بعد الخصم </p>
+                                                                <p> قيمة <span class="abbreviation-part">العقد بعد</span> الخصم </p>
                                                             </div>
                                                             <div class="col-auto personal-data p-0">
                                                                 <p>1505.00</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-lg-4">
+                                                    <div class="col-md-4">
                                                         <div class="row flex-row-reverse align-items-center">
                                                             <div class="col-auto ">
-                                                                <p>قيمة الضريبة </p>
+                                                                <p> القيمة المضافه </p>
                                                             </div>
                                                             <div class="col-auto personal-data p-0">
                                                                 <p>225.75</p>
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                </div>
-
-                                                <div class="row data-col-Settl g-lg-3">
-                                                    <div class="col-md-6 col-lg-4">
+                                                     <div class="col-md-4">
                                                         <div class="row flex-row-reverse align-items-center gx-2">
                                                             <div class="col-auto ">
                                                                 <p>إجمالي العقد </p>
@@ -2143,29 +2130,27 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-lg-4">
+                                                    <div class="col-md-4">
                                                         <div class="row flex-row-reverse align-items-center gx-2">
                                                             <div class="col-auto ">
-                                                                <p> إجمالي المصروفات </p>
+                                                                <p> <span class="abbreviation-part">إجمالي</span> المصروفات </p>
                                                             </div>
                                                             <div class="col-auto personal-data">
                                                                 <p>0.00</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6 col-lg-4">
+                                                    <div class="col-md-4">
                                                         <div class="row flex-row-reverse align-items-center gx-2">
                                                             <div class="col-auto ">
-                                                                <p> إجمالي التعويضات </p>
+                                                                <p> <span class="abbreviation-part">إجمالي</span> التعويضات </p>
                                                             </div>
                                                             <div class="col-auto personal-data">
                                                                 <p>0.00</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row data-col-Settl g-lg-3">
-                                                    <div class="col-md-6 col-lg-4">
+                                                      <div class="col-md-4">
                                                         <div class="row flex-row-reverse align-items-center gx-2">
                                                             <div class="col-auto ">
                                                                 <p> الرصيد المتاح</p>
@@ -2176,7 +2161,7 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="col-md-6 col-lg-4">
+                                                    <div class="col-md-6">
                                                         <div class="row flex-row-reverse align-items-center gx-2">
                                                             <div class="col-auto ">
                                                                 <p> الباقي على المستأجر</p>
@@ -2186,9 +2171,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row flex-row-reverse gx-2">
-                                                    <!-- edited -->
+                                                      <!-- edited -->
                                                     <div class="col-md-6 col-lg-4">
                                                         <div class="row flex-row-reverse g-2">
                                                             <div class="col-auto centered-input-label">
@@ -2273,15 +2256,17 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row align-items-center flex-row-reverse gx-2">
-                                                    <div class="col-auto">
-                                                        <label id="notes" class="mb-lg-0">الملاحظات</label>
+                                                     <div class="col-md-12">
+                                                        <div class="row gx-2 align-items-center flex-row-reverse">
+                                                            <div class="col-auto">
+                                                        <label id="notes" class="mb-0">الملاحظات</label>
                                                     </div>
                                                     <div class="col d-flex justify-content-end ">
                                                         <textarea class="form-control textarea-inputs" rows="1"
                                                             maxlength="100" name="notes"></textarea>
                                                     </div>
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
 
