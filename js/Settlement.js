@@ -421,7 +421,7 @@ function examinationImgUpload() {
 }
 
 function setImageRowHeight() {
-    if (window.innerWidth <= 1199) {
+    if (window.innerWidth <= 991) {
         const imagesRow = document.querySelector('.virtual-check-images-row');
         if (imagesRow) {
             imagesRow.style.height = '';
@@ -452,7 +452,7 @@ function setImageRowHeight() {
             otherElementsHeight += errorMessage.offsetHeight;
         }
         
-        const buffer = 20;
+        const buffer = 30;
         const availableHeight = parentHeight - otherElementsHeight - buffer;
         
 
