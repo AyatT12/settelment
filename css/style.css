@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
 }
-
 /*Background color*/
 body {
     background-color: rgba(254, 248, 232, 1);
@@ -22,8 +21,7 @@ nav {
     background-color: rgba(255, 206, 148, 1);
     padding: .5rem 1rem !important;
 }
-
-/*######################################################## */
+ 
 .on-mobile {
     text-align: end;
 }
@@ -817,19 +815,6 @@ footer {
 .personal-data {
     color: #39629C;
 }
-
-
-
-/* .details-card{
- gap:15px; 
-
-} */
-.table-scroll-details {
-    height: 180px;
-}
-
-
-
 .button-row {
     justify-content: space-between;
     margin-right: 0px;
@@ -1424,22 +1409,6 @@ footer {
 
 }
 
-
-@media(min-height:700px) {
-
-
-
-    .table-scroll-details {
-        height: 240px;
-    }
-
-    .report_table {
-        height: 330px
-    }
-
-}
-
-
 @media(min-height:990px) {
 
     footer {
@@ -1451,39 +1420,6 @@ footer {
 
 /*  */
 
-@media(min-height:800px) {
-
-
-
-    .table-scroll-details {
-        height: 300px;
-    }
-
-    .report_table {
-        height: 350px
-    }
-
-    /* .seacrh-row {
-        padding-top: 20px;
-    } */
-
-
-
-}
-
-@media(min-height:900px) {
-
-
-    .table-scroll-details {
-        height: 370px;
-    }
-
-    .report_table {
-        height: 430px
-    }
-
-}
-
 @media(max-width:430px) {
 
     .form-outline input {
@@ -1492,12 +1428,9 @@ footer {
 
 
 }
-
 @media(max-width:991px) {
 
     .dropdown-content-extension {
-        /* width: 120%; */
-        /* left: -90px; */
         right: 0px;
 
     }
