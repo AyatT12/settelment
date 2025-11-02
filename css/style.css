@@ -6,7 +6,7 @@
 /*Background color*/
 body {
     background-color: rgba(254, 248, 232, 1);
-    min-height: 100ddvh;
+    min-height: 100dvh;
     height: 100dvh;
     display: flex;
     flex-direction: column;
@@ -1176,7 +1176,6 @@ footer {
 .data-row-Settl {
     flex-direction: row-reverse;
     align-items: flex-start;
-    /* padding-top: .3rem; */
 }
 
 .data-col-Settl {
@@ -2191,6 +2190,7 @@ input[type=checkbox] {
     -webkit-overflow-scrolling: touch;
     position: relative;
     width: 100%;
+    min-height: 130px;
 }
 
 .scroll-table-div::-webkit-scrollbar {
@@ -2217,7 +2217,7 @@ input[type=checkbox] {
     border-collapse: separate;
     text-align: center;
     direction: ltr;
-    font-size: .9375rem;
+    font-size: .815rem;
     width: 100%;
 }
 
@@ -2516,7 +2516,7 @@ input[type="number"]:nth-child(n+4) {
 
 /****************************************************************************** Virtual Inspection Error */
 
-@media (max-width:1199px) {
+@media (max-width:991px) {
     #error-message {
         display: none !important;
     }
@@ -3052,10 +3052,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 @media (min-width: 768px) and (max-width: 1199.98px) {
-
+/* 
     .table-container-single {
         display: none;
-    }
+    } */
 
     .table-container-split {
         display: flex;
@@ -3132,7 +3132,8 @@ fieldset {
 
 .form-card {
     height: 70dvh;
-    max-height: calc(100% - 65px);
+    min-height: calc(100% - 65px);
+    max-height: calc(100% - 62px);
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -3140,19 +3141,19 @@ fieldset {
 .virtual-check-row {
     display: flex;
     flex: 1;
-    min-height: 0;
+    min-height: 0px;
 }
 
 .virtual-check-data {
     display: flex;
     flex-direction: column;
-    min-height: 0;
+    min-height: 200px;
 }
 
 .virtual-check-table {
     display: flex;
     flex: 1;
-    min-height: 0;
+    min-height: 200px;
     height: 100%;
 }
 
@@ -3177,31 +3178,17 @@ fieldset {
     min-height: 100px;
 }
 
-/* Ensure fixed-size rows don't expand */
-.CurrentReadingg_row {
-    flex-shrink: 0;
-    margin-bottom: 1rem;
-}
-
 .virtual-check-images-row {
     flex-shrink: 0;
-    margin-bottom: 1rem;
 }
 
-/* Error message sticks to bottom */
 .virtual-check-data>.row.mt-auto {
     margin-top: auto !important;
     flex-shrink: 0;
 }
 
-/* Below XL breakpoint - Stack tables vertically on mobile */
-@media (max-width: 1199.98px) and (min-height:650px) {
-    .virtual-check-row {
-        flex-direction: column;
-    }
-}
 
-@media (max-width: 1199.98px) {
+@media (max-width:991px) {
     .virtual-check-data {
         margin-bottom: 1rem;
     }
@@ -3209,65 +3196,32 @@ fieldset {
     .table-scroll {
         min-height: 100px;
     }
+    .virtual-check-row{
+     flex-direction: column;
+     flex-wrap: nowrap;
+    }
 }
 
 /* Tablet and below - adjust table heights */
 @media (max-width: 1399.98px) {
     .main-card {
-        height: 85%;
+        height: 93%;
     }
     .form-card {
-        height: auto;
         height: 70dvh;
     }
 
     #SettlementForm .form-card {
-        height: 60dvh;
+        height: 65dvh;
     }
 
 }
-
-/* REPORT LAYOUT STRUCTURE */
-.reportTable-div {
-    height: 52dvh !important;
-}
-
-@media (max-width: 1399.98px) and (max-height: 900px) {
-    .reportTable-div {
-        height: 40dvh !important;
+/* vertical tablet */
+@media screen and (min-width: 768px) and (orientation: portrait) {
+    .main-card {
+        height: 93%;
     }
 }
-
-/* CUSTODY LAYOUT STRUCTURE */
-#custody-table-div {
-    height: 45dvh;
-}
-
-@media (max-width: 1399.98px) and (max-height: 900px) {
-    #custody-table-div {
-        height: 30dvh;
-    }
-}
-
-/* TENANT LAYOUT STRUCTURE */
-.Tenants-table-div {
-    height: 50dvh;
-}
-
-#Table-details {
-    height: 47dvh;
-}
-
-@media (max-width: 1399.98px) and (max-height: 900px) {
-    #Table-details {
-        height: 30dvh;
-    }
-
-    .Tenants-table-div {
-        height: 35dvh;
-    }
-}
-
 /* EXPENSES/COMPENSATION TABLES */
 @media (max-width: 1399.98px) and (max-height: 900px) {
 
