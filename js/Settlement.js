@@ -716,7 +716,7 @@ WriteSignature.addEventListener("click", function () {
   uploadContainer.innerHTML = "";
   mainContainer.innerHTML = "";
   uploadContainer.innerHTML =
-    '<canvas id="canvas" width="200" height="200" class="mb-2"></canvas>';
+    '<canvas id="canvas" width="200" height="200" class="mb-2  bg-white"></canvas>';
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
   ctx.lineWidth = 4;
