@@ -16,7 +16,7 @@
     <link href="css/style.css" rel="styleSheet">
     <link href="css/loader.css" rel="styleSheet">
     <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/dripicons/2.0.0/webfont.min.css' />
-    <!-- <link href="../../css/English_style.css" rel="styleSheet"> -->
+    <!-- <link href="css/English_style.css" rel="styleSheet"> -->
     <style>
         .form-card {
             justify-content: space-between;
@@ -94,7 +94,7 @@
 
                                                 </div>
                                                 <!-- //// -->
-                                                <div class="row flex-row-reverse" style="flex: 1;">
+                                                <div class="row flex-row-reverse align-items-start" style="flex: 1;">
                                                     <div class="col-md-12 col-lg-6 col-xxl-7">
                                                         <div class="row flex-row-reverse align-items-center g-2 mb-3 ">
                                                             <div class="col-auto ">
@@ -352,14 +352,14 @@
 
                                                         </div>
                                                     </div>
-                                                      <div class="col-md-6  data-col-Settl flex-wrap">
+                                                    <div class="col-md-8 col-lg-6  data-col-Settl flex-wrap">
                                                         <div class="row flex-row-reverse align-items-start  w-100 gx-2">
                                                             <div class="col-auto  centered-input-label">
                                                                 <label for="Settlement-type">
                                                                     نوع التسوية
                                                                 </label>
                                                             </div>
-                                                            <div class="col-12 col-md-7 col-lg-5">
+                                                            <div class="col-auto">
                                                                 <select class="form-select form-select-settel"
                                                                     id="Settlement-type" name="Settlement type">
                                                                     <option selected disabled>
@@ -367,6 +367,9 @@
                                                                     <option value="0">تعليق ناتج عن حادث مروري
                                                                     </option>
                                                                     <option value="1"> اغلاق بانتهاء مدة العقد
+                                                                    </option>
+                                                                    <option value="1"> 
+                                                                        اغلاق بسبب استدعاء تجاري قبل انتهاء مدته
                                                                     </option>
                                                                 </select>
                                                                 <div class="row requird-field-row-last">
@@ -377,7 +380,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-5 data-col-Settl mb-3">
+                                                    <div class="col-md-4 col-lg-6 data-col-Settl mb-3">
                                                         <div class="col-auto  d-flex align-items-start gap-1 px-0">
                                                             <label class="form-check-label"
                                                                 for="expenses">المصروفات</label>
@@ -397,14 +400,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-5 d-flex gx-0 ">
+                                                    <div class="col-md-6 d-flex gx-0 ">
                                                         <div class="row flex-row-reverse align-items-center gx-2 w-100">
                                                             <div class="col-auto">
                                                                 <label for="Delay-fine" class="mb-md-0">
                                                                     غرامة التأخير
                                                                 </label>
                                                             </div>
-                                                            <div class="col-12  col-md-5">
+                                                            <div class="col-auto">
                                                                 <select class="form-select form-select-settel"
                                                                     id="Delay-fine" name="Delay-fine">
                                                                     <option selected>
@@ -413,13 +416,12 @@
                                                                     <option value="0">غرامة ربع يوم </option>
                                                                     <option value="1"> غرامة نص يوم </option>
                                                                     <option value="2"> غرامة يوم </option>
+                                                                    <option value="2">  غرامة يوم و ساعتين و 25 دقيقة </option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
-                                                
                                             </div>
                                             <div class="row button-row">
                                                 <div class="col-auto">
@@ -627,8 +629,6 @@
                                                         style="vertical-align: middle; ">
                                                 </div>
                                             </div>
-
-
                                         </fieldset>
                                         <fieldset id="ThirdFieldset">
                                             <div class="form-card form-card1">
@@ -745,6 +745,7 @@
                                                                 </table>
                                                         </div>
                                                     </div>
+                                                    <hr class="Seprate-Line"/>
                                                     <div class="col-lg-5 attachments-col">
                                                         <div class="TablesReferenceDiv">
                                                             <table
@@ -806,7 +807,6 @@
                                                             </table>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <div class="row justify-content-evenly">
                                                     <div class="col-md-5"></div>
@@ -830,16 +830,14 @@
                                                         style="vertical-align: middle; ">
                                                 </div>
                                             </div>
-
-
                                         </fieldset>
                                         <fieldset id="FourthFieldset">
                                             <div class="form-card">
                                                 <div class="row virtual-check-row">
                                                     <div class="col-lg-6 d-flex flex-column virtual-check-data">
-                                                        <div class="row CurrentReadingg_row flex-row-reverse">
+                                                        <div class="row CurrentReadingg_row flex-row-reverse ">
                                                         <div class="col-md-auto">
-                                                            <div class="row flex-row-reverse gx-2">
+                                                            <div class="row flex-row-reverse gx-1">
                                                               <div class="col-auto ">
                                                                     <p> العداد عند التسليم</p>
                                                                 </div>
@@ -849,10 +847,10 @@
                                                                  </div>
                                                             </div>
                                                             <div class="col-md-auto">
-                                                            <div class="row flex-row-reverse gx-2">
+                                                            <div class="row flex-row-reverse gx-1">
                                                                 <div class="col-auto ">
-                                                                    <p> الكيلوات المجاني اليومي
-
+                                                                    <p> 
+                                                                          الكيلوات المجانية 
                                                                     </p>
                                                                 </div>
                                                                 <div class="col personal-data">
@@ -861,7 +859,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-auto">
-                                                              <div class="row flex-row-reverse gx-2">
+                                                              <div class="row flex-row-reverse gx-1">
                                                                 <div class="col-auto ">
                                                                     <p> الكيلوات الاضافية </p>
                                                                 </div>
@@ -874,8 +872,8 @@
                                                         <div
                                                             class="row CurrentReadingg_row flex-row-reverse g-2 justify-content-between">
                                                             <div class="col-auto">
-                                                                <div class="row sett_checkField flex-nowrap gx-2">
-                                                                    <div class="col-auto">
+                                                                <div class="row flex-row-reverse flex-nowrap gx-2">
+                                                                    <div class="col-auto centered-input-label">
                                                                         <label id="CurrentReadingg"
                                                                             for="CurrentReadingg-input">
                                                                             القراءة الحالية</label>
@@ -947,11 +945,11 @@
                                                                     <table class="table table-bordered table-hover Checkup-table">
                                                                         <thead>
                                                                             <tr>
-                                                                                <th scope="col"
+                                                                                <th 
                                                                                     class="value-tabel-header">الملاحظات
                                                                                 </th>
-                                                                                <th scope="col">الفحص</th>
-                                                                                <th scope="col">
+                                                                                <th >الفحص</th>
+                                                                                <th >
                                                                                 <div class="d-flex justify-content-center">
                                                                                         <div class="col">
                                                                                             بنود الفحص
