@@ -1041,14 +1041,17 @@ footer {
     background: transparent;
     font-weight: bold;
     color: #FF9626;
-    border: 0 none;
+    border: none;
     border-radius: 0px;
     cursor: pointer;
     padding: 10px 5px;
     margin: 10px 5px;
 }
 
-
+.action-button:focus{
+ outline: none !important;
+box-shadow: none !important;
+}
 
 /*Previous Buttons*/
 #SettlementForm .action-button-previous {
@@ -1454,16 +1457,6 @@ footer {
 
     }
 }
-
-@media (max-width:960px) {
-    /* .pdf_img {
-        top: 80px;
-        width: 50px;
-        left: 10px;
-    } */
-}
-
-
 
 @media (max-width:350px) {
     .form-select-last {
@@ -1934,16 +1927,9 @@ input[type=checkbox] {
     left: 0px;
 }
 
-.pdf_imgs {
-    position: absolute;
-    left: 70px;
-
-}
-
 .pdf_img {
-    /* width: 60px; */
     position: absolute;
-    left: 70px;
+    left: 20px;
 }
 
 .pdf-anchor {
@@ -1952,7 +1938,7 @@ input[type=checkbox] {
 
 .pdf_img2 {
     position: absolute;
-    left: 150px;
+    left: 90px;
 }
 
 .pdf-anchor2 {
@@ -1961,7 +1947,7 @@ input[type=checkbox] {
 
 .pdf_img3 {
     position: absolute;
-    left: 220px;
+    left: 165px;
 }
 
 .pdf-anchor3 {
@@ -2731,7 +2717,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border: 2px solid #facd9c !important;
 }
 
-#AccountForm {
+.Profile-Data-section {
     direction: rtl;
 }
 
@@ -2793,6 +2779,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .header-card {
+    display: none;
     border-bottom: 1px solid #D9D9D9;
     font-size: 20px;
     font-weight: 500;
@@ -2934,11 +2921,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     -moz-appearance: textfield;
 }
 
-@media (max-width : 991px) {
-    .acoount-cards-row {
-        flex-direction: column-reverse;
-    }
-}
 
 /* Small screens (mobiles) */
 @media (max-width: 767.98px) {
@@ -3133,12 +3115,50 @@ fieldset {
     }
 }
 
+/* Account Page */
+.account-cards-row {
+    flex: 1;
+    min-height: fit-content;
+}
+
+.Profile-Data-section {
+    flex: 1;
+    min-height: 150px;
+    display: flex;
+}
+
+.info-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.data-card {
+    flex: 1;
+    display: flex;
+}
+
+@media (max-width:991.98px) {
+    .account-cards-row {
+        flex-direction: column;
+        justify-content: flex-start !important;
+    }
+}
+
+@media screen and (min-width: 768px) and (orientation: portrait) {
+    .header-card {
+        display: block;
+    }
+}
+
+@media (min-width: 1399.98px) {
+    .header-card {
+        display: block;
+    }
+}
+
 /* Hide header on smaller screens */
 @media (max-width: 1399.98px) {
-    .header-card {
-        display: none;
-    }
-
     .Expenses-compensation-Table thead th {
         padding: 2px 5px;
     }
@@ -3178,7 +3198,7 @@ fieldset {
 
     .expensesRow {
         flex: 1;
-        min-height:fit-content;
+        min-height: fit-content;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
@@ -3189,22 +3209,27 @@ fieldset {
     }
 
 }
+
 /* العقود المحفوظة - قيمة العقد */
-@media (min-width:991px) {
-    #dropdown-content-contractValue{
-      right: 50px;
-      bottom: -100px;
+
+    #dropdown-content-contractValue {
+        right: 50px;
+        bottom: -100px;
     }
-}
+
+
 /* test new font size in report page  */
 @media (min-width: 1399.98px) {
     .tables-style {
-       font-size: 15px;
+        font-size: 15px;
     }
+
     #reportTable {
         font-size: 15px;
     }
-    .report-card {
+
+    .report-card,
+    .Tenant-card {
         font-size: 15px;
     }
 }
@@ -3214,34 +3239,67 @@ fieldset {
     .not-in-tablet {
         display: none;
     }
+
     .Credit-debit-col {
         width: 100px;
         max-width: 100px !important;
         min-width: 100px !important;
     }
+
     .scroll-table-div {
         padding: 0;
     }
+
+    .Profession-col {
+        order: 3;
+    }
+
+    .Membership-col {
+        order: 2;
+    }
+
+    .Workplace-col {
+        order: 4;
+    }
+
+    .DrivingLicence-col {
+        order: 5;
+    }
+
+    .LicenceEnd-col {
+        order: 6;
+    }
+
+    .Adress-col {
+        order: 7;
+    }
 }
+
 /*  mobile   */
 @media (max-width:767px) {
     .not-in-mobile {
         display: none;
     }
+
     #reportTable {
         font-size: 12px;
     }
+
     .tables-style {
-       font-size: 12px;
-    }
-    .report-card {
         font-size: 12px;
     }
+
+    .report-card,
+    .Tenant-card {
+        font-size: 12px;
+    }
+
     .Credit-debit-col {
         width: 100px;
         max-width: 100px !important;
         min-width: 100px !important;
     }
+
     .scroll-table-div {
         padding: 0;
     }
