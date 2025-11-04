@@ -73,19 +73,41 @@ textarea{
 .table-row {
     padding-right: 10px;
 }
-
+.pdfs_Container {
+    position: absolute;
+    right: 0px;
+    left: auto;
+}
 .pdf_img {
     position: absolute;
-    right: 10px;
+    right: 20px;
+    left: auto;
+
 }
 .pdf_img2{
     position: absolute;
-    right: 110px;  
+    right: 90px;  
+    left: auto;
 }
 .pdf_img3{
     position: absolute;
-    right: 220px;  
+    right: 165px;  
+    left: auto;
 }
+@media (max-width:768px) {
+
+    .pdf_img,
+    .pdf_img2,
+    .pdf_img3,
+    .pdfs_Container {
+        position: static;
+    }
+
+    .pdf_imgs {
+        position: static;
+    }
+}
+
 .button-row {
     padding-right: 34px;
 }
@@ -116,30 +138,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .back-icon{
     transform: rotate(180deg);
 }
-@media (max-width:960px) {
-    .pdf_img {
-      
-        right: 10px;
-    }
-    .pdf_img2 {
-      
-        right: 110px;
-    }
-    .pdf_img3 {
-       
-        right: 160px;
-    }
-}
-@media (max-width:1024px) {
-    .pdf_img ,
-    .pdf_img2 ,.pdf_img3{
-       
-        position: static;
-        margin-left: 15px;
-    }      
-}
-
-
   @media (max-width:350px) {
     .form-select-last {
         width: 100%;
@@ -191,9 +189,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     border-radius: 8px 0px 0px 8px;
 }
 /* account */
-#AccountForm {
+.Profile-Data-section {
     direction: ltr;
 }
+
 .counterCode {
     border-radius: 0px 8px 8px 0px !important;
     border-left: none;
