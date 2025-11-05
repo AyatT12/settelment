@@ -3277,6 +3277,9 @@ fieldset {
 
 /*  mobile   */
 @media (max-width:767px) {
+    .form-card {
+    min-height: calc(100% - 110px);
+}
     .not-in-mobile {
         display: none;
     }
