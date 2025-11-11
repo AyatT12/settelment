@@ -489,19 +489,54 @@ window.addEventListener('resize', function() {
     setTimeout(setImageRowHeight, 200);
 });
 //====================================================================================================
-
-$('body').on('click', '.img-bg', function (e) {
-  var imageUrl = $(this).css('background-image');
-  imageUrl = imageUrl.replace(/^url\(['"](.+)['"]\)/, '$1');
+$("body").on("click", ".img-bg", function (e) {
+  var imageUrl = $(this).css("background-image");
+  imageUrl = imageUrl.replace(/^url\(['"](.+)['"]\)/, "$1");
   var newTab = window.open();
-  newTab.document.body.innerHTML = '<img src="' + imageUrl + '"style="max-width: 80%; max-height: 80%;">';
 
-  $(newTab.document.body).css({
-    'background-color': 'black',
-    display: 'flex',
-    'align-items': 'center',
-    'justify-content': 'center',
-  });
+  $(newTab.document.head).html(`
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Image</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      body {
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .image-container {
+        width: 70vw;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+    </style>
+  `);
+
+  newTab.document.body.innerHTML = `
+    <div class="image-container">
+      <img src="${imageUrl}" alt="View Image">
+    </div>
+  `;
 });
 
 //====================================================================================================
@@ -624,13 +659,8 @@ $('#examination-images').click(function(){
 })
 
 
-
-
-// // //////////////////////////////////////////////// رفع صورة التوقيع ////////////////////////////////////////////////////////////////////////
-
-//variables//
+// // // //////////////////////////////////////////////// رفع صورة التوقيع ////////////////////////////////////////////////////////////////////////
 let saveSignatureBtn = null;
-
 document
   .getElementById("UploadSigntaurePic")
   .addEventListener("click", function () {
@@ -649,56 +679,23 @@ const imageUpload = document.getElementById("imageUpload");
 var imgeURL;
 const uploadedImg = null;
 //
-
 UploadSigntaurePic.addEventListener("click", function () {
   imageUpload.click();
 });
-
-imageUpload.addEventListener("change", async function () {
+imageUpload.addEventListener("change", function () {
   const file = imageUpload.files[0];
-  if (!file) return;
-
-  const isHEIC = file.type === "image/heic" || file.type === "image/heif" || file.name.toLowerCase().endsWith(".heic") || file.name.toLowerCase().endsWith(".heif");
-
-  const handleSignaturePreview = (dataURL) => {
-    const previewImage = document.createElement("img");
-    previewImage.classList.add("preview-image");
-    previewImage.src = dataURL;
-    previewImage.id = "signatureImage";
-    imgeURL = dataURL;
-
-    mainContainer.innerHTML = '<i class="fa-regular fa-circle-xmark xmark-icon"></i>';
-    uploadContainer.innerHTML = "";
-    uploadContainer.appendChild(previewImage);
-    uploadContainer.classList.add("previewing");
-  };
-
-  if (isHEIC) {
-    try {
-      const convertedBlob = await heic2any({
-        blob: file,
-        toType: "image/jpeg",
-        quality: 0.9,
-      });
-
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        handleSignaturePreview(e.target.result);
-      };
-      reader.readAsDataURL(convertedBlob);
-
-    } catch (err) {
-      console.error("HEIC conversion failed", err);
-      alert("فشل تحويل صورة HEIC، يرجى اختيار صورة بصيغة أخرى.");
-    }
-  } else {
+  if (file) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      handleSignaturePreview(e.target.result);
+      const imageURL = e.target.result;
+       mainContainer.innerHTML =
+        '<i class="fa-regular fa-circle-xmark"  style="cursor: pointer;"></i>';
+       Previewing_Signature(imageURL)
     };
     reader.readAsDataURL(file);
   }
 });
+
 removeSignatureImg.addEventListener("click", function (event) {
   event.preventDefault();
   if (uploadContainer.firstChild) {
@@ -709,14 +706,14 @@ removeSignatureImg.addEventListener("click", function (event) {
       ' <img class="upload-icon" src="img/Rectangle 144.png" alt="Upload Icon"><p>ارفق صورة التوقيع</p>';
   }
 });
-// // //////////////////////////////////////////////// كتابة التوقيع ////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////// كتابة التوقيع ////////////////////////////////////////////////////////////////////////
 const WriteSignature = document.getElementById("WriteSignature");
 WriteSignature.addEventListener("click", function () {
-  document.body.classList.add('no-scroll');
+  document.body.classList.add("no-scroll");
   uploadContainer.innerHTML = "";
   mainContainer.innerHTML = "";
   uploadContainer.innerHTML =
-    '<canvas id="canvas" width="200" height="200" class="mb-2  bg-white"></canvas>';
+    '<canvas id="canvas" width="200" height="200" class="mb-2 bg-white"></canvas>';
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
   ctx.lineWidth = 4;
@@ -726,7 +723,7 @@ WriteSignature.addEventListener("click", function () {
   var prevY = 0;
   var currX = 0;
   var currY = 0;
-
+  
   function drawLine(x0, y0, x1, y1) {
     ctx.beginPath();
     ctx.moveTo(x0, y0);
@@ -782,46 +779,102 @@ WriteSignature.addEventListener("click", function () {
   function handleTouchEnd() {
     drawing = false;
   }
+
   function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dataURL = null; // Clear the stored signature
   }
 
   document.getElementById("clear").addEventListener("click", function () {
     clearCanvas();
   });
- 
 });
- function SaveWrittenSignature() {
-  document.body.classList.remove('no-scroll');
-	var canvas = document.getElementById("canvas");
-    var dataURL = canvas.toDataURL();
-    var link = document.createElement("a");
-    link.href = dataURL;
-    console.log(link.href);
-    $("#signature-modal").modal("hide");
 
+function SaveWrittenSignature() {
+  document.body.classList.remove("no-scroll");
+  var canvas = document.getElementById("canvas");
+  var dataURL = canvas.toDataURL();
+  Previewing_Signature(dataURL)
+  $("#signature-modal").modal("hide");
+}
+
+// Save the uploded signature image
+function SaveUplodedSignature() {
+  const img = document.getElementById("signatureImage");
+  const canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  const context = canvas.getContext("2d");
+  context.drawImage(img, 0, 0, canvas.width, canvas.height);
+  const base64 = canvas.toDataURL("image/jpeg");
+  console.log(base64);
+  $("#signature-modal").modal("hide");
+}
+// // // //////////////////////////////////////////////// عرض صورة التوقيع ////////////////////////////////////////////////////////////////////////
+function Previewing_Signature(imageURL){
+   const previewImage = document.createElement("img");
+      previewImage.classList.add("preview-image");
+      previewImage.classList.add("bg-white");
+      previewImage.src = imageURL;
+      previewImage.id = "signatureImage";
+      imgeURL = imageURL;
+      uploadContainer.innerHTML = "";
+      uploadContainer.appendChild(previewImage);
+      uploadContainer.classList.add("previewing");
+      previewImage.addEventListener("click", function () {
+        var newTab = window.open();
+        $(newTab.document.head).html(`
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>View Image</title>
+          <style>
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
+            html, body {
+              width: 100%;
+              height: 100%;
+              overflow: hidden;
+            }
+            body {
+              background-color: black;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            .image-container {
+              width: 70vw;
+              height: 70vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            img {
+              max-width: 100%;
+              max-height: 100%;
+              width: auto;
+              height: auto;
+              object-fit: contain;
+              background-color:white;
+            }
+          </style>
+          `);
+        newTab.document.body.innerHTML = `
+          <div class="image-container">
+            <img src="${imgeURL}" alt="View Image">
+          </div>
+        `;
+      });
+}
+
+document.getElementById("save").addEventListener("click", function () {
+  if (saveSignatureBtn === "UploadSigntaurePic") {
+    SaveUplodedSignature();
+  } else if (saveSignatureBtn === "WriteSignature") {
+    SaveWrittenSignature();
+  } else {
+    console.log("No button has been clicked yet");
   }
- // Save the uploded signature image
- function SaveUplodedSignature() {
-    const img = document.getElementById("signatureImage");
-    const canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    const context = canvas.getContext("2d");
-    context.drawImage(img, 0, 0, canvas.width, canvas.height);
-    const base64 = canvas.toDataURL("image/png");
-    console.log(base64);
-    $("#signature-modal").modal("hide");
-
-  }
-  document.getElementById("save").addEventListener("click", function () {
-    if (saveSignatureBtn === "UploadSigntaurePic") {
-      SaveUplodedSignature();
-    } else if (saveSignatureBtn === "WriteSignature") {
-      SaveWrittenSignature();
-    } else {
-      console.log("No button has been clicked yet");
-    }
-  });
-
-
+});
