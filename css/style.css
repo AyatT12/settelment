@@ -6,7 +6,7 @@
 /*Background color*/
 body {
     background-color: rgba(254, 248, 232, 1);
-    min-height: 100dvh;
+    min-height: 100vh;
     height: 100dvh;
     display: flex;
     flex-direction: column;
@@ -3082,7 +3082,7 @@ fieldset {
 /* Tablet and below - adjust table heights */
 @media (max-width: 1399.98px) {
     .main-card {
-        height: 93%;
+        height: 87%;
     }
 
     .form-card {
