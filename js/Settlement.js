@@ -119,8 +119,6 @@ $(".previous").click(function () {
 //====================================================================================================
 var compensationArray = [];
 var expensesArray = [];
-var compensationTdIndex = 0; 
-var expensesTdIndex = 0; 
 
 function compensationImgUpload() {
   var maxLength = 4;
@@ -128,6 +126,12 @@ function compensationImgUpload() {
 
   $('#compensation-images').on('change', function (e) {
     handleImageUpload(e, '#compensation-Attatchments-Table', compensationArray, maxLength, uploadBtnBox, 'compensation');
+  });
+
+  // Delete handler
+  $('body').on('click', '.upload__img-close2.compensation', function (e) {
+    e.stopPropagation();
+    handleImageDelete(this, compensationArray, maxLength, uploadBtnBox, '#compensation-Attatchments-Table');
   });
 }
 
@@ -138,98 +142,147 @@ function ExpensesImgUpload() {
   $('#Expenses-images').on('change', function (e) {
     handleImageUpload(e, '#Expenses-Attatchments-Table', expensesArray, maxLength, uploadBtnBox, 'expenses');
   });
+
+  // Delete handler
+  $('body').on('click', '.upload__img-close2.expenses', function (e) {
+    e.stopPropagation();
+    handleImageDelete(this, expensesArray, maxLength, uploadBtnBox, '#Expenses-Attatchments-Table');
+  });
 }
 
 function handleImageUpload(event, tableSelector, array, maxLength, uploadBtnBox, type) {
-  var uploadBox = $(event.target).closest('.upload__box');
   var files = event.target.files;
   var filesArr = Array.prototype.slice.call(files);
 
-  for (var i = 0; i < Math.min(filesArr.length, maxLength - array.length); i++) {
+  var processedCount = 0;
+  var totalToProcess = Math.min(filesArr.length, maxLength - array.length);
+
+  if (totalToProcess === 0) {
+    return; // Already at max
+  }
+
+  // Detect iOS for better HEIC handling
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  for (var i = 0; i < totalToProcess; i++) {
     (function (f) {
-      if (f.type === 'image/heic' || f.type === 'image/heif' || f.name.endsWith('.heic') || f.name.endsWith('.heif')) {
+      var isHEIC = f.type === 'image/heic' || f.type === 'image/heif' || 
+                   f.name.endsWith('.heic') || f.name.endsWith('.heif');
+      
+      // On iOS, skip heic2any conversion (it doesn't work well on iOS Safari)
+      if (isHEIC && !isIOS && typeof heic2any !== 'undefined') {
         heic2any({ blob: f, toType: "image/jpeg" })
           .then(function (convertedBlob) {
             processFile(convertedBlob, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
+            processedCount++;
+            checkComplete();
           })
           .catch(function (err) {
             console.error("Error converting HEIC/HEIF image:", err);
+            // Fallback: try to process original file
+            processFile(f, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
+            processedCount++;
+            checkComplete();
           });
       } else {
         processFile(f, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
+        processedCount++;
+        checkComplete();
       }
     })(filesArr[i]);
   }
 
-  $('body').on('click', '.upload__img-close2', function (e) {
-    e.stopPropagation();
-    var file = $(this).parent().data('file');
-
-    for (var i = 0; i < array.length; i++) {
-      if (array[i].f.name === file) {
-        array.splice(i, 1);
-        break;
+  function checkComplete() {
+    if (processedCount === totalToProcess) {
+      // All files processed, update upload box visibility
+      if (array.length >= maxLength) {
+        uploadBtnBox.style.display = 'none';
+      } else {
+        repositionUploadBox(tableSelector, uploadBtnBox);
       }
     }
-
-    $(this).closest('.upload__img-box').remove();
-
-    if (array.length < maxLength) {
-      uploadBtnBox.style.display = 'flex';
-      updateCurrentTdIndex(tableSelector, type, uploadBtnBox);
-    }
-
-    if (array.length === 0) {
-      if (type === 'compensation') compensationTdIndex = 0;
-      else expensesTdIndex = 0;
-
-      uploadBtnBox.style.display = 'flex';
-      $(`${tableSelector} td`).eq(type === 'compensation' ? compensationTdIndex : expensesTdIndex).append(uploadBtnBox);
-    }
-  });
+  }
 }
 
 function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnBox, type) {
   var reader = new FileReader();
+  
   reader.onload = function (e) {
+    // Find the next empty cell at the time of insertion
+    var $table = $(tableSelector);
+    var $emptyCell = $table.find('td').filter(function() {
+      return $(this).find('.upload__img-box').length === 0;
+    }).first();
+    
+    if ($emptyCell.length === 0) {
+      console.warn('No empty cell found for image:', fileName);
+      return;
+    }
+
     var html = `
       <div class='upload__img-box Attatchments-img-box'>
         <div style='background-image: url(${e.target.result})' data-file='${fileName}' class='img-bg'>
-          <div class='upload__img-close2'><i class='fa-regular fa-trash-can'></i></div>
+          <div class='upload__img-close2 ${type}'><i class='fa-regular fa-trash-can'></i></div>
         </div>
       </div>
     `;
-
-    var currentTdIndex = type === 'compensation' ? compensationTdIndex : expensesTdIndex;
-    var targetTd = $(`${tableSelector} td`).eq(currentTdIndex);
-    targetTd.append(html);
-
+    
+    $emptyCell.append(html);
     array.push({ f: file, url: e.target.result });
 
-    updateCurrentTdIndex(tableSelector, type, uploadBtnBox);
-
-    if (array.length >= maxLength) {
+    // Update upload box position if needed
+    if (array.length < maxLength) {
+      repositionUploadBox(tableSelector, uploadBtnBox);
+    } else {
       uploadBtnBox.style.display = 'none';
     }
   };
-  reader.readAsDataURL(file);
+  
+  reader.onerror = function(error) {
+    console.error('Error reading file:', fileName, error);
+    alert('فشل تحميل الصورة: ' + fileName);
+  };
+  
+  try {
+    reader.readAsDataURL(file);
+  } catch (e) {
+    console.error('Exception when trying to read file:', e);
+  }
 }
 
-function updateCurrentTdIndex(tableSelector, type, uploadBtnBox) {
-  var currentTdIndex = type === 'compensation' ? compensationTdIndex : expensesTdIndex;
+function repositionUploadBox(tableSelector, uploadBtnBox) {
+  var $table = $(tableSelector);
+  var $emptyCell = $table.find('td').filter(function() {
+    return $(this).find('.upload__img-box').length === 0;
+  }).first();
+  
+  if ($emptyCell.length > 0) {
+    uploadBtnBox.style.display = 'flex';
+    $emptyCell.append(uploadBtnBox);
+  }
+}
 
-  $(`${tableSelector} td`).each(function (index) {
-    if ($(this).find('.upload__img-box').length === 0) {
-      if (type === 'compensation') compensationTdIndex = index;
-      else expensesTdIndex = index;
+function handleImageDelete(element, array, maxLength, uploadBtnBox, tableSelector) {
+  var file = $(element).parent().data('file');
 
-      uploadBtnBox.style.display = 'flex';
-      $(this).append(uploadBtnBox);
-      return false; // Break the loop
+  for (var i = 0; i < array.length; i++) {
+    if (array[i].f.name === file) {
+      array.splice(i, 1);
+      break;
     }
-  });
-}
+  }
 
+  $(element).closest('.upload__img-box').remove();
+
+  if (array.length < maxLength) {
+    repositionUploadBox(tableSelector, uploadBtnBox);
+  }
+
+  if (array.length === 0) {
+    uploadBtnBox.style.display = 'flex';
+    $(tableSelector + ' td').first().append(uploadBtnBox);
+  }
+}
 
 //========================================calculate Expenses/compensation  ============================================================
 
@@ -252,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (!isNaN(value) && value <= 1000000) {
             sum += value;
-          }else if(value >= 1000000) {
+          } else if (value >= 1000000) {
             sum += 1000000;
           }
       });
@@ -276,7 +329,6 @@ document.addEventListener("DOMContentLoaded", () => {
   addInputListeners(CompensationTable, TotalCompensation);
   calculateTotal(CompensationTable, TotalCompensation);
 });
-
 
 
 //====================================================================================================
@@ -635,23 +687,6 @@ dropdown4.addEventListener("click", function(event) {
   event.stopPropagation();
 });
 //====================================================================================================
-//====================================================================================================
-// const image5 = document.getElementById('Settlement-type-Data');
-// const dropdown5 = document.getElementById('dropdown-content-Settlement5');
-
-// image5.addEventListener('click', function () {
-// 	if (dropdown5.style.display === 'block') {
-//         dropdown5.style.display = 'none';
-//         dropdown2.style.display = 'none';
-//         dropdown.style.display = 'none';
-
-//     } else {
-//         dropdown5.style.display = 'block';
-//         dropdown2.style.display = 'none';
-//         dropdown.style.display = 'none';
-
-//     }
-// });
 //====================================================================================================
 
 $('#examination-images').click(function(){
