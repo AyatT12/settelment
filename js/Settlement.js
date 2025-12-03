@@ -123,8 +123,9 @@ var expensesArray = [];
 function compensationImgUpload() {
   var maxLength = 4;
   var uploadBtnBox = document.getElementById('compensation-upload-box');
-
+  
   $('#compensation-images').on('change', function (e) {
+    alert('تم اختيار صور للتعويضات: ' + e.target.files.length + ' ملف');
     handleImageUpload(e, '#compensation-Attatchments-Table', compensationArray, maxLength, uploadBtnBox, 'compensation');
   });
 
@@ -138,8 +139,10 @@ function compensationImgUpload() {
 function ExpensesImgUpload() {
   var maxLength = 4;
   var uploadBtnBox = document.getElementById('Expenses-upload-box');
+  
 
   $('#Expenses-images').on('change', function (e) {
+    alert('تم اختيار صور للمصروفات: ' + e.target.files.length + ' ملف');
     handleImageUpload(e, '#Expenses-Attatchments-Table', expensesArray, maxLength, uploadBtnBox, 'expenses');
   });
 
@@ -151,40 +154,57 @@ function ExpensesImgUpload() {
 }
 
 function handleImageUpload(event, tableSelector, array, maxLength, uploadBtnBox, type) {
+  alert('بدأ تحميل الصور...');
+  
   var files = event.target.files;
   var filesArr = Array.prototype.slice.call(files);
+  
+  alert('عدد الملفات المحددة: ' + filesArr.length);
+  
+  // Reset the input value to allow re-uploading same file
+  $(event.target).val('');
 
   var processedCount = 0;
   var totalToProcess = Math.min(filesArr.length, maxLength - array.length);
+  
+  alert('يمكن تحميل: ' + totalToProcess + ' ملف (الحد الأقصى: ' + maxLength + ')');
 
   if (totalToProcess === 0) {
-    return; // Already at max
+    alert('❌ وصلت للحد الأقصى للصور! أقصى عدد: ' + maxLength);
+    return;
   }
 
   // Detect iOS for better HEIC handling
   var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  alert('هل هذا جهاز آيباد/آيفون؟ ' + (isIOS ? 'نعم' : 'لا'));
 
   for (var i = 0; i < totalToProcess; i++) {
     (function (f) {
       var isHEIC = f.type === 'image/heic' || f.type === 'image/heif' || 
                    f.name.endsWith('.heic') || f.name.endsWith('.heif');
       
+      alert('جاري معالجة الملف: ' + f.name + '\nالحجم: ' + (f.size / 1024).toFixed(1) + ' كيلوبايت\nالنوع: ' + f.type + '\nصيغة HEIC؟ ' + (isHEIC ? 'نعم' : 'لا'));
+      
       // On iOS, skip heic2any conversion (it doesn't work well on iOS Safari)
       if (isHEIC && !isIOS && typeof heic2any !== 'undefined') {
+        alert('جارٍ تحويل صيغة HEIC إلى JPEG...');
         heic2any({ blob: f, toType: "image/jpeg" })
           .then(function (convertedBlob) {
+            alert('✓ تم تحويل HEIC إلى JPEG بنجاح');
             processFile(convertedBlob, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
             processedCount++;
             checkComplete();
           })
           .catch(function (err) {
-            console.error("Error converting HEIC/HEIF image:", err);
-            // Fallback: try to process original file
+            alert('❌ فشل تحويل صيغة HEIC. جاري استخدام الملف الأصلي');
             processFile(f, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
             processedCount++;
             checkComplete();
           });
       } else {
+        if (isHEIC && isIOS) {
+          alert('📱 صيغة HEIC على آيباد - جاري المعالجة بدون تحويل');
+        }
         processFile(f, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
         processedCount++;
         checkComplete();
@@ -193,86 +213,135 @@ function handleImageUpload(event, tableSelector, array, maxLength, uploadBtnBox,
   }
 
   function checkComplete() {
+    alert('تمت معالجة ' + processedCount + ' من أصل ' + totalToProcess + ' ملف');
     if (processedCount === totalToProcess) {
+      alert('✓ اكتملت معالجة جميع الملفات!');
       // All files processed, update upload box visibility
       if (array.length >= maxLength) {
         uploadBtnBox.style.display = 'none';
+        alert('✓ تم إخفاء زر التحميل (وصلت للحد الأقصى)');
       } else {
         repositionUploadBox(tableSelector, uploadBtnBox);
+        alert('✓ زر التحميل ظاهر، جاري إعادة وضعه');
       }
     }
   }
 }
 
 function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnBox, type) {
+  alert('جاري قراءة الملف: ' + fileName);
+  
   var reader = new FileReader();
   
+  reader.onloadstart = function() {
+    alert('بدأ قراءة الملف: ' + fileName);
+  };
+  
+  reader.onprogress = function(e) {
+    if (e.lengthComputable) {
+      var percent = Math.round((e.loaded / e.total) * 100);
+      alert('جاري تحميل ' + fileName + ': ' + percent + '%');
+    }
+  };
+  
   reader.onload = function (e) {
-    // Find the next empty cell at the time of insertion
-    var $table = $(tableSelector);
-    var $emptyCell = $table.find('td').filter(function() {
-      return $(this).find('.upload__img-box').length === 0;
-    }).first();
+    alert('✓ تم تحميل الملف بنجاح: ' + fileName + '\nالحجم: ' + e.target.result.length + ' حرف في الذاكرة');
     
-    if ($emptyCell.length === 0) {
-      console.warn('No empty cell found for image:', fileName);
-      return;
-    }
+    // Use setTimeout to ensure UI thread updates
+    setTimeout(() => {
+      var $table = $(tableSelector);
+      var $emptyCell = $table.find('td').filter(function() {
+        return $(this).find('.upload__img-box').length === 0;
+      }).first();
+      
+      alert('جاري البحث عن خلية فارغة... ' + ($emptyCell.length > 0 ? '✓ وجدت خلية فارغة' : '❌ لم أجد خلية فارغة'));
 
-    var html = `
-      <div class='upload__img-box Attatchments-img-box'>
-        <div style='background-image: url(${e.target.result})' data-file='${fileName}' class='img-bg'>
-          <div class='upload__img-close2 ${type}'><i class='fa-regular fa-trash-can'></i></div>
+      if ($emptyCell.length === 0) {
+        alert('❌ لم أجد خلية فارغة في الجدول لإضافة الصورة: ' + fileName);
+        return;
+      }
+
+      var html = `
+        <div class='upload__img-box Attatchments-img-box'>
+          <div style='background-image: url(${e.target.result})' data-file='${fileName}' class='img-bg'>
+            <div class='upload__img-close2 ${type}'><i class='fa-regular fa-trash-can'></i></div>
+          </div>
         </div>
-      </div>
-    `;
-    
-    $emptyCell.append(html);
-    array.push({ f: file, url: e.target.result });
+      `;
+      
+      alert('جاري إضافة الصورة إلى الخلية...');
+      $emptyCell.append(html);
+      array.push({ f: file, url: e.target.result });
+      
+      alert('✓ تمت إضافة الصورة إلى المصفوفة\nعدد الصور الآن: ' + array.length);
 
-    // Update upload box position if needed
-    if (array.length < maxLength) {
-      repositionUploadBox(tableSelector, uploadBtnBox);
-    } else {
-      uploadBtnBox.style.display = 'none';
-    }
+      // Force reflow for iOS
+      $emptyCell[0].offsetHeight;
+
+      if (array.length < maxLength) {
+        repositionUploadBox(tableSelector, uploadBtnBox);
+      } else {
+        uploadBtnBox.style.display = 'none';
+        alert('✓ تم إخفاء زر التحميل');
+      }
+      
+      alert('✓ تمت إضافة الصورة: ' + fileName + '\nيمكنك رؤيتها الآن في الجدول');
+    }, 100); // Small delay for UI update
   };
   
   reader.onerror = function(error) {
-    console.error('Error reading file:', fileName, error);
-    alert('فشل تحميل الصورة: ' + fileName);
+    alert('❌ فشل تحميل الصورة: ' + fileName + '\nالخطأ: ' + error);
+  };
+  
+  reader.onabort = function() {
+    alert('❌ تم إلغاء تحميل الملف: ' + fileName);
   };
   
   try {
+    alert('جاري قراءة الملف كـ Data URL...');
     reader.readAsDataURL(file);
   } catch (e) {
-    console.error('Exception when trying to read file:', e);
+    alert('❌ خطأ عند محاولة قراءة الملف: ' + e);
   }
 }
 
 function repositionUploadBox(tableSelector, uploadBtnBox) {
+  alert('جاري إعادة وضع زر التحميل...');
+  
   var $table = $(tableSelector);
   var $emptyCell = $table.find('td').filter(function() {
     return $(this).find('.upload__img-box').length === 0;
   }).first();
   
+  alert('وجدت ' + $emptyCell.length + ' خلية فارغة');
+  
   if ($emptyCell.length > 0) {
     uploadBtnBox.style.display = 'flex';
     $emptyCell.append(uploadBtnBox);
+    alert('✓ تم نقل زر التحميل إلى خلية فارغة');
+  } else {
+    alert('❌ لم أجد خلية فارغة لوضع زر التحميل');
   }
 }
 
 function handleImageDelete(element, array, maxLength, uploadBtnBox, tableSelector) {
-  var file = $(element).parent().data('file');
-
+  var fileName = $(element).parent().data('file');
+  alert('جاري حذف الصورة: ' + fileName);
+  
+  var found = false;
   for (var i = 0; i < array.length; i++) {
-    if (array[i].f.name === file) {
+    if (array[i].f.name === fileName) {
       array.splice(i, 1);
+      found = true;
       break;
     }
   }
+  
+  alert(found ? '✓ تم إزالة الصورة من المصفوفة' : '❌ لم أجد الصورة في المصفوفة');
+  alert('عدد الصور المتبقية: ' + array.length);
 
   $(element).closest('.upload__img-box').remove();
+  alert('✓ تم إزالة الصورة من الواجهة');
 
   if (array.length < maxLength) {
     repositionUploadBox(tableSelector, uploadBtnBox);
@@ -281,9 +350,71 @@ function handleImageDelete(element, array, maxLength, uploadBtnBox, tableSelecto
   if (array.length === 0) {
     uploadBtnBox.style.display = 'flex';
     $(tableSelector + ' td').first().append(uploadBtnBox);
+    alert('✓ تم إعادة زر التحميل إلى مكانه الأصلي');
   }
 }
 
+// CSS Fix - Add this to your stylesheet or create a style element
+function addImageUploadCSS() {
+  var css = `
+    /* Ensure images are visible */
+    .img-bg {
+      width: 100%;
+      height: 100px !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      position: relative;
+      border-radius: 4px;
+      border: 2px solid #007bff;
+    }
+    
+    
+    /* Make delete button visible */
+    .upload__img-close2 {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: red;
+      color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+    }
+    
+    /* iOS-specific fix */
+    @supports (-webkit-touch-callout: none) {
+      .img-bg {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        background-color: #f0f0f0; /* Fallback color */
+      }
+    }
+    
+  
+  `;
+  
+  var style = document.createElement('style');
+  style.innerHTML = css;
+  document.head.appendChild(style);
+}
+
+// Initialize when page loads
+$(document).ready(function() {
+  addImageUploadCSS();
+  
+  // Test if jQuery is working
+  alert('jQuery يعمل: ' + (typeof jQuery !== 'undefined' ? 'نعم' : 'لا'));
+  
+  // Test if functions are defined
+  alert('الدوال المعرفة:\n- compensationImgUpload: ' + (typeof compensationImgUpload !== 'undefined') + 
+        '\n- ExpensesImgUpload: ' + (typeof ExpensesImgUpload !== 'undefined'));
+});
 //========================================calculate Expenses/compensation  ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
