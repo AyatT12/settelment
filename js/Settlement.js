@@ -303,10 +303,12 @@ function handleImageDelete(element, array, maxLength, uploadBtnBox, tableSelecto
 
 // Add essential CSS for image display
 function addImageUploadCSS() {
-  var css = `
+   var css = `
     /* Ensure images are visible */
     .img-bg {
       width: 100%;
+      height: 100px !important;
+      background-size: cover !important;
       background-position: center !important;
       background-repeat: no-repeat !important;
       position: relative;
@@ -322,6 +324,7 @@ function addImageUploadCSS() {
       }
     }
     
+  
   `;
   
   var style = document.createElement('style');
