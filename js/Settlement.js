@@ -244,7 +244,7 @@ function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnB
       
       // Success message
       setTimeout(() => {
-        alert('✅ تمت إضافة الصورة بنجاح: ' + fileName);
+        alert(' تمت إضافة الصورة بنجاح: ' + fileName);
       }, 300);
     }, 100);
   };
@@ -256,7 +256,7 @@ function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnB
   try {
     reader.readAsDataURL(file);
   } catch (e) {
-    alert('❌ خطأ غير متوقع أثناء تحميل الصورة');
+    alert(' خطأ غير متوقع أثناء تحميل الصورة');
   }
 }
 
@@ -275,11 +275,6 @@ function repositionUploadBox(tableSelector, uploadBtnBox) {
 function handleImageDelete(element, array, maxLength, uploadBtnBox, tableSelector) {
   var fileName = $(element).parent().data('file');
   
-  // Ask for confirmation
-  if (!confirm('هل أنت متأكد من حذف الصورة: ' + fileName + '؟')) {
-    return;
-  }
-  
   var found = false;
   for (var i = 0; i < array.length; i++) {
     if (array[i].f.name === fileName) {
@@ -293,7 +288,7 @@ function handleImageDelete(element, array, maxLength, uploadBtnBox, tableSelecto
   
   // Show success message
   setTimeout(() => {
-    alert('✅ تم حذف الصورة بنجاح');
+    alert(' تم حذف الصورة بنجاح');
   }, 200);
 
   if (array.length < maxLength) {
