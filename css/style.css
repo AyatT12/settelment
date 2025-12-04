@@ -1329,15 +1329,17 @@ box-shadow: none !important;
 .upload__img-close1,
 .upload__img-close2,
 .upload__img-close3 {
-    font-size: 18px;
-    border-radius: 50%;
+  font-size: 18px;
+    border-radius: 4px;
     position: absolute;
-    bottom: 0px;
-    left: 0px;
+    bottom: 3px;
+    left: 3px;
     text-align: center;
     line-height: 24px;
     z-index: 1;
+    padding: 0px 1px;
     cursor: pointer;
+    background-color: white;
 }
 
 .textarea_table {
