@@ -128,7 +128,6 @@ function compensationImgUpload() {
     handleImageUpload(e, '#compensation-Attatchments-Table', compensationArray, maxLength, uploadBtnBox, 'compensation');
   });
 
-  // Delete handler
   $('body').on('click', '.upload__img-close2.compensation', function (e) {
     e.stopPropagation();
     handleImageDelete(this, compensationArray, maxLength, uploadBtnBox, '#compensation-Attatchments-Table');
@@ -143,7 +142,6 @@ function ExpensesImgUpload() {
     handleImageUpload(e, '#Expenses-Attatchments-Table', expensesArray, maxLength, uploadBtnBox, 'expenses');
   });
 
-  // Delete handler
   $('body').on('click', '.upload__img-close2.expenses', function (e) {
     e.stopPropagation();
     handleImageDelete(this, expensesArray, maxLength, uploadBtnBox, '#Expenses-Attatchments-Table');
@@ -154,18 +152,12 @@ function handleImageUpload(event, tableSelector, array, maxLength, uploadBtnBox,
   var files = event.target.files;
   var filesArr = Array.prototype.slice.call(files);
   
-  // Reset the input value to allow re-uploading same file
   $(event.target).val('');
 
   var processedCount = 0;
   var totalToProcess = Math.min(filesArr.length, maxLength - array.length);
 
-  if (totalToProcess === 0) {
-    alert('❌ وصلت للحد الأقصى للصور! أقصى عدد: ' + maxLength);
-    return;
-  }
 
-  // Detect iOS for better HEIC handling
   var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
   for (var i = 0; i < totalToProcess; i++) {
@@ -173,7 +165,6 @@ function handleImageUpload(event, tableSelector, array, maxLength, uploadBtnBox,
       var isHEIC = f.type === 'image/heic' || f.type === 'image/heif' || 
                    f.name.endsWith('.heic') || f.name.endsWith('.heif');
       
-      // On iOS, skip heic2any conversion (it doesn't work well on iOS Safari)
       if (isHEIC && !isIOS && typeof heic2any !== 'undefined') {
         heic2any({ blob: f, toType: "image/jpeg" })
           .then(function (convertedBlob) {
@@ -182,7 +173,7 @@ function handleImageUpload(event, tableSelector, array, maxLength, uploadBtnBox,
             checkComplete();
           })
           .catch(function (err) {
-            // Fallback: try to process original file
+
             processFile(f, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
             processedCount++;
             checkComplete();
@@ -197,7 +188,7 @@ function handleImageUpload(event, tableSelector, array, maxLength, uploadBtnBox,
 
   function checkComplete() {
     if (processedCount === totalToProcess) {
-      // All files processed, update upload box visibility
+
       if (array.length >= maxLength) {
         uploadBtnBox.style.display = 'none';
       } else {
@@ -211,7 +202,7 @@ function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnB
   var reader = new FileReader();
   
   reader.onload = function (e) {
-    // Use setTimeout to ensure UI thread updates (important for iOS)
+
     setTimeout(() => {
       var $table = $(tableSelector);
       var $emptyCell = $table.find('td').filter(function() {
@@ -224,7 +215,7 @@ function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnB
 
       var html = `
         <div class='upload__img-box Attatchments-img-box'>
-          <div style='background-image: url(${e.target.result})' data-file='${fileName}' class='img-bg'>
+          <div style='background-image: url(${e.target.result})' data-file='${fileName}' class='ExpensesCompensationImg img-bg'>
             <div class='upload__img-close2 ${type}'><i class='fa-regular fa-trash-can'></i></div>
           </div>
         </div>
@@ -233,7 +224,6 @@ function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnB
       $emptyCell.append(html);
       array.push({ f: file, url: e.target.result });
 
-      // Force reflow for iOS to ensure proper rendering
       $emptyCell[0].offsetHeight;
 
       if (array.length < maxLength) {
@@ -242,15 +232,11 @@ function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnB
         uploadBtnBox.style.display = 'none';
       }
       
-      // Success message
-      setTimeout(() => {
-        alert(' تمت إضافة الصورة بنجاح: ' + fileName);
-      }, 300);
     }, 100);
   };
   
   reader.onerror = function(error) {
-    alert('❌ فشل تحميل الصورة: ' + fileName);
+    alert(' فشل تحميل الصورة: ' + fileName);
   };
   
   try {
@@ -286,11 +272,6 @@ function handleImageDelete(element, array, maxLength, uploadBtnBox, tableSelecto
   
   $(element).closest('.upload__img-box').remove();
   
-  // Show success message
-  setTimeout(() => {
-    alert(' تم حذف الصورة بنجاح');
-  }, 200);
-
   if (array.length < maxLength) {
     repositionUploadBox(tableSelector, uploadBtnBox);
   }
@@ -301,11 +282,10 @@ function handleImageDelete(element, array, maxLength, uploadBtnBox, tableSelecto
   }
 }
 
-// Add essential CSS for image display
 function addImageUploadCSS() {
    var css = `
     /* Ensure images are visible */
-    .img-bg {
+    .ExpensesCompensationImg {
       width: 100%;
       height: 100px !important;
       background-size: cover !important;
@@ -317,14 +297,12 @@ function addImageUploadCSS() {
     
     /* iOS-specific fix */
     @supports (-webkit-touch-callout: none) {
-      .img-bg {
+      .ExpensesCompensationImg {
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
         background-color: #f0f0f0; /* Fallback color */
       }
     }
-    
-  
   `;
   
   var style = document.createElement('style');
@@ -332,7 +310,6 @@ function addImageUploadCSS() {
   document.head.appendChild(style);
 }
 
-// Initialize when page loads
 $(document).ready(function() {
   addImageUploadCSS();
 });
