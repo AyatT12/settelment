@@ -153,23 +153,21 @@ function handleImageUpload(event, tableSelector, array, EC_maxLength, Selectedup
   var files = event.target.files;
   var filesArr = Array.prototype.slice.call(files);
 
-  var processedCount = 0;
   var totalToProcess = Math.min(filesArr.length, EC_maxLength - array.length);
   
   if (filesArr.length > totalToProcess) {
-      alert("You can only upload " + EC_maxLength + " images maximum. Only the first " + totalToProcess + " will be processed.");
+    alert("You can only upload " + EC_maxLength + " images maximum. Only the first " + totalToProcess + " will be processed.");
   }
 
-  if (filesArr.length > totalToProcess) {
-      let dt = new DataTransfer();
-      for (let i = 0; i < totalToProcess; i++) {
-          dt.items.add(filesArr[i]);
-      }
-      event.target.files = dt.files;
-  }
+  // Store the files we want to process immediately
+  var filesToProcess = filesArr.slice(0, totalToProcess);
+  
+  var processedCount = 0;
+  var successCount = 0;
 
-  for (var i = 0; i < totalToProcess; i++) {
-    (function (f) {
+  // Process each file
+  for (var i = 0; i < filesToProcess.length; i++) {
+    (function (f, index) {
 
       var isHeic =
         f.type === 'image/heic' ||
@@ -177,14 +175,19 @@ function handleImageUpload(event, tableSelector, array, EC_maxLength, Selectedup
         f.name.toLowerCase().endsWith('.heic') ||
         f.name.toLowerCase().endsWith('.heif');
 
-      // HEIC
+      // HEIC conversion
       if (isHeic) {
         heic2any({ blob: f, toType: "image/jpeg" })
           .then(function (convertedBlob) {
-            readAndInsert(convertedBlob, f.name);
+            // Create a new File object with the original name
+            var convertedFile = new File([convertedBlob], f.name.replace(/\.heic$/i, '.jpg'), {
+              type: 'image/jpeg'
+            });
+            readAndInsert(convertedFile, f.name);
           })
           .catch(function (err) {
-            alert("HEIC conversion failed, using original file.");
+            console.error("HEIC conversion failed:", err);
+            alert("HEIC conversion failed for " + f.name + ", using original file.");
             readAndInsert(f, f.name);
           });
 
@@ -205,6 +208,7 @@ function handleImageUpload(event, tableSelector, array, EC_maxLength, Selectedup
             .first();
 
           if ($emptyCell.length === 0) {
+            console.warn("No empty cell available for image:", originalName);
             processedCount++;
             checkDone();
             return;
@@ -222,32 +226,22 @@ function handleImageUpload(event, tableSelector, array, EC_maxLength, Selectedup
 
           $emptyCell.append(html);
 
-          array.push({ f: fileObject, url: e.target.result });
+          // Push the actual file object to the array
+          array.push({ 
+            f: fileObject, 
+            url: e.target.result,
+            name: originalName 
+          });
 
-          alert(
-            "Image uploaded successfully! Type: " +
-              type +
-              "\nFile: " +
-              originalName
-          );
-          // Get just the filenames from the array
-          var fileNames = array.map((item) => item.f.name).join(", ");
-          alert(
-            "Image uploaded successfully! Type: " +
-              type +
-              "\nFile: " +
-              originalName +
-              "\n\nCurrent files: " +
-              fileNames +
-              "\nTotal: " +
-              array.length +
-              " image(s)"
-          );
+          successCount++;
           processedCount++;
+          
+          console.log("Image processed successfully:", originalName, "Array length:", array.length);
           checkDone();
         };
 
-        reader.onerror = function() {
+        reader.onerror = function(error) {
+          console.error("Error reading file:", originalName, error);
           alert("Error reading file: " + originalName);
           processedCount++;
           checkDone();
@@ -256,14 +250,30 @@ function handleImageUpload(event, tableSelector, array, EC_maxLength, Selectedup
         reader.readAsDataURL(fileObject);
       }
 
-    })(filesArr[i]);
+    })(filesToProcess[i], i);
   }
 
   function checkDone() {
-    if (processedCount !== totalToProcess) return;
+    if (processedCount < totalToProcess) {
+      return;
+    }
 
+    // Clear the input AFTER all processing is complete
     event.target.value = "";
 
+    // Show summary of uploaded files
+    if (successCount > 0) {
+      var fileNames = array.map(item => item.name || item.f.name).join(", ");
+      alert(
+        "Upload complete!\n" +
+        "Successfully uploaded: " + successCount + " image(s)\n" +
+        "Type: " + type + "\n" +
+        "Files: " + fileNames + "\n" +
+        "Total images: " + array.length + "/" + EC_maxLength
+      );
+    }
+
+    // Update UI based on remaining capacity
     if (array.length < EC_maxLength) {
       repositionUploadBox(tableSelector, SelecteduploadBox);
     } else {
@@ -290,7 +300,8 @@ function handleImageDelete(element, array, EC_maxLength, Expenses_compensation_u
   
   var found = false;
   for (var i = 0; i < array.length; i++) {
-    if (array[i].f.name === fileName) {
+    var itemName = array[i].name || array[i].f.name;
+    if (itemName === fileName) {
       array.splice(i, 1);
       found = true;
       break;
@@ -307,6 +318,8 @@ function handleImageDelete(element, array, EC_maxLength, Expenses_compensation_u
     Expenses_compensation_uploadBox.style.display = 'flex';
     $(tableSelector + ' td').first().append(Expenses_compensation_uploadBox);
   }
+  
+  console.log("Image deleted:", fileName, "Remaining:", array.length);
   
   if (found) {
     alert("Image deleted successfully!\nRemaining images: " + array.length);
@@ -333,7 +346,7 @@ function addImageUploadCSS() {
       .ExpensesCompensationImg {
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
-        background-color: #f0f0f0; /* Fallback color */
+        background-color: #f0f0f0;
       }
     }
   `;
@@ -343,10 +356,62 @@ function addImageUploadCSS() {
   document.head.appendChild(style);
 }
 
+// Verification function to check if images are actually stored
+function verifyImagesStored(type) {
+  var array = type === 'expenses' ? expensesArray : compensationArray;
+  
+  console.log("=== Image Storage Verification ===");
+  console.log("Type:", type);
+  console.log("Array length:", array.length);
+  
+  array.forEach(function(item, index) {
+    console.log("Image " + (index + 1) + ":");
+    console.log("  - File name:", item.name || item.f.name);
+    console.log("  - File size:", item.f.size, "bytes");
+    console.log("  - File type:", item.f.type);
+    console.log("  - Has URL:", !!item.url);
+    console.log("  - URL length:", item.url ? item.url.length : 0);
+  });
+  
+  return array.length;
+}
+
+// Function to get images for submission
+function getExpensesImages() {
+  console.log("Getting expenses images:", expensesArray.length);
+  return expensesArray.map(item => ({
+    file: item.f,
+    dataUrl: item.url,
+    name: item.name || item.f.name
+  }));
+}
+
+function getCompensationImages() {
+  console.log("Getting compensation images:", compensationArray.length);
+  return compensationArray.map(item => ({
+    file: item.f,
+    dataUrl: item.url,
+    name: item.name || item.f.name
+  }));
+}
+
 $(document).ready(function() {
   addImageUploadCSS();
-  alert("Image upload functionality loaded successfully!");
+  console.log("Image upload functionality loaded successfully!");
+  
+  // Make verification functions available globally
+  window.verifyExpensesImages = function() {
+    return verifyImagesStored('expenses');
+  };
+  
+  window.verifyCompensationImages = function() {
+    return verifyImagesStored('compensation');
+  };
+  
+  window.getExpensesImages = getExpensesImages;
+  window.getCompensationImages = getCompensationImages;
 });
+
 //========================================calculate Expenses/compensation  ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -392,7 +457,6 @@ document.addEventListener("DOMContentLoaded", () => {
   addInputListeners(CompensationTable, TotalCompensation);
   calculateTotal(CompensationTable, TotalCompensation);
 });
-
 
 //====================================================================================================
 //========================================Upload examination Imgs Lists============================================================
