@@ -114,6 +114,7 @@ $(".previous").click(function () {
     setFocusToFirstInput(previous_fs);
 });
 
+
 //====================================================================================================
 //========================================Upload Expenses/compensation Imgs Lists============================================================
 //====================================================================================================
@@ -121,144 +122,170 @@ var compensationArray = [];
 var expensesArray = [];
 
 function compensationImgUpload() {
-  var maxLength = 4;
-  var uploadBtnBox = document.getElementById('compensation-upload-box');
+  var EC_maxLength = 4;
+  var Expenses_compensation_uploadBox = document.getElementById('compensation-upload-box');
 
   $('#compensation-images').on('change', function (e) {
-    handleImageUpload(e, '#compensation-Attatchments-Table', compensationArray, maxLength, uploadBtnBox, 'compensation');
+    handleImageUpload(e, '#compensation-Attatchments-Table', compensationArray, EC_maxLength, Expenses_compensation_uploadBox, 'compensation');
   });
 
   $('body').on('click', '.upload__img-close2.compensation', function (e) {
     e.stopPropagation();
-    handleImageDelete(this, compensationArray, maxLength, uploadBtnBox, '#compensation-Attatchments-Table');
+    handleImageDelete(this, compensationArray, EC_maxLength, Expenses_compensation_uploadBox, '#compensation-Attatchments-Table');
   });
 }
 
 function ExpensesImgUpload() {
-  var maxLength = 4;
-  var uploadBtnBox = document.getElementById('Expenses-upload-box');
+  var EC_maxLength = 4;
+  var Expenses_compensation_uploadBox = document.getElementById('Expenses-upload-box');
 
   $('#Expenses-images').on('change', function (e) {
-    handleImageUpload(e, '#Expenses-Attatchments-Table', expensesArray, maxLength, uploadBtnBox, 'expenses');
+    handleImageUpload(e, '#Expenses-Attatchments-Table', expensesArray, EC_maxLength, Expenses_compensation_uploadBox, 'expenses');
   });
 
   $('body').on('click', '.upload__img-close2.expenses', function (e) {
     e.stopPropagation();
-    handleImageDelete(this, expensesArray, maxLength, uploadBtnBox, '#Expenses-Attatchments-Table');
+    handleImageDelete(this, expensesArray, EC_maxLength, Expenses_compensation_uploadBox, '#Expenses-Attatchments-Table');
   });
 }
 
-function handleImageUpload(event, tableSelector, array, maxLength, uploadBtnBox, type) {
+function handleImageUpload(event, tableSelector, array, EC_maxLength, SelecteduploadBox, type) {
   var files = event.target.files;
   var filesArr = Array.prototype.slice.call(files);
-  
-  $(event.target).val('');
 
   var processedCount = 0;
-  var totalToProcess = Math.min(filesArr.length, maxLength - array.length);
+  var totalToProcess = Math.min(filesArr.length, EC_maxLength - array.length);
+  
+  if (filesArr.length > totalToProcess) {
+      alert("You can only upload " + EC_maxLength + " images maximum. Only the first " + totalToProcess + " will be processed.");
+  }
 
-
-  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (filesArr.length > totalToProcess) {
+      let dt = new DataTransfer();
+      for (let i = 0; i < totalToProcess; i++) {
+          dt.items.add(filesArr[i]);
+      }
+      event.target.files = dt.files;
+  }
 
   for (var i = 0; i < totalToProcess; i++) {
     (function (f) {
-      var isHEIC = f.type === 'image/heic' || f.type === 'image/heif' || 
-                   f.name.endsWith('.heic') || f.name.endsWith('.heif');
-      
-      if (isHEIC && !isIOS && typeof heic2any !== 'undefined') {
+
+      var isHeic =
+        f.type === 'image/heic' ||
+        f.type === 'image/heif' ||
+        f.name.toLowerCase().endsWith('.heic') ||
+        f.name.toLowerCase().endsWith('.heif');
+
+      // HEIC
+      if (isHeic) {
         heic2any({ blob: f, toType: "image/jpeg" })
           .then(function (convertedBlob) {
-            processFile(convertedBlob, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
-            processedCount++;
-            checkComplete();
+            readAndInsert(convertedBlob, f.name);
           })
           .catch(function (err) {
-
-            processFile(f, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
-            processedCount++;
-            checkComplete();
+            alert("HEIC conversion failed, using original file.");
+            readAndInsert(f, f.name);
           });
+
       } else {
-        processFile(f, f.name, tableSelector, array, maxLength, uploadBtnBox, type);
-        processedCount++;
-        checkComplete();
+        readAndInsert(f, f.name);
       }
+
+      function readAndInsert(fileObject, originalName) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          var $table = $(tableSelector);
+          var $emptyCell = $table
+            .find("td")
+            .filter(function () {
+              return $(this).find(".Expenses-compensation-ImgBox").length === 0;
+            })
+            .first();
+
+          if ($emptyCell.length === 0) {
+            processedCount++;
+            checkDone();
+            return;
+          }
+
+          var html = `
+            <div class='Expenses-compensation-ImgBox Attatchments-img-box'>
+              <div style='background-image:url(${e.target.result})'
+                data-file='${originalName}'
+                class='ExpensesCompensationImg img-bg'>
+                <div class='upload__img-close2 ${type}'><i class='fa-regular fa-trash-can'></i></div>
+              </div>
+            </div>
+          `;
+
+          $emptyCell.append(html);
+
+          array.push({ f: fileObject, url: e.target.result });
+
+          alert(
+            "Image uploaded successfully! Type: " +
+              type +
+              "\nFile: " +
+              originalName
+          );
+          // Get just the filenames from the array
+          var fileNames = array.map((item) => item.f.name).join(", ");
+          alert(
+            "Image uploaded successfully! Type: " +
+              type +
+              "\nFile: " +
+              originalName +
+              "\n\nCurrent files: " +
+              fileNames +
+              "\nTotal: " +
+              array.length +
+              " image(s)"
+          );
+          processedCount++;
+          checkDone();
+        };
+
+        reader.onerror = function() {
+          alert("Error reading file: " + originalName);
+          processedCount++;
+          checkDone();
+        };
+        
+        reader.readAsDataURL(fileObject);
+      }
+
     })(filesArr[i]);
   }
 
-  function checkComplete() {
-    if (processedCount === totalToProcess) {
+  function checkDone() {
+    if (processedCount !== totalToProcess) return;
 
-      if (array.length >= maxLength) {
-        uploadBtnBox.style.display = 'none';
-      } else {
-        repositionUploadBox(tableSelector, uploadBtnBox);
-      }
+    event.target.value = "";
+
+    if (array.length < EC_maxLength) {
+      repositionUploadBox(tableSelector, SelecteduploadBox);
+    } else {
+      SelecteduploadBox.style.display = "none";
+      alert("Maximum limit of " + EC_maxLength + " images reached!");
     }
   }
 }
 
-function processFile(file, fileName, tableSelector, array, maxLength, uploadBtnBox, type) {
-  var reader = new FileReader();
-  
-  reader.onload = function (e) {
-
-    setTimeout(() => {
-      var $table = $(tableSelector);
-      var $emptyCell = $table.find('td').filter(function() {
-        return $(this).find('.upload__img-box').length === 0;
-      }).first();
-      
-      if ($emptyCell.length === 0) {
-        return;
-      }
-
-      var html = `
-        <div class='upload__img-box Attatchments-img-box'>
-          <div style='background-image: url(${e.target.result})' data-file='${fileName}' class='ExpensesCompensationImg img-bg'>
-            <div class='upload__img-close2 ${type}'><i class='fa-regular fa-trash-can'></i></div>
-          </div>
-        </div>
-      `;
-      
-      $emptyCell.append(html);
-      array.push({ f: file, url: e.target.result });
-
-      $emptyCell[0].offsetHeight;
-
-      if (array.length < maxLength) {
-        repositionUploadBox(tableSelector, uploadBtnBox);
-      } else {
-        uploadBtnBox.style.display = 'none';
-      }
-      
-    }, 100);
-  };
-  
-  reader.onerror = function(error) {
-    alert(' فشل تحميل الصورة: ' + fileName);
-  };
-  
-  try {
-    reader.readAsDataURL(file);
-  } catch (e) {
-    alert(' خطأ غير متوقع أثناء تحميل الصورة');
-  }
-}
-
-function repositionUploadBox(tableSelector, uploadBtnBox) {
+function repositionUploadBox(tableSelector, Expenses_compensation_uploadBox) {
   var $table = $(tableSelector);
   var $emptyCell = $table.find('td').filter(function() {
-    return $(this).find('.upload__img-box').length === 0;
+    return $(this).find('.Expenses-compensation-ImgBox').length === 0;
   }).first();
   
   if ($emptyCell.length > 0) {
-    uploadBtnBox.style.display = 'flex';
-    $emptyCell.append(uploadBtnBox);
+    Expenses_compensation_uploadBox.style.display = 'flex';
+    $emptyCell.append(Expenses_compensation_uploadBox);
   }
 }
 
-function handleImageDelete(element, array, maxLength, uploadBtnBox, tableSelector) {
+function handleImageDelete(element, array, EC_maxLength, Expenses_compensation_uploadBox, tableSelector) {
   var fileName = $(element).parent().data('file');
   
   var found = false;
@@ -270,15 +297,21 @@ function handleImageDelete(element, array, maxLength, uploadBtnBox, tableSelecto
     }
   }
   
-  $(element).closest('.upload__img-box').remove();
+  $(element).closest('.Expenses-compensation-ImgBox').remove();
   
-  if (array.length < maxLength) {
-    repositionUploadBox(tableSelector, uploadBtnBox);
+  if (array.length < EC_maxLength) {
+    repositionUploadBox(tableSelector, Expenses_compensation_uploadBox);
   }
 
   if (array.length === 0) {
-    uploadBtnBox.style.display = 'flex';
-    $(tableSelector + ' td').first().append(uploadBtnBox);
+    Expenses_compensation_uploadBox.style.display = 'flex';
+    $(tableSelector + ' td').first().append(Expenses_compensation_uploadBox);
+  }
+  
+  if (found) {
+    alert("Image deleted successfully!\nRemaining images: " + array.length);
+  } else {
+    alert("Image deletion completed.");
   }
 }
 
@@ -288,7 +321,7 @@ function addImageUploadCSS() {
     .ExpensesCompensationImg {
       width: 100%;
       height: 100px !important;
-      background-size: cover !important;
+      background-size: contain !important;
       background-position: center !important;
       background-repeat: no-repeat !important;
       position: relative;
@@ -312,6 +345,7 @@ function addImageUploadCSS() {
 
 $(document).ready(function() {
   addImageUploadCSS();
+  alert("Image upload functionality loaded successfully!");
 });
 //========================================calculate Expenses/compensation  ============================================================
 
